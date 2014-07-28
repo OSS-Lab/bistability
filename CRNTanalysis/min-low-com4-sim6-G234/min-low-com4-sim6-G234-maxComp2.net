@@ -1,0 +1,1 @@
+{min-low-com4-sim6-G234}{L <---> A* ---> O; L <---> A* ---> O maxComp2}#3{AR,AT,O,Op,AR_O,AT_O,AR_Op,AT_Op,AR_L,L,AT_L}{AR + Op,AR_Op,AR + O,AR_O,AT + Op,AT_Op,AT + O,AT_O,AR + L,AR_L,AT + L,AT_L,AR,AT}{1,2,R2,3,N2,6,R3,4,R4,1,N4,8,R5,6,R6,7,N7,8,R8,5,N9,10,R10,12,R11,12,R13,14,R}

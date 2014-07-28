@@ -1,0 +1,70 @@
+ 
+  
+                 ==============================================
+                 CONCORDANCE REPORT: BIPATH-HIGH-COM3-SIM5-G154
+                 ==============================================
+    This network is discordant, as is its fully open extension. There is a
+ weakly monotonic kinetics for which the resulting kinetic system is not
+ injective and, in fact, for which there are two distinct stoichiometrically-
+ compatible positive steady states. There is a differentiably monotonic
+ kinetics for which the resulting kinetic system admits a degenerate positive
+ steady state and also a differentiably monotonic kinetics for which there is
+ an unstable positive steady state.
+ 
+ 
+ The following gives an example which supports the absence of concordance:
+ 
+ 
+     Reactions          	    Alpha        
+     ¯¯¯¯¯¯¯¯¯          	    ¯¯¯¯¯
+      K + T0 -> K_T0    	    2.9237487   
+        K_T0 -> K + T0  	        2       
+        K_T0 -> K + T1  	    3.9237487   
+      P + T1 -> P_T1    	    3.9237487   
+        P_T1 -> P + T1  	        1       
+        P_T1 -> P + T0  	    2.9237487   
+    K_A + T0 -> K_A_T0  	        1       
+      K_A_T0 -> K_A + T0	       -1       
+      K_A_T0 -> K_A + T1	       -1       
+      K_A_T0 -> A + K_T0	       -1       
+       K + A -> K_A     	        6       
+         K_A -> K + A   	        1       
+       A + L -> A_L     	       -1       
+         A_L -> A + L   	        1       
+     K + A_L -> K_A_L   	        1       
+       K_A_L -> K + A_L 	        3       
+       K_A_L -> L + K_A 	        1       
+    A + K_T0 -> K_A_T0  	       -4       
+     L + K_A -> K_A_L   	        3       
+ 
+ 
+     Species        Sigma        
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯
+           K     	              1        
+          T0     	              1        
+         K_T0    	              1        
+          T1     	          4.0163081    
+           P     	         -5.2830662    
+         P_T1    	          5.2830662    
+          K_A    	          8.1496872    
+        K_A_T0   	         -11.299374    
+           A     	             -1        
+           L     	         -4.1496872    
+          A_L    	              3        
+         K_A_L   	          1.1496872    
+ 
+ 
+ 
+ 
+                                   References
+                                   ˉˉˉˉˉˉˉˉˉˉ
+ 
+ 1. G. Shinar and M. Feinberg, Concordant Chemical Reaction Networks.
+          Mathematical Biosciences, 240:92-113, 2012.
+          http://dx.doi.org/10.1016/j.mbs.2012.05.004                  
+ 2. G. Shinar and M. Feinberg, Concordant Chemical Reaction Networks and
+          The Species-Reaction Graph, Mathematical Biosciences, 241:1-23, 2013.
+          http://dx.doi.org/10.1016/j.mbs.2012.08.002
+ 
+                                  ***********
+

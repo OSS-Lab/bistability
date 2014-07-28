@@ -1,0 +1,96 @@
+ 
+  
+             ======================================================
+             ZERO EIGENVALUE REPORT: minimal-system-extend3-maxComp
+             ======================================================
+ 
+ 
+ 
+                     Example No. 2: Degenerate Steady State
+                     ˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉ
+ 
+ The following mass action system gives rise to a degenerate steady state:
+ 
+ 
+                          A + BR ---89.249999-> A_BR
+                            A_BR ------15-----> A + BR
+                            A_BR ---1289.9999-> A_BT
+                            A_BT ---1273.9999-> A_BR
+                            A_BT ------14-----> A + BT
+                          A + BT ---7.9999999-> A_BT
+                              BR ---419.99999-> BT
+                              BT ---439.99999-> BR
+                          BR + O ----773.85---> BR_O
+                            BR_O -----25.8----> BR + O
+                            BR_O --0.99999999-> BT_O
+                            BR_O -------1-----> BR + Op
+                            BT_O ---1.4999999-> BR_O
+                            BT_O ------1.5----> BT + O
+                            BT_O ------1.5----> BT + Op
+                          BT + O ------616----> BT_O
+                          P + Op ------231----> P_Op
+                            P_Op -------1-----> P + Op
+                            P_Op -------6-----> P + O
+                        A_BR + O ---3423.7499-> A_BR_O
+                          A_BR_O -------3-----> A_BR + O
+                          A_BR_O ---112.49999-> A + BR_O
+                          A_BR_O -------9-----> A_BR + Op
+                        A + BR_O -----20.75---> A_BR_O
+                        A_BT + O ------231----> A_BT_O
+                          A_BT_O ---1.3749999-> A_BT + O
+                          A_BT_O -----0.25----> A + BT_O
+                          A_BT_O -----0.25----> A_BT + Op
+                        A + BT_O ---8.9999999-> A_BT_O
+ 
+ 
+ The steady state shown below is degenerate:
+ 
+ 
+     Species        Steady State        Eigenvector for Zero Eigenvalue
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+         A                1                            1               
+        BR           0.14285714                        1               
+        BT              0.125                          1               
+       A_BR          6.6666 E-2                        1               
+       A_BT          7.1428 E-2                    0.99999999          
+         O           9.0909 E-2                    -0.9999999          
+       BR_O               1                            1               
+       BT_O          0.66666666                        -2              
+        Op           0.33333333                        4               
+         P           9.0909 E-2                        -1              
+       P_Op               1                            1               
+      A_BR_O         0.33333333                        1               
+      A_BT_O              4                            -4              
+ 
+ 
+                  All Eigenvalues for Degenerate Steady State
+                  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -2769.8794
+                                   -975.38321
+                                   -541.34362
+                                   -195.38398
+                                   -159.04946
+                                   -20.920518
+                                   -9.3048098
+                                       0
+                                   -103.80987
+ 
+ 
+                                   References
+                                   ˉˉˉˉˉˉˉˉˉˉ
+ 
+ 1. Ellison, P. and Feinberg, M. How catalytic mechanisms reveal themselves
+ in multiple steady state data. I. Basic principles, The Journal of Molecular
+ Catalysis A: Chemical, 154, 155 - 167, 2000.  
+ 
+ 2. Ellison, P. PhD. Thesis. Rochester, NY: Department of Chemical Engineer-
+ ing, University of Rochester; 1998. The advanced deficiency algorithm
+ and itsapplications to mechanism discrimination.
+ 
+ 3. Ji, H. PhD. Thesis. Columbus, OH: Department of Mathematics, The Ohio 
+ State University; 2011. Uniqueness of equilibria for complex chemical reaction
+ networks.
+ 
+                                  ***********
+

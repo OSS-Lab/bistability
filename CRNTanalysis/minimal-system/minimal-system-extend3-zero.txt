@@ -1,0 +1,598 @@
+ 
+  
+                 ==============================================
+                 ZERO EIGENVALUE REPORT: minimal-system-extend3
+                 ==============================================
+ 
+ 
+ 
+                    Example No. 11: Degenerate Steady State
+                    ˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉ
+ 
+ The following mass action system gives rise to a degenerate steady state:
+ 
+ 
+                          A + BR ---1396.6155-> A_BR
+                            A_BR ---189.08558-> A + BR
+                            A_BR ---189.08558-> A_BT
+                            A_BT ---165.44988-> A_BR
+                            A_BT ---82.724941-> A + BT
+                          A + BT ---418.98465-> A_BT
+                              BR ---118.17848-> BT
+                              BT ---212.72127-> BR
+                          BR + O ---3781.7116-> BR_O
+                            BR_O ---11.817848-> BR + O
+                            BR_O ---47.271395-> BT_O
+                            BR_O ---11.817848-> BR + Op
+                            BT_O ---4.7271395-> BR_O
+                            BT_O ---21.272127-> BT + O
+                            BT_O ---2.3635697-> BT + Op
+                          BT + O ---4538.0539-> BT_O
+                          P + Op -------3-----> P_Op
+                            P_Op -------1-----> P + Op
+                            P_Op -------2-----> P + O
+ 
+ 
+ The steady state shown below is degenerate:
+ 
+ 
+     Species        Steady State        Eigenvector for Zero Eigenvalue
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+         A           0.16923553                    0.16923553          
+        BR           8.4617 E-3                    -8.461 E-2          
+        BT           1.4102 E-2                    -8.461 E-2          
+       A_BR          1.0577 E-2                    -8.461 E-2          
+       A_BT          1.2088 E-2                    -8.461 E-2          
+         O              0.125                          1               
+       BR_O          8.4617 E-2                    -8.461 E-2          
+       BT_O          0.42308884                    0.42308884          
+        Op                1                            0               
+         P                1                            0               
+       P_Op               1                        -1.41 E-17          
+ 
+ 
+                  All Eigenvalues for Degenerate Steady State
+                  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -1054.753
+                                   -824.27067
+                                   -443.66862
+                                   -131.72556
+                                   -63.059357
+                                   -2.9999999
+                                       0
+ 
+ 
+                    Example No. 12: Degenerate Steady State
+                    ˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉ
+ 
+ The following mass action system gives rise to a degenerate steady state:
+ 
+ 
+                          A + BR ---69276.713-> A_BR
+                            A_BR ---7.615575--> A + BR
+                            A_BR ---23.798672-> A_BT
+                            A_BT ---18.343908-> A_BR
+                            A_BT ---106.72819-> A + BT
+                          A + BT ---94468.246-> A_BT
+                              BR ---177.45257-> BT
+                              BT ---292.79674-> BR
+                          BR + O ---2839.2411-> BR_O
+                            BR_O ---17.745257-> BR + O
+                            BR_O ---17.745257-> BT_O
+                            BR_O ---17.745257-> BR + Op
+                            BT_O ---4.4363143-> BR_O
+                            BT_O ---4.4363143-> BT + O
+                            BT_O ---4.4363143-> BT + Op
+                          BT + O ---1703.5446-> BT_O
+                          P + Op -------3-----> P_Op
+                            P_Op -------1-----> P + Op
+                            P_Op -------2-----> P + O
+ 
+ 
+ The steady state shown below is degenerate:
+ 
+ 
+     Species        Steady State        Eigenvector for Zero Eigenvalue
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+         A           7.0441 E-3                    5.6353 E-2          
+        BR           5.6353 E-3                    -5.635 E-2          
+        BT           9.3921 E-3                    -5.635 E-2          
+       A_BR          0.13130984                    -0.1313098          
+       A_BT          7.4956 E-2                    7.4956 E-2          
+         O              0.125                          1               
+       BR_O          5.6353 E-2                    -5.635 E-2          
+       BT_O          0.22541234                    0.22541234          
+        Op                1                            0               
+         P                1                            0               
+       P_Op               1                        6.787 E-17          
+ 
+ 
+                  All Eigenvalues for Degenerate Steady State
+                  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -2096.2744
+                                   -1292.5065
+                                   -233.9783
+                                   -66.969173
+                                   -34.500387
+                                       -3
+                                       0
+ 
+ 
+                    Example No. 13: Degenerate Steady State
+                    ˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉ
+ 
+ The following mass action system gives rise to a degenerate steady state:
+ 
+ 
+                          A + BR ---1500.4524-> A_BR
+                            A_BR ---210.22641-> A + BR
+                            A_BR ---210.22641-> A_BT
+                            A_BT ---186.86792-> A_BR
+                            A_BT ---93.43396--> A + BT
+                          A + BT ---477.41667-> A_BT
+                              BR ---128.47169-> BT
+                              BT ---212.56226-> BR
+                          BR + O ---4162.4829-> BR_O
+                            BR_O ---11.679245-> BR + O
+                            BR_O ---39.709433-> BT_O
+                            BR_O ---11.679245-> BR + Op
+                            BT_O ---4.2045282-> BR_O
+                            BT_O ---17.285282-> BT + O
+                            BT_O ---2.335849--> BT + Op
+                          BT + O ---5003.3885-> BT_O
+                          P + Op -------3-----> P_Op
+                            P_Op -------1-----> P + Op
+                            P_Op -------2-----> P + O
+ 
+ 
+ The steady state shown below is degenerate:
+ 
+ 
+     Species        Steady State        Eigenvector for Zero Eigenvalue
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+         A           0.17124394                    0.17124394          
+        BR           7.7838 E-3                    -8.562 E-2          
+        BT           1.2231 E-2                    -8.562 E-2          
+       A_BR          9.5135 E-3                    -8.562 E-2          
+       A_BT          1.0702 E-2                    -8.562 E-2          
+         O           0.11111111                        1               
+       BR_O          8.5621 E-2                    -8.562 E-2          
+       BT_O          0.42810986                    0.42810986          
+        Op                1                            0               
+         P                1                            0               
+       P_Op               1                        -1.41 E-17          
+ 
+ 
+                  All Eigenvalues for Degenerate Steady State
+                  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -1085.9748
+                                   -827.79676
+                                   -487.22499
+                                   -141.38298
+                                   -54.54975
+                                       0
+                                       -3
+ 
+ 
+                    Example No. 14: Degenerate Steady State
+                    ˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉ
+ 
+ The following mass action system gives rise to a degenerate steady state:
+ 
+ 
+                          A + BR ---29943.029-> A_BR
+                            A_BR ---10.249168-> A + BR
+                            A_BR ---30.747504-> A_BT
+                            A_BT ---8.9772868-> A_BR
+                            A_BT ---98.750155-> A + BT
+                          A + BT ---44914.543-> A_BT
+                              BR ---119.40931-> BT
+                              BT ---278.62174-> BR
+                          BR + O ---4457.9478-> BR_O
+                            BR_O ---11.940931-> BR + O
+                            BR_O ---38.476335-> BT_O
+                            BR_O ---23.881863-> BR + Op
+                            BT_O ---9.2873914-> BR_O
+                            BT_O ---61.694814-> BT + O
+                            BT_O ---5.9704659-> BT + Op
+                          BT + O ---4617.1603-> BT_O
+                          P + Op -------4-----> P_Op
+                            P_Op -------1-----> P + Op
+                            P_Op -------3-----> P + O
+ 
+ 
+ The steady state shown below is degenerate:
+ 
+ 
+     Species        Steady State        Eigenvector for Zero Eigenvalue
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+         A           1.1963 E-2                    8.3745 E-2          
+        BR           8.3745 E-3                    -8.374 E-2          
+        BT           1.6749 E-2                    -8.374 E-2          
+       A_BR          9.7568 E-2                    -0.1951377          
+       A_BT          0.11139222                    0.11139222          
+         O              0.125                          1               
+       BR_O          8.3745 E-2                    -8.374 E-2          
+       BT_O          0.16749111                    0.33498223          
+        Op                1                            0               
+         P                1                            0               
+       P_Op               1                        6.787 E-17          
+ 
+ 
+                  All Eigenvalues for Degenerate Steady State
+                  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -1940.0105
+                                   -1274.3125
+                                   -490.17769
+                                       0
+                                       -4
+                                   -84.48596
+                                   -56.683561
+ 
+ 
+                    Example No. 15: Degenerate Steady State
+                    ˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉ
+ 
+ The following mass action system gives rise to a degenerate steady state:
+ 
+ 
+                          A + BR ---95535.901-> A_BR
+                            A_BR ---7.4152998-> A + BR
+                            A_BR ---37.076499-> A_BT
+                            A_BT ---25.980361-> A_BR
+                            A_BT ---103.92144-> A + BT
+                          A + BT ---59709.938-> A_BT
+                              BR ---172.7859--> BT
+                              BT ---345.57181-> BR
+                          BR + O ---3628.504--> BR_O
+                            BR_O ---69.114362-> BR + O
+                            BR_O ---34.557181-> BT_O
+                            BR_O ---34.557181-> BR + Op
+                            BT_O ---4.3196476-> BR_O
+                            BT_O ---4.3196476-> BT + O
+                            BT_O ---8.6392952-> BT + Op
+                          BT + O ---1814.252--> BT_O
+                          P + Op -------4-----> P_Op
+                            P_Op -------1-----> P + Op
+                            P_Op -------3-----> P + O
+ 
+ 
+ The steady state shown below is degenerate:
+ 
+ 
+     Species        Steady State        Eigenvector for Zero Eigenvalue
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+         A           7.2343 E-3                    5.7875 E-2          
+        BR           5.7875 E-3                    -5.787 E-2          
+        BT           1.1575 E-2                    -5.787 E-2          
+       A_BR          0.13485631                    -0.1348563          
+       A_BT          7.6981 E-2                    7.6981 E-2          
+         O           0.14285714                        1               
+       BR_O          2.8937 E-2                    -5.787 E-2          
+       BT_O          0.23150036                    0.23150036          
+        Op                1                            0               
+         P                1                            0               
+       P_Op               1                        6.787 E-17          
+ 
+ 
+                  All Eigenvalues for Degenerate Steady State
+                  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -1987.7745
+                                   -1540.7857
+                                   -344.11714
+                                   -56.679171
+                                   -105.6055
+                                   -3.9999999
+                                       0
+ 
+ 
+                    Example No. 16: Degenerate Steady State
+                    ˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉ
+ 
+ The following mass action system gives rise to a degenerate steady state:
+ 
+ 
+                          A + BR ---4453.6357-> A_BR
+                            A_BR ---35.262802-> A + BR
+                            A_BR ---30.225259-> A_BT
+                            A_BT ---98.232092-> A_BR
+                            A_BT ---22.668944-> A + BT
+                          A + BT ---15073.843-> A_BT
+                              BR ---249.35838-> BT
+                              BT ---124.67919-> BR
+                          BR + O ---3264.328--> BR_O
+                            BR_O ---11.334472-> BR + O
+                            BR_O ---2.2668944-> BT_O
+                            BR_O ---4.5337888-> BR + Op
+                            BT_O ---45.337888-> BR_O
+                            BT_O ---22.668944-> BT + O
+                            BT_O ---22.668944-> BT + Op
+                          BT + O ---2992.3006-> BT_O
+                          P + Op -------4-----> P_Op
+                            P_Op -------1-----> P + Op
+                            P_Op -------3-----> P + O
+ 
+ 
+ The steady state shown below is degenerate:
+ 
+ 
+     Species        Steady State        Eigenvector for Zero Eigenvalue
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+         A           2.2056 E-2                    -0.1764528          
+        BR           1.4704 E-2                    8.8226 E-2          
+        BT           8.0205 E-3                    8.8226 E-2          
+       A_BR          8.8226 E-2                    8.8226 E-2          
+       A_BT          4.4113 E-2                    8.8226 E-2          
+         O              0.125                          -1              
+       BR_O          0.44113214                    -0.4411321          
+       BT_O          4.4113 E-2                    8.8226 E-2          
+        Op                1                            0               
+         P                1                            0               
+       P_Op               1                        1.414 E-17          
+ 
+ 
+                  All Eigenvalues for Degenerate Steady State
+                  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -1004.1127
+                                   -752.46273
+                          (-160.28476) - i (19.106383)
+                          (-160.28476) + i (19.106383)
+                                       0
+                                   -3.9999999
+                                   -63.27027
+ 
+ 
+                    Example No. 17: Degenerate Steady State
+                    ˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉ
+ 
+ The following mass action system gives rise to a degenerate steady state:
+ 
+ 
+                          A + BR ---643.3196--> A_BR
+                            A_BR ---71.739506-> A + BR
+                            A_BR ---143.47901-> A_BT
+                            A_BT ---125.54413-> A_BR
+                            A_BT ---125.54413-> A + BT
+                          A + BT ---714.79956-> A_BT
+                              BR ---170.38132-> BT
+                              BT ---119.56584-> BR
+                          BR + O ---4376.1099-> BR_O
+                            BR_O ---20.326193-> BR + O
+                            BR_O ---4.6331764-> BT_O
+                            BR_O ---2.3913168-> BR + Op
+                            BT_O ---45.584478-> BR_O
+                            BT_O ---11.956584-> BT + O
+                            BT_O ---11.956584-> BT + Op
+                          BT + O ---3706.5411-> BT_O
+                          P + Op -------3-----> P_Op
+                            P_Op -------1-----> P + Op
+                            P_Op -------2-----> P + O
+ 
+ 
+ The steady state shown below is degenerate:
+ 
+ 
+     Species        Steady State        Eigenvector for Zero Eigenvalue
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+         A           0.16727184                    0.16727184          
+        BR           1.3939 E-2                    -8.363 E-2          
+        BT           8.3635 E-3                    -8.363 E-2          
+       A_BR          1.3939 E-2                    -8.363 E-2          
+       A_BT          1.1947 E-2                    -8.363 E-2          
+         O              0.125                          1               
+       BR_O          0.41817962                    0.41817962          
+       BT_O          8.3635 E-2                    -8.363 E-2          
+        Op                1                            0               
+         P                1                            0               
+       P_Op               1                        -1.41 E-17          
+ 
+ 
+                  All Eigenvalues for Degenerate Steady State
+                  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -956.72606
+                                   -721.53885
+                                   -346.46883
+                                   -111.65825
+                                   -61.162521
+                                       -3
+                                       0
+ 
+ 
+                    Example No. 18: Degenerate Steady State
+                    ˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉ
+ 
+ The following mass action system gives rise to a degenerate steady state:
+ 
+ 
+                          A + BR ---94468.246-> A_BR
+                            A_BR ---106.72819-> A + BR
+                            A_BR ---18.343908-> A_BT
+                            A_BT ---23.798672-> A_BR
+                            A_BT ---7.615575--> A + BT
+                          A + BT ---69276.713-> A_BT
+                              BR ---292.79674-> BT
+                              BT ---177.45257-> BR
+                          BR + O ---1703.5446-> BR_O
+                            BR_O ---4.4363143-> BR + O
+                            BR_O ---4.4363143-> BT_O
+                            BR_O ---4.4363143-> BR + Op
+                            BT_O ---17.745257-> BR_O
+                            BT_O ---17.745257-> BT + O
+                            BT_O ---17.745257-> BT + Op
+                          BT + O ---2839.2411-> BT_O
+                          P + Op -------3-----> P_Op
+                            P_Op -------1-----> P + Op
+                            P_Op -------2-----> P + O
+ 
+ 
+ The steady state shown below is degenerate:
+ 
+ 
+     Species        Steady State        Eigenvector for Zero Eigenvalue
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+         A           7.0441 E-3                    5.6353 E-2          
+        BR           9.3921 E-3                    -5.635 E-2          
+        BT           5.6353 E-3                    -5.635 E-2          
+       A_BR          7.4956 E-2                    7.4956 E-2          
+       A_BT          0.13130984                    -0.1313098          
+         O              0.125                          1               
+       BR_O          0.22541234                    0.22541234          
+       BT_O          5.6353 E-2                    -5.635 E-2          
+        Op                1                            0               
+         P                1                            0               
+       P_Op               1                        6.787 E-17          
+ 
+ 
+                  All Eigenvalues for Degenerate Steady State
+                  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -2096.2744
+                                   -1292.5065
+                                   -233.9783
+                                   -66.969173
+                                   -34.500387
+                                   -2.9999999
+                                       0
+ 
+ 
+                    Example No. 19: Degenerate Steady State
+                    ˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉ
+ 
+ The following mass action system gives rise to a degenerate steady state:
+ 
+ 
+                          A + BR ---729.14629-> A_BR
+                            A_BR ---82.494638-> A + BR
+                            A_BR ---164.98927-> A_BT
+                            A_BT ---141.41938-> A_BR
+                            A_BT ---141.41938-> A + BT
+                          A + BT ---763.86754-> A_BT
+                              BR ---164.98927-> BT
+                              BT ---129.63443-> BR
+                          BR + O ---4825.9363-> BR_O
+                            BR_O ---16.498927-> BR + O
+                            BR_O ---4.1247319-> BT_O
+                            BR_O ---2.3569896-> BR + Op
+                            BT_O ---38.301082-> BR_O
+                            BT_O ---11.784948-> BT + O
+                            BT_O ---11.784948-> BT + Op
+                          BT + O ---4083.4846-> BT_O
+                          P + Op -------3-----> P_Op
+                            P_Op -------1-----> P + Op
+                            P_Op -------2-----> P + O
+ 
+ 
+ The steady state shown below is degenerate:
+ 
+ 
+     Species        Steady State        Eigenvector for Zero Eigenvalue
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+         A           0.16970799                    0.16970799          
+        BR           1.2121 E-2                    -8.485 E-2          
+        BT           7.7139 E-3                    -8.485 E-2          
+       A_BR          1.2121 E-2                    -8.485 E-2          
+       A_BT          1.0606 E-2                    -8.485 E-2          
+         O           0.11111111                        1               
+       BR_O          0.42426999                    0.42426999          
+       BT_O          8.4853 E-2                    -8.485 E-2          
+        Op                1                            0               
+         P                1                            0               
+       P_Op               1                        -1.41 E-17          
+ 
+ 
+                  All Eigenvalues for Degenerate Steady State
+                  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -966.29027
+                                   -727.25313
+                                   -389.6574
+                                   -121.94042
+                                   -52.700023
+                                       -3
+                                       0
+ 
+ 
+                    Example No. 20: Degenerate Steady State
+                    ˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉ
+ 
+ The following mass action system gives rise to a degenerate steady state:
+ 
+ 
+                          A + BR ---22229.145-> A_BR
+                            A_BR ---26.794721-> A + BR
+                            A_BR ---13.39736--> A_BT
+                            A_BT ---7.6477339-> A_BR
+                            A_BT ---7.6477339-> A + BT
+                          A + BT ---22229.145-> A_BT
+                              BR ---356.40383-> BT
+                              BT ---178.20191-> BR
+                          BR + O ---3920.4421-> BR_O
+                            BR_O ---33.412859-> BR + O
+                            BR_O ---11.137619-> BT_O
+                            BR_O ---4.4550478-> BR + Op
+                            BT_O ---98.011053-> BR_O
+                            BT_O ---17.820191-> BT + O
+                            BT_O ---17.820191-> BT + Op
+                          BT + O ---7128.0766-> BT_O
+                          P + Op -------3-----> P_Op
+                            P_Op -------1-----> P + Op
+                            P_Op -------2-----> P + O
+ 
+ 
+ The steady state shown below is degenerate:
+ 
+ 
+     Species        Steady State        Eigenvector for Zero Eigenvalue
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+         A           8.0165 E-3                    5.6116 E-2          
+        BR           1.1223 E-2                    -5.611 E-2          
+        BT           5.6116 E-3                    -5.611 E-2          
+       A_BR          7.4641 E-2                    7.4641 E-2          
+       A_BT          0.13075768                    -0.1307576          
+         O              0.125                          1               
+       BR_O          0.22446447                    0.22446447          
+       BT_O          5.6116 E-2                    -5.611 E-2          
+        Op                1                            0               
+         P                1                            0               
+       P_Op               1                        6.787 E-17          
+ 
+ 
+                  All Eigenvalues for Degenerate Steady State
+                  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -1426.713
+                                   -1064.4152
+                                   -313.24186
+                                   -131.2869
+                                   -32.785904
+                                       0
+                                   -2.9999999
+ 
+ 
+ FOR MEMORY REASONS, NO MORE MASS ACTION EXAMPLES WILL BE CONSTRUCTED.
+ 
+ 
+                                   References
+                                   ˉˉˉˉˉˉˉˉˉˉ
+ 
+ 1. Ellison, P. and Feinberg, M. How catalytic mechanisms reveal themselves
+ in multiple steady state data. I. Basic principles, The Journal of Molecular
+ Catalysis A: Chemical, 154, 155 - 167, 2000.  
+ 
+ 2. Ellison, P. PhD. Thesis. Rochester, NY: Department of Chemical Engineer-
+ ing, University of Rochester; 1998. The advanced deficiency algorithm
+ and itsapplications to mechanism discrimination.
+ 
+ 3. Ji, H. PhD. Thesis. Columbus, OH: Department of Mathematics, The Ohio 
+ State University; 2011. Uniqueness of equilibria for complex chemical reaction
+ networks.
+ 
+                                  ***********
+

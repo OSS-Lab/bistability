@@ -1,0 +1,1 @@
+{minimal-system-extend1}{A* + B*}#3{AR,BR,AT,BT,AR_BR,AR_BT,AT_BR,AT_BT}{AR + BR,AR_BR,AR + BT,AR_BT,AT + BR,AT_BR,AT + BT,AT_BT}{1,2,R2,4,R2,6,R3,4,R4,8,R5,6,R6,8,R7,8,R}

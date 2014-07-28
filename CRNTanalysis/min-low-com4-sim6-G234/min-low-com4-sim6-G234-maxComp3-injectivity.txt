@@ -1,0 +1,114 @@
+ 
+  
+                 =============================================
+                 MA INJECTIVITY REPORT: min-low-com4-sim6-G234
+                 =============================================
+ 
+     Taken with mass action kinetics, the network is not injective in the sense
+ of the references 2 and 4 below.
+  
+     To determine whether the network might admit two distinct stoichiometrically
+ compatible positive equilibria, you should also consult the Higher Deficiency
+ Report if you haven't already done so.
+ 
+ 
+ The following gives an example which supports the non-injectivity:
+ 
+ 
+                         AR + Op ------1.2----> AR_Op
+                           AR_Op -------1-----> AR + Op
+                           AR_Op -------1-----> AR + O
+                           AR_Op -------1-----> AT_Op
+                          AR + O -------1-----> AR_O
+                            AR_O ---2.6666666-> AR + Op
+                            AR_O ---1.3333333-> AR + O
+                            AR_O -------1-----> AT_O
+                         AT + Op ------15-----> AT_Op
+                           AT_Op -------1-----> AR_Op
+                           AT_Op -------1-----> AT + Op
+                           AT_Op -------1-----> AT + O
+                          AT + O -------1-----> AT_O
+                            AT_O ------12-----> AR_O
+                            AT_O -------1-----> AT + Op
+                            AT_O -------1-----> AT + O
+                       AR_L + Op -------1-----> AR_L_Op
+                         AR_L_Op -------1-----> AR_L + Op
+                         AR_L_Op -------1-----> AR_L + O
+                         AR_L_Op -------2-----> AT_L_Op
+                         AR_L_Op -------1-----> L + AR_Op
+                        AR_L + O -------1-----> AR_L_O
+                          AR_L_O -------1-----> AR_L + Op
+                          AR_L_O -------1-----> AR_L + O
+                          AR_L_O -------1-----> AT_L_O
+                          AR_L_O -------1-----> L + AR_O
+                       AT_L + Op -------1-----> AT_L_Op
+                         AT_L_Op -------1-----> AR_L_Op
+                         AT_L_Op ------12-----> AT_L + Op
+                         AT_L_Op -------1-----> AT_L + O
+                         AT_L_Op -------1-----> L + AT_Op
+                        AT_L + O -------1-----> AT_L_O
+                          AT_L_O -------1-----> AR_L_O
+                          AT_L_O -------1-----> AT_L + Op
+                          AT_L_O -------1-----> AT_L + O
+                          AT_L_O -------1-----> L + AT_O
+                          AR + L -------4-----> AR_L
+                            AR_L -------1-----> AR + L
+                            AR_L -------2-----> AT_L
+                          AT + L -------1-----> AT_L
+                            AT_L -------1-----> AR_L
+                            AT_L -------1-----> AT + L
+                        L + AR_O -------3-----> AR_L_O
+                       L + AR_Op -------1-----> AR_L_Op
+                        L + AT_O ------12-----> AT_L_O
+                       L + AT_Op ------10-----> AT_L_Op
+                              AR -------1-----> AT
+                              AT -------1-----> AR
+ 
+ 
+    Species	      Kernel Vector	Sigma		Divisor
+    ¯¯¯¯¯¯¯	      ¯¯¯¯¯¯¯¯¯¯¯¯	¯¯¯¯¯		¯¯¯¯¯¯¯
+     AR    	             3       	   1   		0.33333333
+     AT    	             -1      	-6.299002		6.299002
+     Op    	             2       	0.99999999		  0.5  
+      O    	             2       	   1   		  0.5  
+    AR_Op  	             3       	   1   		0.33333333
+    AR_O   	             3       	0.99999999		0.33333333
+    AT_Op  	             3       	   1   		0.33333333
+    AT_O   	             1       	1.299002		1.299002
+    AR_L   	             1       	6.299002		6.299002
+      L    	             -2      	   -1  		  0.5  
+    AT_L   	             1       	   1   		   1   
+   AR_L_Op 	             1       	0.99999999		0.99999999
+   AR_L_O  	             1       	0.99999999		0.99999999
+   AT_L_Op 	             1       	0.99999999		0.99999999
+   AT_L_O  	             -2      	-9.299002		4.649501
+ 
+ 
+ 
+ 
+ 
+                                   References
+                                   ¯¯¯¯¯¯¯¯¯¯
+ 
+ 1. Feinberg, M., Chemical reaction network structure and the stability of comp-
+ lex isothermal reactors. I. The deficiency zero and deficiency one theorems,
+ Chem. Eng. Science, 42, 2229-2268 (1987).
+ 
+ 2. G. Craciun and M. Feinberg. Multiple equilibria in complex chemical
+ reaction networks. I. The injectivity property. SIAM Journal on Applied
+ Mathematics, 65:1526-1546, 2005.
+ 
+ 3. G. Craciun and M. Feinberg. Multiple equilibria in complex chemical
+ reaction networks. II. The species-reaction graph. SIAM Journal on
+ Applied Mathematics, 66:1321-1338, 2006.
+ 
+ 4. G. Craciun and M. Feinberg. Multiple equilibria in complex chemical
+ reaction networks: semi-open mass action systems. SIAM Journal on
+ Applied Mathematics, 70:1859-1877, 2010.
+ 
+ 5. G. Shinar, A. Mayo, H. Ji and M. Feinberg. Constraints on reciprocal flux
+ sensitivities in biochemical reaction networks. Biophysical Journal, 100(6):
+ 1383-1391, 2011.
+ 
+                                  ***********
+

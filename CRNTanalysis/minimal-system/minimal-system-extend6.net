@@ -1,0 +1,1 @@
+{minimal-system-extend6}{L <-> A, A <-> B*, B* -> O, P -| O maxComp2}#3{A,BR,BT,A_BR,A_BT,O,BR_O,BT_O,Op,P,P_Op,L,L_A}{A + BR,A_BR,A_BT,A + BT,BR,BT,BR + O,BR_O,BT_O,BR + Op,BT + O,BT + Op,P + Op,P_Op,P + O,L + A,L_A}{1,2,R2,3,R3,4,R5,6,R7,8,R8,9,R8,10,N9,11,R9,12,N13,14,R14,15,N16,17,R}

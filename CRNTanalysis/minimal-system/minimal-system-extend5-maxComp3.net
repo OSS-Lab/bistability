@@ -1,0 +1,1 @@
+{minimal-system-extend5-maxComp}{B <-> A, A <-> K, K -> O, P -| O comp3}#3{A,O,Op,P,K,A_K,K_O,P_Op,B,B_A,A_K_O,B_A_K}{A + K,A_K,K + O,K_O,K + Op,P_Op,P + O,P + Op,B + A,B_A,B_A + K,B_A_K,B + A_K,A_K + O,A_K_O,A + K_O,A_K + Op}{1,2,R3,4,R4,5,N6,7,N6,8,R9,10,R11,12,R12,13,R14,15,R15,16,R15,17,N}

@@ -1,0 +1,28 @@
+KR + T0 <-> KR_T0
+KR_T0 -> KR + T1
+KT + T0 <-> KT_T0
+KT_T0 -> KT + T1
+PR + T1 <-> PR_T1
+PR_T1 -> PR + T0
+PT + T1 <-> PT_T1
+PT_T1 -> PT + T0
+KR_A + T0 <-> KR_A_T0
+KR_A_T0 -> KR_A + T1
+KT_A + T0 <-> KT_A_T0
+KT_A_T0 -> KT_A + T1
+KR + A <-> KR_A
+KT + A <-> KT_A
+A + L <-> A_L
+KR + A_L <-> KR_A_L
+KT + A_L <-> KT_A_L
+A + KR_T0 <-> KR_A_T0
+A + KT_T0 <-> KT_A_T0
+L + KR_A <-> KR_A_L
+L + KT_A <-> KT_A_L
+KR <-> KT
+PR <-> PT
+KR_A <-> KT_A
+KR_T0 <-> KT_T0
+PR_T1 <-> PT_T1
+KR_A_L <-> KT_A_L
+KR_A_T0 <-> KT_A_T0

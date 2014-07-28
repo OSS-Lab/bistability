@@ -1,0 +1,78 @@
+ 
+  
+             ======================================================
+             ZERO EIGENVALUE REPORT: min-low-com4-sim6-G234-mutant2
+             ======================================================
+ 
+ 
+ 
+                     Example No. 2: Degenerate Steady State
+                     ˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉ
+ 
+ The following mass action system gives rise to a degenerate steady state:
+ 
+ 
+                          A + Op ---16.666666-> A_Op
+                            A_Op ------14-----> A + Op
+                            A_Op ------14-----> A + O
+                           A + O ---1.3619047-> A_O
+                             A_O ------33-----> A + Op
+                             A_O -------3-----> A + O
+                           A + L ---14.503401-> A_L
+                             A_L ---110.32653-> A + L
+                        A_L + Op ------264----> A_L_Op
+                          A_L_Op --0.88888888-> A_L + Op
+                          A_L_Op ---3.6666666-> A_L + O
+                          A_L_Op --0.33333333-> L + A_Op
+                         A_L + O ---11.314285-> A_L_O
+                           A_L_O -------8-----> A_L + Op
+                           A_L_O ---134.85714-> A_L + O
+                           A_L_O -------8-----> L + A_O
+                         L + A_O ---339.42857-> A_L_O
+                        L + A_Op ---1231.9999-> A_L_Op
+ 
+ 
+ The steady state shown below is degenerate:
+ 
+ 
+     Species        Steady State        Eigenvector for Zero Eigenvalue
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+         A                3                            -3              
+        Op           0.16666666                        1               
+         O                5                            -5              
+       A_Op          7.1428 E-2                        1               
+        A_O          0.33333333                        1               
+         L           8.3333 E-2                        -1              
+        A_L          0.16666666                        -1              
+      A_L_Op              3                            3               
+       A_L_O            0.125                          -1              
+ 
+ 
+                  All Eigenvalues for Degenerate Steady State
+                  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                          (-314.04279) - i (58.33576)
+                          (-314.04279) + i (58.33576)
+                                       0
+                                   -80.548938
+                          (-104.19112) - i (20.703545)
+                          (-104.19112) + i (20.703545)
+ 
+ 
+                                   References
+                                   ˉˉˉˉˉˉˉˉˉˉ
+ 
+ 1. Ellison, P. and Feinberg, M. How catalytic mechanisms reveal themselves
+ in multiple steady state data. I. Basic principles, The Journal of Molecular
+ Catalysis A: Chemical, 154, 155 - 167, 2000.  
+ 
+ 2. Ellison, P. PhD. Thesis. Rochester, NY: Department of Chemical Engineer-
+ ing, University of Rochester; 1998. The advanced deficiency algorithm
+ and itsapplications to mechanism discrimination.
+ 
+ 3. Ji, H. PhD. Thesis. Columbus, OH: Department of Mathematics, The Ohio 
+ State University; 2011. Uniqueness of equilibria for complex chemical reaction
+ networks.
+ 
+                                  ***********
+

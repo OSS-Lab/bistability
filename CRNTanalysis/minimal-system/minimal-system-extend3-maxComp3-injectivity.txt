@@ -1,0 +1,94 @@
+ 
+  
+             =====================================================
+             MA INJECTIVITY REPORT: minimal-system-extend3-maxComp
+             =====================================================
+ 
+     Taken with mass action kinetics, the network is not injective in the sense
+ of the references 2 and 4 below.
+  
+     To determine whether the network might admit two distinct stoichiometrically
+ compatible positive equilibria, you should also consult the Higher Deficiency
+ Report if you haven't already done so.
+ 
+ 
+ The following gives an example which supports the non-injectivity:
+ 
+ 
+                          A + BR -------1-----> A_BR
+                            A_BR -------1-----> A + BR
+                            A_BR -------1-----> A_BT
+                            A_BT -------4-----> A_BR
+                            A_BT ------10-----> A + BT
+                          A + BT -------1-----> A_BT
+                              BR -------1-----> BT
+                              BT ---1.6666666-> BR
+                          BR + O -------3-----> BR_O
+                            BR_O -------1-----> BR + O
+                            BR_O -------1-----> BT_O
+                            BR_O -------1-----> BR + Op
+                            BT_O -------1-----> BR_O
+                            BT_O -------1-----> BT + O
+                            BT_O -------1-----> BT + Op
+                          BT + O -------6-----> BT_O
+                          P + Op -------2-----> P_Op
+                            P_Op -------1-----> P + Op
+                            P_Op -------1-----> P + O
+                        A_BR + O -------4-----> A_BR_O
+                          A_BR_O -------1-----> A_BR + O
+                          A_BR_O -------1-----> A + BR_O
+                          A_BR_O -------1-----> A_BR + Op
+                          A_BR_O -------1-----> A_BT_O
+                        A + BR_O -------1-----> A_BR_O
+                        A_BT + O ------11-----> A_BT_O
+                          A_BT_O -------1-----> A_BR_O
+                          A_BT_O -------1-----> A_BT + O
+                          A_BT_O -------1-----> A + BT_O
+                          A_BT_O -------1-----> A_BT + Op
+                        A + BT_O -------1-----> A_BT_O
+ 
+ 
+    Species	      Kernel Vector	Sigma		Divisor
+    ¯¯¯¯¯¯¯	      ¯¯¯¯¯¯¯¯¯¯¯¯	¯¯¯¯¯		¯¯¯¯¯¯¯
+      A    	             1       	5.827246		5.827246
+     BR    	             3       	2.8133616		0.93778721
+     BT    	             3       	   1   		0.33333333
+    A_BR   	             3       	   1   		0.33333333
+    A_BT   	             1       	   1   		   1   
+      O    	             -2      	   -1  		  0.5  
+    BR_O   	             1       	1.0138844		1.0138844
+    BT_O   	             1       	0.99999999		0.99999999
+     Op    	             3       	5.8133616		1.9377872
+      P    	             -2      	   -1  		  0.5  
+    P_Op   	             1       	   1   		   1   
+   A_BR_O  	             1       	0.99999999		0.99999999
+   A_BT_O  	             -2      	-8.827246		4.413623
+ 
+ 
+ 
+ 
+ 
+                                   References
+                                   ¯¯¯¯¯¯¯¯¯¯
+ 
+ 1. Feinberg, M., Chemical reaction network structure and the stability of comp-
+ lex isothermal reactors. I. The deficiency zero and deficiency one theorems,
+ Chem. Eng. Science, 42, 2229-2268 (1987).
+ 
+ 2. G. Craciun and M. Feinberg. Multiple equilibria in complex chemical
+ reaction networks. I. The injectivity property. SIAM Journal on Applied
+ Mathematics, 65:1526-1546, 2005.
+ 
+ 3. G. Craciun and M. Feinberg. Multiple equilibria in complex chemical
+ reaction networks. II. The species-reaction graph. SIAM Journal on
+ Applied Mathematics, 66:1321-1338, 2006.
+ 
+ 4. G. Craciun and M. Feinberg. Multiple equilibria in complex chemical
+ reaction networks: semi-open mass action systems. SIAM Journal on
+ Applied Mathematics, 70:1859-1877, 2010.
+ 
+ 5. G. Shinar, A. Mayo, H. Ji and M. Feinberg. Constraints on reciprocal flux
+ sensitivities in biochemical reaction networks. Biophysical Journal, 100(6):
+ 1383-1391, 2011.
+ 
+                                  ***********

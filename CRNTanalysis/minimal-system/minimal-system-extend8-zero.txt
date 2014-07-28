@@ -1,0 +1,71 @@
+ 
+  
+                 ==============================================
+                 ZERO EIGENVALUE REPORT: minimal-system-extend8
+                 ==============================================
+ 
+ 
+ 
+                     Example No. 2: Degenerate Steady State
+                     ˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉ
+ 
+ The following mass action system gives rise to a degenerate steady state:
+ 
+ 
+                          KR + O ---498.66666-> KR_O
+                            KR_O -------2-----> KR + O
+                            KR_O -------4-----> KR + Op
+                            KR_O ---9.1111111-> KT_O
+                          KT + O ------656----> KT_O
+                            KT_O --0.62962962-> KR_O
+                            KT_O ---5.1111111-> KT + O
+                            KT_O --0.33333333-> KT + Op
+                          P + Op -------4-----> P_Op
+                            P_Op -------1-----> P + Op
+                            P_Op -------3-----> P + O
+                              KR ------11-----> KT
+                              KT ------22-----> KR
+ 
+ 
+ The steady state shown below is degenerate:
+ 
+ 
+     Species        Steady State        Eigenvector for Zero Eigenvalue
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+        KR           9.0909 E-2                        1               
+        KT           0.16666666                        1               
+         O              0.125                          -1              
+        Op                1                            2               
+         P                1                            -1              
+       KR_O              0.5                           1               
+       KT_O               3                            -3              
+       P_Op               1                            1               
+ 
+ 
+                  All Eigenvalues for Degenerate Steady State
+                  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -238.0531
+                                   -102.72813
+                                       0
+                          (-12.20197) - i (0.94493362)
+                          (-12.20197) + i (0.94493362)
+ 
+ 
+                                   References
+                                   ˉˉˉˉˉˉˉˉˉˉ
+ 
+ 1. Ellison, P. and Feinberg, M. How catalytic mechanisms reveal themselves
+ in multiple steady state data. I. Basic principles, The Journal of Molecular
+ Catalysis A: Chemical, 154, 155 - 167, 2000.  
+ 
+ 2. Ellison, P. PhD. Thesis. Rochester, NY: Department of Chemical Engineer-
+ ing, University of Rochester; 1998. The advanced deficiency algorithm
+ and itsapplications to mechanism discrimination.
+ 
+ 3. Ji, H. PhD. Thesis. Columbus, OH: Department of Mathematics, The Ohio 
+ State University; 2011. Uniqueness of equilibria for complex chemical reaction
+ networks.
+ 
+                                  ***********
+

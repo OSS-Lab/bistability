@@ -1,0 +1,28 @@
+AR + Op <-> AR_Op
+AR_Op -> AR + O
+AR + O <-> AR_O
+AR_O -> AR + Op
+AT + Op <-> AT_Op
+AT_Op -> AT + O
+AT + O <-> AT_O
+AT_O -> AT + Op
+AR_L + Op <-> AR_L_Op
+AR_L_Op -> AR_L + O
+AR_L + O <-> AR_L_O
+AR_L_O -> AR_L + Op
+AT_L + Op <-> AT_L_Op
+AT_L_Op -> AT_L + O
+AT_L + O <-> AT_L_O
+AT_L_O -> AT_L + Op
+AR + L <-> AR_L
+AT + L <-> AT_L
+L + AR_O <-> AR_L_O
+L + AR_Op <-> AR_L_Op
+L + AT_O <-> AT_L_O
+L + AT_Op <-> AT_L_Op
+AR <-> AT
+AR_L <-> AT_L
+AR_O <-> AT_O
+AR_Op <-> AT_Op
+AR_L_O <-> AT_L_O
+AR_L_Op <-> AT_L_Op

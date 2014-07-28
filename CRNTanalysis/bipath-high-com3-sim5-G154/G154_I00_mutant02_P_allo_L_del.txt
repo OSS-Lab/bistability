@@ -1,0 +1,18 @@
+KR + T0 <-> KR_T0
+KR_T0 -> KR + T1
+KT + T0 <-> KT_T0
+KT_T0 -> KT + T1
+P + T1 <-> P_T1
+P_T1 -> P + T0
+KR_A + T0 <-> KR_A_T0
+KR_A_T0 -> KR_A + T1
+KT_A + T0 <-> KT_A_T0
+KT_A_T0 -> KT_A + T1
+KR + A <-> KR_A
+KT + A <-> KT_A
+A + KR_T0 <-> KR_A_T0
+A + KT_T0 <-> KT_A_T0
+KR <-> KT
+KR_A <-> KT_A
+KR_T0 <-> KT_T0
+KR_A_T0 <-> KT_A_T0

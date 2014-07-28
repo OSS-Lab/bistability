@@ -1,0 +1,83 @@
+ 
+  
+                 ==============================================
+                 CONCORDANCE REPORT: bipath-high-com3-sim5-G154
+                 ==============================================
+    This network is discordant, as is its fully open extension. There is a
+ weakly monotonic kinetics for which the resulting kinetic system is not
+ injective and, in fact, for which there are two distinct stoichiometrically-
+ compatible positive steady states. There is a differentiably monotonic
+ kinetics for which the resulting kinetic system admits a degenerate positive
+ steady state and also a differentiably monotonic kinetics for which there is
+ an unstable positive steady state.
+ 
+ 
+ The following gives an example which supports the absence of concordance:
+ 
+ 
+     Reactions           	    Alpha        
+     ¯¯¯¯¯¯¯¯¯           	    ¯¯¯¯¯
+     KR + T0 -> KR_T0    	    14.497487   
+       KR_T0 -> KR + T0  	        1       
+       KR_T0 -> KR + T1  	    15.497487   
+       KR_T0 -> KT_T0    	       25       
+       KT_T0 -> KR_T0    	       21       
+       KT_T0 -> KT + T0  	       19       
+       KT_T0 -> KT + T1  	    5.9860447   
+     KT + T0 -> KT_T0    	    22.986044   
+   KR_A + T0 -> KR_A_T0  	       10       
+     KR_A_T0 -> KR_A + T0	        1       
+     KR_A_T0 -> KR_A + T1	        1       
+     KR_A_T0 -> KT_A_T0  	        1       
+     KR_A_T0 -> A + KR_T0	       20       
+     KT_A_T0 -> KR_A_T0  	       -1       
+     KT_A_T0 -> KT_A + T0	       -5       
+     KT_A_T0 -> KT_A + T1	   -8.2544793   
+     KT_A_T0 -> A + KT_T0	       -1       
+   A + KR_T0 -> KR_A_T0  	       14       
+   KT_A + T0 -> KT_A_T0  	   -17.254479   
+   A + KT_T0 -> KT_A_T0  	        1       
+      KR + A -> KR_A     	        1       
+        KR_A -> KR + A   	       -1       
+        KR_A -> KT_A     	       -20      
+        KT_A -> KR_A     	       -14      
+        KT_A -> KT + A   	       -1       
+      KT + A -> KT_A     	        1       
+          KR -> KT       	        1       
+          KT -> KR       	        1       
+      P + T1 -> P_T1     	    15.229053   
+        P_T1 -> P + T1   	        1       
+        P_T1 -> P + T0   	    14.229053   
+ 
+ 
+     Species        Sigma        
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯
+           A     	              7        
+          KR     	          2.7988375    
+          KT     	          2.2011624    
+          T0     	              1        
+          T1     	              1        
+         KR_T0   	              1        
+         KT_T0   	              1        
+        KR_A_T0  	              1        
+         KR_A    	             -1        
+         KT_A    	             -1        
+        KT_A_T0  	             -6        
+           P     	             -1        
+         P_T1    	              1        
+ 
+ 
+ 
+ 
+                                   References
+                                   ˉˉˉˉˉˉˉˉˉˉ
+ 
+ 1. G. Shinar and M. Feinberg, Concordant Chemical Reaction Networks.
+          Mathematical Biosciences, 240:92-113, 2012.
+          http://dx.doi.org/10.1016/j.mbs.2012.05.004                  
+ 2. G. Shinar and M. Feinberg, Concordant Chemical Reaction Networks and
+          The Species-Reaction Graph, Mathematical Biosciences, 241:1-23, 2013.
+          http://dx.doi.org/10.1016/j.mbs.2012.08.002
+ 
+                                  ***********
+

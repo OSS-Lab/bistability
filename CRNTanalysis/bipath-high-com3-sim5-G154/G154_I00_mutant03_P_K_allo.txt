@@ -1,0 +1,11 @@
+K + T0 <-> K_T0
+K_T0 -> K + T1
+P + T1 <-> P_T1
+P_T1 -> P + T0
+K_A + T0 <-> K_A_T0
+K_A_T0 -> K_A + T1
+K + A <-> K_A
+A + L <-> A_L
+K + A_L <-> K_A_L
+A + K_T0 <-> K_A_T0
+L + K_A <-> K_A_L

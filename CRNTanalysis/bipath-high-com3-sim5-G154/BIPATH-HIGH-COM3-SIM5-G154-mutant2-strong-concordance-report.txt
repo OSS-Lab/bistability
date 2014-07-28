@@ -1,0 +1,81 @@
+ 
+  
+             =====================================================
+             STRONG CONCORDANCE REPORT: bipath-high-com3-sim5-G154
+             =====================================================
+     This chemical reaction network is not strongly concordant.
+  
+     If the kinetics is mass action, then to determine whether the network might
+ admit two distinct stoichiometrically compatible positive equilibria, you should
+ also consult the Higher Deficiency Report if you haven't already done so.
+ 
+ 
+ The following gives an example which supports the absence of strong concordance:
+ 
+ 
+     Reactions	    Alpha        
+     ¯¯¯¯¯¯¯¯¯	    ¯¯¯¯¯
+     KR + T0 -> KR_T0	        0       
+       KR_T0 -> KR + T0	    1.4447623   
+       KR_T0 -> KR + T1	   -1.2780506   
+       KR_T0 -> KT_T0	       -13      
+       KT_T0 -> KR_T0	   -21.160839   
+       KT_T0 -> KT + T0	    8.5510127   
+       KT_T0 -> KT + T1	    0.6098271   
+     KT + T0 -> KT_T0	        3       
+   KR_A + T0 -> KR_A_T0	        5       
+     KR_A_T0 -> KR_A + T0	   -8.1306614   
+     KR_A_T0 -> KR_A + T1	    2.8031099   
+     KR_A_T0 -> KT_A_T0	        1       
+     KR_A_T0 -> A + KR_T0	    3.3275515   
+     KT_A_T0 -> KR_A_T0	       -1       
+     KT_A_T0 -> KT_A + T0	    1.8264062   
+     KT_A_T0 -> KT_A + T1	   -0.8264062   
+     KT_A_T0 -> A + KT_T0	       -1       
+   A + KR_T0 -> KR_A_T0	       -5       
+   KT_A + T0 -> KT_A_T0	       -3       
+   A + KT_T0 -> KT_A_T0	        1       
+      KR + A -> KR_A	    1.3163234   
+        KR_A -> KR + A	       -3       
+        KR_A -> KT_A	   -2.0112281   
+        KT_A -> KR_A	        4       
+        KT_A -> KT + A	   -1.122 E-2   
+      KT + A -> KT_A	        2       
+          KR -> KT	   -1.1496117   
+          KT -> KR	        3       
+      P + T1 -> P_T1	   0.30848012   
+        P_T1 -> P + T1	       -1       
+        P_T1 -> P + T0	    1.3084801   
+ 
+ 
+     Species        Sigma        
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯
+           A     	              7        
+          KR     	          2.7988375    
+          KT     	          2.2011624    
+          T0     	              1        
+          T1     	              1        
+         KR_T0   	              1        
+         KT_T0   	              1        
+        KR_A_T0  	              1        
+         KR_A    	             -1        
+         KT_A    	             -1        
+        KT_A_T0  	             -6        
+           P     	             -1        
+         P_T1    	              1        
+ 
+ 
+ 
+ 
+                                   References
+                                   ¯¯¯¯¯¯¯¯¯¯
+ 
+ 1. G. Shinar and M. Feinberg, Concordant Chemical Reaction Networks.
+          Mathematical Biosciences, 240:92-113, 2012.  
+          http://dx.doi.org/10.1016/j.mbs.2012.05.004                  
+ 2. G. Shinar and M. Feinberg, Concordant Chemical Reaction Networks and
+          The Species-Reaction Graph, Mathematical Biosciences, 241:1-23, 2013.
+          http://dx.doi.org/10.1016/j.mbs.2012.08.002
+ 
+                                  ***********
+

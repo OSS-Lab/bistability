@@ -1,0 +1,1 @@
+{minimal-system-extend5}{B <-> A, A <-> K, K -> O, P -| O comp2}#3{A,O,Op,P,K,A_K,K_O,P_Op,B,B_A}{A + K,A_K,K + O,K_O,K + Op,P_Op,P + O,P + Op,B + A,B_A}{1,2,R3,4,R4,5,N6,7,N6,8,R9,10,R}

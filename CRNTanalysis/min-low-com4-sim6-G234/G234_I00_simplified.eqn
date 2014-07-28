@@ -1,0 +1,69 @@
+# Facile model created by Allosteric Network Compiler (ANC)
+# ANC version 1.01 released 2011/08/26
+# 2014年 5月20日 星期二 23时27分52秒 BST
+
+
+# REACTION CLASS: CatalyticReaction
+# ---------------------------------
+AR               + T1              <-> AR_T1               ; fb00=125.892541179417; bb00=7.94328234724282 # (R!09) Kd = 0.0630957344480192
+AR_T1                            -> AR + T0                ; kp00=27.5348489224465          # (R!10)
+AR               + T0              <-> AR_T0               ; fb01=251.188643150958; bb01=0.125892541179417 # (R!01) Kd = 0.000501187233627273
+AR_T0                            -> AR + T1                ; kp01=0.0317297226293716        # (R!02)
+AT               + T1              <-> AT_T1               ; fb02=0.0316227766016838; bb02=0.001 # (R!17) Kd = 0.0316227766016838
+AT_T1                            -> AT + T0                ; kp02=24.056457337915           # (R!18)
+AT               + T0              <-> AT_T0               ; fb03=15.8489319246111; bb03=0.251188643150958 # (R!05) Kd = 0.0158489319246112
+AT_T0                            -> AT + T1                ; kp03=598.585372268854          # (R!06)
+AR_L     + T1              <-> AR_L_T1        ; fb00=125.892541179417; bb00=7.94328234724282 # (R!19) Kd = 0.0630957344480192
+AR_L_T1                     -> AR_L + T0      ; kp00=27.5348489224465          # (R!20)
+AR_L     + T0              <-> AR_L_T0        ; fb01=251.188643150958; bb01=0.125892541179417 # (R!13) Kd = 0.000501187233627273
+AR_L_T0                     -> AR_L + T1      ; kp01=0.0317297226293716        # (R!14)
+AT_L     + T1              <-> AT_L_T1        ; fb02=0.0316227766016838; bb02=0.001 # (R!21) Kd = 0.0316227766016838
+AT_L_T1                     -> AT_L + T0      ; kp02=24.056457337915           # (R!22)
+AT_L     + T0              <-> AT_L_T0        ; fb03=15.8489319246111; bb03=0.251188643150958 # (R!15) Kd = 0.0158489319246112
+AT_L_T0                     -> AT_L + T1      ; kp03=598.585372268854          # (R!16)
+
+# REACTION CLASS: BindingReaction
+# -------------------------------
+AR               + L               <-> AR_L                ; fb04=0.00794328234724282; bb04=125.892541179417 # (R!03) Kd = 15848.9319246112
+AT               + L               <-> AT_L                ; fb00=125.892541179417; bb05=15.8489319246111 # (R!04) Kd = 0.125892541179416
+L               + AR_T0    <-> AR_L_T0        ; fb04=0.00794328234724282; bb04=125.892541179417 # (R!11) Kd = 15848.9319246112
+L               + AR_T1    <-> AR_L_T1        ; fb04=0.00794328234724282; bb04=125.892541179417 # (R!26) Kd = 15848.9319246112
+L               + AT_T0    <-> AT_L_T0        ; fb00=125.892541179417; bb05=15.8489319246111 # (R!12) Kd = 0.125892541179416
+L               + AT_T1    <-> AT_L_T1        ; fb00=125.892541179417; bb05=15.8489319246111 # (R!27) Kd = 0.125892541179416
+
+# REACTION CLASS: AllostericReaction
+# ----------------------------------
+AR                                      <-> AT                          ; fu00=2.36271606752329; bu00=6.53505529858691 # (R!00) Keq = 0.361544923427685
+AR_L                            <-> AT_L                ; fu01=297448.329825947; bu00=6.53505529858691 # (R!08) Keq = 45515.8091608291
+AR_T0                           <-> AT_T0               ; fu02=0.0747156423764978; bu00=6.53505529858691 # (R!07) Keq = 0.0114330543450266
+AR_T1                           <-> AT_T1               ; fu03=4.71423833050068; bu00=6.53505529858691 # (R!23) Keq = 0.721376960883568
+AR_L_T0                    <-> AT_L_T0        ; fu04=9406.14208462988; bu00=6.53505529858691 # (R!24) Keq = 1439.33626493777
+AR_L_T1                    <-> AT_L_T1        ; fu05=593487.443152145; bu00=6.53505529858691 # (R!25) Keq = 90815.9787539175
+
+
+# CUSTOM REACTIONS (from EQN section)
+# -----------------------------------
+null -> L; clamp_source_L="(+(event_flags(1) && ~event_flags(51))*min((t-event_times(1))/60, 1)*0.2*4.0+event_flags(51)*max(1-(t-event_times(51))/60, 0)*0.2*4.0+(event_flags(2) && ~event_flags(52))*min((t-event_times(2))/60, 1)*0.2*4.0+event_flags(52)*max(1-(t-event_times(52))/60, 0)*0.2*4.0+(event_flags(3) && ~event_flags(53))*min((t-event_times(3))/60, 1)*0.2*4.0+event_flags(53)*max(1-(t-event_times(53))/60, 0)*0.2*4.0+(event_flags(4) && ~event_flags(54))*min((t-event_times(4))/60, 1)*0.2*4.0+event_flags(54)*max(1-(t-event_times(54))/60, 0)*0.2*4.0+(event_flags(5) && ~event_flags(55))*min((t-event_times(5))/60, 1)*0.2*4.0+event_flags(55)*max(1-(t-event_times(55))/60, 0)*0.2*4.0+(event_flags(6) && ~event_flags(56))*min((t-event_times(6))/60, 1)*0.2*4.0+event_flags(56)*max(1-(t-event_times(56))/60, 0)*0.2*4.0+(event_flags(7) && ~event_flags(57))*min((t-event_times(7))/60, 1)*0.2*4.0+event_flags(57)*max(1-(t-event_times(57))/60, 0)*0.2*4.0+(event_flags(8) && ~event_flags(58))*min((t-event_times(8))/60, 1)*0.2*4.0+event_flags(58)*max(1-(t-event_times(58))/60, 0)*0.2*4.0+(event_flags(9) && ~event_flags(59))*min((t-event_times(9))/60, 1)*0.2*4.0+event_flags(59)*max(1-(t-event_times(59))/60, 0)*0.2*4.0+(event_flags(10) && ~event_flags(60))*min((t-event_times(10))/60, 1)*0.2*4.0+event_flags(60)*max(1-(t-event_times(60))/60, 0)*0.2*4.0+(event_flags(11) && ~event_flags(61))*min((t-event_times(11))/60, 1)*0.2*4.0+event_flags(61)*max(1-(t-event_times(61))/60, 0)*0.2*4.0+(event_flags(12) && ~event_flags(62))*min((t-event_times(12))/60, 1)*0.2*4.0+event_flags(62)*max(1-(t-event_times(62))/60, 0)*0.2*4.0+(event_flags(13) && ~event_flags(63))*min((t-event_times(13))/60, 1)*0.2*4.0+event_flags(63)*max(1-(t-event_times(63))/60, 0)*0.2*4.0+(event_flags(14) && ~event_flags(64))*min((t-event_times(14))/60, 1)*0.2*4.0+event_flags(64)*max(1-(t-event_times(64))/60, 0)*0.2*4.0+(event_flags(15) && ~event_flags(65))*min((t-event_times(15))/60, 1)*0.2*4.0+event_flags(65)*max(1-(t-event_times(65))/60, 0)*0.2*4.0+(event_flags(16) && ~event_flags(66))*min((t-event_times(16))/60, 1)*0.2*4.0+event_flags(66)*max(1-(t-event_times(66))/60, 0)*0.2*4.0+(event_flags(17) && ~event_flags(67))*min((t-event_times(17))/60, 1)*0.2*4.0+event_flags(67)*max(1-(t-event_times(67))/60, 0)*0.2*4.0+(event_flags(18) && ~event_flags(68))*min((t-event_times(18))/60, 1)*0.2*4.0+event_flags(68)*max(1-(t-event_times(68))/60, 0)*0.2*4.0+(event_flags(19) && ~event_flags(69))*min((t-event_times(19))/60, 1)*0.2*4.0+event_flags(69)*max(1-(t-event_times(69))/60, 0)*0.2*4.0+(event_flags(20) && ~event_flags(70))*min((t-event_times(20))/60, 1)*0.2*4.0+event_flags(70)*max(1-(t-event_times(70))/60, 0)*0.2*4.0+(event_flags(21) && ~event_flags(71))*min((t-event_times(21))/60, 1)*0.2*4.0+event_flags(71)*max(1-(t-event_times(71))/60, 0)*0.2*4.0+(event_flags(22) && ~event_flags(72))*min((t-event_times(22))/60, 1)*0.2*4.0+event_flags(72)*max(1-(t-event_times(72))/60, 0)*0.2*4.0+(event_flags(23) && ~event_flags(73))*min((t-event_times(23))/60, 1)*0.2*4.0+event_flags(73)*max(1-(t-event_times(73))/60, 0)*0.2*4.0+(event_flags(24) && ~event_flags(74))*min((t-event_times(24))/60, 1)*0.2*4.0+event_flags(74)*max(1-(t-event_times(74))/60, 0)*0.2*4.0+(event_flags(25) && ~event_flags(75))*min((t-event_times(25))/60, 1)*0.2*4.0+event_flags(75)*max(1-(t-event_times(75))/60, 0)*0.2*4.0+(event_flags(26) && ~event_flags(76))*min((t-event_times(26))/60, 1)*0.2*4.0+event_flags(76)*max(1-(t-event_times(76))/60, 0)*0.2*4.0+(event_flags(27) && ~event_flags(77))*min((t-event_times(27))/60, 1)*0.2*4.0+event_flags(77)*max(1-(t-event_times(77))/60, 0)*0.2*4.0+(event_flags(28) && ~event_flags(78))*min((t-event_times(28))/60, 1)*0.2*4.0+event_flags(78)*max(1-(t-event_times(78))/60, 0)*0.2*4.0+(event_flags(29) && ~event_flags(79))*min((t-event_times(29))/60, 1)*0.2*4.0+event_flags(79)*max(1-(t-event_times(79))/60, 0)*0.2*4.0+(event_flags(30) && ~event_flags(80))*min((t-event_times(30))/60, 1)*0.2*4.0+event_flags(80)*max(1-(t-event_times(80))/60, 0)*0.2*4.0+(event_flags(31) && ~event_flags(81))*min((t-event_times(31))/60, 1)*0.2*4.0+event_flags(81)*max(1-(t-event_times(81))/60, 0)*0.2*4.0+(event_flags(32) && ~event_flags(82))*min((t-event_times(32))/60, 1)*0.2*4.0+event_flags(82)*max(1-(t-event_times(82))/60, 0)*0.2*4.0+(event_flags(33) && ~event_flags(83))*min((t-event_times(33))/60, 1)*0.2*4.0+event_flags(83)*max(1-(t-event_times(83))/60, 0)*0.2*4.0+(event_flags(34) && ~event_flags(84))*min((t-event_times(34))/60, 1)*0.2*4.0+event_flags(84)*max(1-(t-event_times(84))/60, 0)*0.2*4.0+(event_flags(35) && ~event_flags(85))*min((t-event_times(35))/60, 1)*0.2*4.0+event_flags(85)*max(1-(t-event_times(85))/60, 0)*0.2*4.0+(event_flags(36) && ~event_flags(86))*min((t-event_times(36))/60, 1)*0.2*4.0+event_flags(86)*max(1-(t-event_times(86))/60, 0)*0.2*4.0+(event_flags(37) && ~event_flags(87))*min((t-event_times(37))/60, 1)*0.2*4.0+event_flags(87)*max(1-(t-event_times(87))/60, 0)*0.2*4.0+(event_flags(38) && ~event_flags(88))*min((t-event_times(38))/60, 1)*0.2*4.0+event_flags(88)*max(1-(t-event_times(88))/60, 0)*0.2*4.0+(event_flags(39) && ~event_flags(89))*min((t-event_times(39))/60, 1)*0.2*4.0+event_flags(89)*max(1-(t-event_times(89))/60, 0)*0.2*4.0+(event_flags(40) && ~event_flags(90))*min((t-event_times(40))/60, 1)*0.2*4.0+event_flags(90)*max(1-(t-event_times(90))/60, 0)*0.2*4.0+(event_flags(41) && ~event_flags(91))*min((t-event_times(41))/60, 1)*0.2*4.0+event_flags(91)*max(1-(t-event_times(91))/60, 0)*0.2*4.0+(event_flags(42) && ~event_flags(92))*min((t-event_times(42))/60, 1)*0.2*4.0+event_flags(92)*max(1-(t-event_times(92))/60, 0)*0.2*4.0+(event_flags(43) && ~event_flags(93))*min((t-event_times(43))/60, 1)*0.2*4.0+event_flags(93)*max(1-(t-event_times(93))/60, 0)*0.2*4.0+(event_flags(44) && ~event_flags(94))*min((t-event_times(44))/60, 1)*0.2*4.0+event_flags(94)*max(1-(t-event_times(94))/60, 0)*0.2*4.0+(event_flags(45) && ~event_flags(95))*min((t-event_times(45))/60, 1)*0.2*4.0+event_flags(95)*max(1-(t-event_times(95))/60, 0)*0.2*4.0+(event_flags(46) && ~event_flags(96))*min((t-event_times(46))/60, 1)*0.2*4.0+event_flags(96)*max(1-(t-event_times(96))/60, 0)*0.2*4.0+(event_flags(47) && ~event_flags(97))*min((t-event_times(47))/60, 1)*0.2*4.0+event_flags(97)*max(1-(t-event_times(97))/60, 0)*0.2*4.0+(event_flags(48) && ~event_flags(98))*min((t-event_times(48))/60, 1)*0.2*4.0+event_flags(98)*max(1-(t-event_times(98))/60, 0)*0.2*4.0+(event_flags(49) && ~event_flags(99))*min((t-event_times(49))/60, 1)*0.2*4.0+event_flags(99)*max(1-(t-event_times(99))/60, 0)*0.2*4.0+(event_flags(50) && ~event_flags(100))*min((t-event_times(50))/60, 1)*0.2*4.0+event_flags(100)*max(1-(t-event_times(100))/60, 0)*0.2*4.0)"
+L -> null; clamp_sink_L=4.0
+
+
+# INITIAL CONCENTRATIONS (compiled from MODEL section)
+# ----------------------------------------------------
+INIT:
+AR = 23.7337612310613
+L = 0.001
+T0 = 9.99999999999999
+
+
+# CONFIG (from CONFIG section)
+# ----------------------------
+CONFIG:
+ode_event_times = ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~;
+SS_timescale = 500.0;
+t_final = 5000000;
+t_vector = [t0:1.0:tf];
+matlab_ode_solver = ode23s;
+matlab_solver_options{InitialStep} = 1e-8;
+matlab_solver_options{AbsTol} = 1e-9;
+matlab_solver_options{RelTol} = 1e-3;
+matlab_solver_options{MaxStep} = 500.0;

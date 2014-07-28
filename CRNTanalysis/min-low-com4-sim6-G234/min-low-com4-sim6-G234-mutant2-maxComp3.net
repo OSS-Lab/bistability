@@ -1,0 +1,1 @@
+{min-low-com4-sim6-G234-mutant2}{L <---> A ---> O; L <---> A ---| O. maxComp3}#3{A,Op,O,A_Op,A_O,L,A_L,A_L_Op,A_L_O}{A + Op,A_Op,A + O,A_O,A + L,A_L,A_L + Op,A_L_Op,A_L + O,A_L_O,L + A_O,L + A_Op}{1,2,R2,3,N3,4,R4,1,N5,6,R7,8,R8,9,N8,12,R9,10,R10,7,N10,11,R}

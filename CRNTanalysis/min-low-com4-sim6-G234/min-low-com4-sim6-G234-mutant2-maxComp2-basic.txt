@@ -1,0 +1,98 @@
+  
+                  ============================================
+                  BASIC REPORT: min-low-com4-sim6-G234-mutant2
+                  ============================================
+ 
+ Reaction network:
+ ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+                                 A + Op <-> A_Op
+                                    A_O -> A + Op
+                                   A_Op -> A + O
+                                  A + O <-> A_O
+                                  A + L <-> A_L
+ 
+ 
+ Remark:  L <---> A ---> O; L <---> A ---| O. maxComp2.
+ ¯¯¯¯¯¯
+ 
+ 
+                              Graphical Properties
+                              ====================
+ 
+ Number of complexes = 6
+ 
+ Number of linkage classes = 2:
+ 
+  Linkage class no. 1: {A + Op, A_Op, A + O, A_O}
+  Linkage class no. 2: {A + L, A_L}
+ 
+ Number of TERMINAL strong linkage classes = 2:
+ 
+  Strong linkage class no. 1: {A + Op, A_Op, A + O, A_O}
+  Strong linkage class no. 2: {A + L, A_L}
+ 
+ Number of NON-TERMINAL strong linkage classes = 0:
+ 
+ 
+ The network is weakly reversible but not reversible.
+ 
+ The network is conservative. (There exists a positive vector
+ orthogonal to all reaction vectors.)
+ 
+ 
+ 
+                                Rank Information
+                                ================
+ 
+ Rank of entire network = 4
+ 
+ 
+ 
+                             Deficiency Information
+                             ======================
+ 
+ Deficiency of entire network = 0
+ 
+ 
+ 
+                                    Analysis
+                                    ========
+ 
+     This is a weakly reversible deficiency zero network. The DEFICIENCY
+ ZERO THEOREM gives the following information: For ANY assignment of pos-
+ itive rate constants to the individual reactions, the corresponding mass
+ action differential equations admit PRECISELY ONE steady state (in each
+ positive stoichiometric compatibility class); that steady state is
+ ASYMPTOTICALLY STABLE; and there are NO CYCLIC COMPOSITION TRAJECTORIES.
+ 
+ 
+     For information about still other reports (including those that provide information when the kinetics is not mass action) see the CRNToolbox Guide pdf file that accompanied this program.
+ 
+ 
+          Introductory References for Chemical Reaction Network Theory
+          ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+    The following provides a general introduction to parts of Chemical Reaction
+ Network Theory that are centered on the network's deficiency:
+ 
+ Feinberg, M., Chemical reaction network structure and the stability of complex
+ isothermal reactors. I. The deficiency zero and deficiency one theorems,
+ Chem. Eng. Science, 42, 2229-2268 (1987).
+ 
+     The following is a typewritten set of lectures on reaction networks that are
+ aimed at mathematicians:
+ 
+ Feinberg, M. Lectures on Chemical Reaction Networks, Written versions of
+ lectures given at the Mathematics Research Center, University of Wisconsin,
+ Autumn, 1979, available at:
+ 
+ http://www.crnt.osu.edu/LecturesOnReactionNetworks
+ 
+      An introduction to more recent work can be found here:
+ 
+ Craciun, G., Y. Z. Tang, and M. Feinberg. 2006. Understanding bistability in
+ complex enzyme-driven reaction networks. Proc. Natl Acad Sci USA 103:8697
+ -8702 (2006).
+ 
+                                  ***********
+

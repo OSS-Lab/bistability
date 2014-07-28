@@ -1,0 +1,27 @@
+ 
+  
+                 =============================================
+                 DEGENERACY REPORT: bipath-high-com3-sim5-G154
+                 =============================================
+                                        
+     The network entered is nondegenerate. For at least one assignment of
+ differentiably monotonic kinetics, the derivative of the species formation
+ rate function is nonsingular (relative to the stoichiometric subspace) at
+ EVERY positive composition, not just equilibria. If the network's fully
+ open extension is concordant, then at EVERY positive composition the
+ derivative of the species formation rate function will be nonsingular for
+ EVERY assignment of differentiably monotonic kinetics.
+                                        
+ For more information regarding degeneracy and its formal definition,
+ please consult the sources listed below.
+                                        
+                                        
+                                   References
+                                   ˉˉˉˉˉˉˉˉˉˉ
+ 
+ 1. G. Shinar and M. Feinberg, Concordant Chemical Reaction Networks and
+          The Species-Reaction Graph, Mathematical Biosciences, 241:1-23, 2013.
+          http://dx.doi.org/10.1016/j.mbs.2012.08.002
+ 
+                                  ***********
+

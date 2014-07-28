@@ -1,0 +1,85 @@
+ 
+  
+                 =============================================
+                 MA INJECTIVITY REPORT: minimal-system-extend6
+                 =============================================
+ 
+     Taken with mass action kinetics, the network is not injective in the sense
+ of the references 2 and 4 below.
+  
+     To determine whether the network might admit two distinct stoichiometrically
+ compatible positive equilibria, you should also consult the Higher Deficiency
+ Report if you haven't already done so.
+ 
+ 
+ The following gives an example which supports the non-injectivity:
+ 
+ 
+                          A + BR -------3-----> A_BR
+                            A_BR -------1-----> A + BR
+                            A_BR -------1-----> A_BT
+                            A_BT -------1-----> A_BR
+                            A_BT -------1-----> A + BT
+                          A + BT -------3-----> A_BT
+                              BR -------9-----> BT
+                              BT -------1-----> BR
+                          BR + O -------6-----> BR_O
+                            BR_O -------1-----> BR + O
+                            BR_O -------1-----> BT_O
+                            BR_O -------1-----> BR + Op
+                            BT_O -------1-----> BR_O
+                            BT_O -------1-----> BT + O
+                            BT_O ---1.3333333-> BT + Op
+                          BT + O ------11-----> BT_O
+                          P + Op -------3-----> P_Op
+                            P_Op -------1-----> P + Op
+                            P_Op -------1-----> P + O
+                           L + A -------1-----> L_A
+                             L_A -------1-----> L + A
+ 
+ 
+    Species	      Kernel Vector	Sigma		Divisor
+    ¯¯¯¯¯¯¯	      ¯¯¯¯¯¯¯¯¯¯¯¯	¯¯¯¯¯		¯¯¯¯¯¯¯
+      A    	             2       	   1   		  0.5  
+     BR    	             -1      	   -1  		   1   
+     BT    	             -3      	   -1  		0.33333333
+    A_BR   	             1       	   1   		   1   
+    A_BT   	             -1      	   -3  		   3   
+      O    	             2       	   1   		  0.5  
+    BR_O   	             1       	5.5980762		5.5980762
+    BT_O   	             -3      	-1.5980762		0.53269207
+     Op    	             -3      	   -4  		1.3333333
+      P    	             1       	   1   		   1   
+    P_Op   	             -3      	   -1  		0.33333333
+      L    	             -1      	   -1  		   1   
+     L_A   	             1       	   1   		   1   
+ 
+ 
+ 
+ 
+ 
+                                   References
+                                   ¯¯¯¯¯¯¯¯¯¯
+ 
+ 1. Feinberg, M., Chemical reaction network structure and the stability of comp-
+ lex isothermal reactors. I. The deficiency zero and deficiency one theorems,
+ Chem. Eng. Science, 42, 2229-2268 (1987).
+ 
+ 2. G. Craciun and M. Feinberg. Multiple equilibria in complex chemical
+ reaction networks. I. The injectivity property. SIAM Journal on Applied
+ Mathematics, 65:1526-1546, 2005.
+ 
+ 3. G. Craciun and M. Feinberg. Multiple equilibria in complex chemical
+ reaction networks. II. The species-reaction graph. SIAM Journal on
+ Applied Mathematics, 66:1321-1338, 2006.
+ 
+ 4. G. Craciun and M. Feinberg. Multiple equilibria in complex chemical
+ reaction networks: semi-open mass action systems. SIAM Journal on
+ Applied Mathematics, 70:1859-1877, 2010.
+ 
+ 5. G. Shinar, A. Mayo, H. Ji and M. Feinberg. Constraints on reciprocal flux
+ sensitivities in biochemical reaction networks. Biophysical Journal, 100(6):
+ 1383-1391, 2011.
+ 
+                                  ***********
+

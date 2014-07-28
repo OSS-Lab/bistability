@@ -1,0 +1,11 @@
+A + Op <-> A_Op
+A_Op -> A + O
+A + O <-> A_O
+A_O -> A + Op
+A_L + Op <-> A_L_Op
+A_L_Op -> A_L + O
+A_L + O <-> A_L_O
+A_L_O -> A_L + Op
+A + L <-> A_L
+L + A_O <-> A_L_O
+L + A_Op <-> A_L_Op

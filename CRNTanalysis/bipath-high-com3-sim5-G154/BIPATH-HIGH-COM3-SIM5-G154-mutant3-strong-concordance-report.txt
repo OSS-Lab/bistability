@@ -1,0 +1,68 @@
+ 
+  
+             =====================================================
+             STRONG CONCORDANCE REPORT: BIPATH-HIGH-COM3-SIM5-G154
+             =====================================================
+     This chemical reaction network is not strongly concordant.
+  
+     If the kinetics is mass action, then to determine whether the network might
+ admit two distinct stoichiometrically compatible positive equilibria, you should
+ also consult the Higher Deficiency Report if you haven't already done so.
+ 
+ 
+ The following gives an example which supports the absence of strong concordance:
+ 
+ 
+     Reactions	    Alpha        
+     ¯¯¯¯¯¯¯¯¯	    ¯¯¯¯¯
+      K + T0 -> K_T0	        0       
+        K_T0 -> K + T0	    6.1031587   
+        K_T0 -> K + T1	   0.80480197   
+      P + T1 -> P_T1	    1.9219563   
+        P_T1 -> P + T1	    2.1171544   
+        P_T1 -> P + T0	   -0.1951980   
+    K_A + T0 -> K_A_T0	    3.9079607   
+      K_A_T0 -> K_A + T0	       -2       
+      K_A_T0 -> K_A + T1	       -1       
+      K_A_T0 -> A + K_T0	    2.9079607   
+       K + A -> K_A	    5.324949    
+         K_A -> K + A	       -6       
+       A + L -> A_L	   -1.4169882   
+         A_L -> A + L	        3       
+     K + A_L -> K_A_L	   -1.4169882   
+       K_A_L -> K + A_L	        3       
+       K_A_L -> L + K_A	   -1.4169882   
+    A + K_T0 -> K_A_T0	       -4       
+     L + K_A -> K_A_L	        3       
+ 
+ 
+     Species        Sigma        
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯
+           K     	              1        
+          T0     	              1        
+         K_T0    	              1        
+          T1     	          4.0163081    
+           P     	         -5.2830662    
+         P_T1    	          5.2830662    
+          K_A    	          8.1496872    
+        K_A_T0   	         -11.299374    
+           A     	             -1        
+           L     	         -4.1496872    
+          A_L    	              3        
+         K_A_L   	          1.1496872    
+ 
+ 
+ 
+ 
+                                   References
+                                   ¯¯¯¯¯¯¯¯¯¯
+ 
+ 1. G. Shinar and M. Feinberg, Concordant Chemical Reaction Networks.
+          Mathematical Biosciences, 240:92-113, 2012.  
+          http://dx.doi.org/10.1016/j.mbs.2012.05.004                  
+ 2. G. Shinar and M. Feinberg, Concordant Chemical Reaction Networks and
+          The Species-Reaction Graph, Mathematical Biosciences, 241:1-23, 2013.
+          http://dx.doi.org/10.1016/j.mbs.2012.08.002
+ 
+                                  ***********
+

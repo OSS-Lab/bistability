@@ -1,0 +1,139 @@
+ 
+  
+            ========================================================
+            HIGHER DEFICIENCY REPORT: minimal-system-extend3-maxComp
+            ========================================================
+ 
+                                    Analysis
+                                    ========
+ 
+      Taken with mass action kinetics, the network DOES have the capacity for
+ multiple steady states. That is, there are rate constants that give rise
+ to two or more positive (stoichiometrically compatible) steady states --
+ you'll see an example below. There MIGHT also exist rate constants for which
+ there is a steady state having an eigenvector (in the stoichiometric subspace)
+ corresponding to an eigenvalue of zero. (To try to construct rate constants
+ that give a degenerate steady state, use the Zero Eigenvalue Report.)
+ 
+ 
+ A mass action system example is also given below:
+ 
+ 
+ 
+ 
+                     Example No. 1: Multiple Steady States
+                     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+      The following mass action system gives rise to multiple steady states:
+ 
+ 
+                          A + BR ---29530.297-> A_BR
+                            A_BR ---211.35012-> A + BR
+                            A_BR ---50557.322-> A_BT
+                            A_BT ---593.53717-> A_BR
+                            A_BT ---190664.42-> A + BT
+                          A + BT ---47569.932-> A_BT
+                              BR ---19.027972-> BT
+                              BT ---20015.527-> BR
+                          BR + O ---2106.2377-> BR_O
+                            BR_O ---12770.39--> BR + O
+                            BR_O ---19.027972-> BT_O
+                            BR_O ---19.027972-> BR + Op
+                            BT_O ---16084.742-> BR_O
+                            BT_O ---70.751365-> BT + O
+                            BT_O ---70.751365-> BT + Op
+                          BT + O --3.54432 E7-> BT_O
+                          P + Op ---48822.797-> P_Op
+                            P_Op ---4.7569931-> P + Op
+                            P_Op ---33.177394-> P + O
+                        A_BR + O ---486363.18-> A_BR_O
+                          A_BR_O -------1-----> A_BR + O
+                          A_BR_O ---426.65312-> A + BR_O
+                          A_BR_O ---3.9744464-> A_BR + Op
+                          A_BR_O -------1-----> A_BT_O
+                        A + BR_O ---45.222859-> A_BR_O
+                        A_BT + O ---1895156.2-> A_BT_O
+                          A_BT_O ---910.53014-> A_BR_O
+                          A_BT_O ---46841.492-> A_BT + O
+                          A_BT_O ---16129.465-> A + BT_O
+                          A_BT_O ---70.751365-> A_BT + Op
+                        A + BT_O ---54122.248-> A_BT_O
+ 
+ 
+      The steady states shown below are both consistent with the mass
+ action system indicated.
+ 
+ 
+     Steady State No. 1	         Species	Steady State No. 2
+     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯	         ¯¯¯¯¯¯¯	¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+         0.42076005    	               A      	     1.1437444    
+         0.10519001    	               BR     	     0.2859361    
+         6.0653 E-5    	               BT     	    0.18080674    
+         9.4703 E-3    	              A_BR    	     0.1902164    
+         3.3722 E-3    	              A_BT    	    0.18411833    
+          0.1819722    	               O      	    1.2261 E-3    
+         0.10519001    	              BR_O    	     0.2859361    
+         2.8289 E-2    	              BT_O    	    0.20903604    
+         4.4913 E-4    	               Op     	    0.18119522    
+         0.72788883    	               P      	    4.9044 E-3    
+         0.42076005    	              P_Op    	     1.1437444    
+          2.0015527    	             A_BR_O   	     0.7363301    
+         2.8289 E-2    	             A_BT_O   	    0.20903604    
+ 
+ 
+                       Eigenvalues for Steady State No. 1
+                       ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -5347726.4
+                                    -286312
+                                   -72133.02
+                                   -32520.078
+                          (-8216.7147) - i (3359.5064)
+                          (-8216.7147) + i (3359.5064)
+                                   -2129.6699
+                                   -17768.342
+                                   -8.9118039
+ 
+                  Steady State No. 1 is asymptotically stable.
+ 
+ 
+ 
+                       Eigenvalues for Steady State No. 2
+                       ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -5534902.2
+                                   -154013.47
+                                   -73028.427
+                           (-28898.765) - i (12841.4)
+                           (-28898.765) + i (12841.4)
+                                   -10158.998
+                                   -538.17119
+                                   -11.020179
+                                   -4557.9453
+ 
+                  Steady State No. 2 is asymptotically stable.
+ 
+ 
+ 
+ 
+ 
+                                   References
+                                   ¯¯¯¯¯¯¯¯¯¯
+ 
+ 1. Feinberg, M., Chemical reaction network structure and the stability of comp-
+ lex isothermal reactors. I. The deficiency zero and deficiency one theorems,
+ Chem. Eng. Science, 42, 2229-2268 (1987).
+ 
+ 2. Ellison, P. and Feinberg, M. How catalytic mechanisms reveal themselves
+ in multiple steady state data. I. Basic principles, The Journal of Molecular
+ Catalysis A: Chemical, 154, 155 - 167, 2000.  
+ 
+ 3. Ellison, P. PhD. Thesis. Rochester, NY: Department of Chemical Engineer-
+ ing, University of Rochester; 1998. The advanced deficiency algorithm
+ and itsapplications to mechanism discrimination.
+ 
+ 4. Ji, H. PhD. Thesis. Columbus, OH: Department of Mathematics, The Ohio 
+ State University; 2011. Uniqueness of equilibria for complex chemical reaction
+ networks.
+ 
+                                  ***********

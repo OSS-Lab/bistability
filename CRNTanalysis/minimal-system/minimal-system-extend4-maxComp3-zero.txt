@@ -1,0 +1,72 @@
+ 
+  
+             ======================================================
+             ZERO EIGENVALUE REPORT: minimal-system-extend4-maxComp
+             ======================================================
+ 
+ 
+ 
+                     Example No. 2: Degenerate Steady State
+                     ˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉˉ
+ 
+ The following mass action system gives rise to a degenerate steady state:
+ 
+ 
+                           A + K ------14-----> A_K
+                             A_K ------12-----> A + K
+                           K + O ------945----> K_O
+                             K_O ---5.6666666-> K + O
+                             K_O --0.33333333-> K + Op
+                            P_Op ------1.5----> P + O
+                            P_Op ------0.5----> P + Op
+                          P + Op -------4-----> P_Op
+                         A_K + O ---647.99999-> A_K_O
+                           A_K_O -------2-----> A_K + O
+                           A_K_O -------9-----> A + K_O
+                           A_K_O -------4-----> A_K + Op
+                         A + K_O --0.24999999-> A_K_O
+ 
+ 
+ The steady state shown below is degenerate:
+ 
+ 
+     Species        Steady State        Eigenvector for Zero Eigenvalue
+     ¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯        ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+         A                2                            -2              
+         O           0.11111111                        -1              
+        Op               0.5                           1               
+         P                2                            -2              
+         K           0.14285714                        1               
+        A_K          8.3333 E-2                        1               
+        K_O               3                            -3              
+       P_Op               2                            2               
+       A_K_O             0.5                           1               
+ 
+ 
+                  All Eigenvalues for Degenerate Steady State
+                  ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -294.36002
+                                   -121.25843
+                                       0
+                                   -15.049803
+                                   -11.581743
+ 
+ 
+                                   References
+                                   ˉˉˉˉˉˉˉˉˉˉ
+ 
+ 1. Ellison, P. and Feinberg, M. How catalytic mechanisms reveal themselves
+ in multiple steady state data. I. Basic principles, The Journal of Molecular
+ Catalysis A: Chemical, 154, 155 - 167, 2000.  
+ 
+ 2. Ellison, P. PhD. Thesis. Rochester, NY: Department of Chemical Engineer-
+ ing, University of Rochester; 1998. The advanced deficiency algorithm
+ and itsapplications to mechanism discrimination.
+ 
+ 3. Ji, H. PhD. Thesis. Columbus, OH: Department of Mathematics, The Ohio 
+ State University; 2011. Uniqueness of equilibria for complex chemical reaction
+ networks.
+ 
+                                  ***********
+

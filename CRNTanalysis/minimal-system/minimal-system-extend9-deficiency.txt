@@ -1,0 +1,40 @@
+ 
+  
+                ================================================
+                HIGHER DEFICIENCY REPORT: minimal-system-extend9
+                ================================================
+ 
+                                    Analysis
+                                    ========
+ 
+      Taken with mass action kinetics, the network MIGHT have the capacity for
+ multiple steady states. To determine whether the network might admit two
+ distinct stoichiometrically compatible positive equilibria, you should also
+ consult the mass action injectivity or concordance report if you haven't
+ already done so. (To test for rate constants that give a degenerate steady
+ state, consult the Zero Eigenvalue Report.)
+ 
+ 
+ 
+ 
+                                   References
+                                   ¯¯¯¯¯¯¯¯¯¯
+ 
+ 1. Feinberg, M., Chemical reaction network structure and the stability of comp-
+ lex isothermal reactors. I. The deficiency zero and deficiency one theorems,
+ Chem. Eng. Science, 42, 2229-2268 (1987).
+ 
+ 2. Ellison, P. and Feinberg, M. How catalytic mechanisms reveal themselves
+ in multiple steady state data. I. Basic principles, The Journal of Molecular
+ Catalysis A: Chemical, 154, 155 - 167, 2000.  
+ 
+ 3. Ellison, P. PhD. Thesis. Rochester, NY: Department of Chemical Engineer-
+ ing, University of Rochester; 1998. The advanced deficiency algorithm
+ and itsapplications to mechanism discrimination.
+ 
+ 4. Ji, H. PhD. Thesis. Columbus, OH: Department of Mathematics, The Ohio 
+ State University; 2011. Uniqueness of equilibria for complex chemical reaction
+ networks.
+ 
+                                  ***********
+

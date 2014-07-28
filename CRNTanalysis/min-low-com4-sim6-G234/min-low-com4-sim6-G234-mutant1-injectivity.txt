@@ -1,0 +1,77 @@
+ 
+  
+             =====================================================
+             MA INJECTIVITY REPORT: min-low-com4-sim6-G234-mutant1
+             =====================================================
+ 
+     Taken with mass action kinetics, the network is not injective in the sense
+ of the references 2 and 4 below.
+  
+     To determine whether the network might admit two distinct stoichiometrically
+ compatible positive equilibria, you should also consult the Higher Deficiency
+ Report if you haven't already done so.
+ 
+ 
+ The following gives an example which supports the non-injectivity:
+ 
+ 
+                          AR + O -------1-----> AR_O
+                            AR_O ------5.5----> AR + O
+                            AR_O -------1-----> AR + Op
+                            AR_O -------1-----> AT_O
+                         AR + Op -------5-----> AR_Op
+                           AR_Op ------2.5----> AR + O
+                           AR_Op -------1-----> AR + Op
+                           AR_Op -------1-----> AT_Op
+                          AT + O ------5.5----> AT_O
+                            AT_O ------4.5----> AR_O
+                            AT_O -------1-----> AT + O
+                            AT_O -------1-----> AT + Op
+                         AT + Op ------2.5----> AT_Op
+                           AT_Op -------1-----> AR_Op
+                           AT_Op -------1-----> AT + O
+                           AT_Op -------1-----> AT + Op
+                              AR -------1-----> AT
+                              AT -------1-----> AR
+ 
+ 
+    Species	      Kernel Vector	Sigma		Divisor
+    ¯¯¯¯¯¯¯	      ¯¯¯¯¯¯¯¯¯¯¯¯	¯¯¯¯¯		¯¯¯¯¯¯¯
+     AR    	            1.5      	0.99999999		0.66666666
+     AT    	            -0.5     	   -3  		   6   
+      O    	            1.5      	   1   		0.66666666
+     Op    	            -0.5     	   -3  		   6   
+    AR_O   	             1       	   1   		   1   
+    AR_Op  	             1       	   1   		   1   
+    AT_O   	             1       	   1   		   1   
+    AT_Op  	            -0.5     	   -1  		   2   
+ 
+ 
+ 
+ 
+ 
+                                   References
+                                   ¯¯¯¯¯¯¯¯¯¯
+ 
+ 1. Feinberg, M., Chemical reaction network structure and the stability of comp-
+ lex isothermal reactors. I. The deficiency zero and deficiency one theorems,
+ Chem. Eng. Science, 42, 2229-2268 (1987).
+ 
+ 2. G. Craciun and M. Feinberg. Multiple equilibria in complex chemical
+ reaction networks. I. The injectivity property. SIAM Journal on Applied
+ Mathematics, 65:1526-1546, 2005.
+ 
+ 3. G. Craciun and M. Feinberg. Multiple equilibria in complex chemical
+ reaction networks. II. The species-reaction graph. SIAM Journal on
+ Applied Mathematics, 66:1321-1338, 2006.
+ 
+ 4. G. Craciun and M. Feinberg. Multiple equilibria in complex chemical
+ reaction networks: semi-open mass action systems. SIAM Journal on
+ Applied Mathematics, 70:1859-1877, 2010.
+ 
+ 5. G. Shinar, A. Mayo, H. Ji and M. Feinberg. Constraints on reciprocal flux
+ sensitivities in biochemical reaction networks. Biophysical Journal, 100(6):
+ 1383-1391, 2011.
+ 
+                                  ***********
+

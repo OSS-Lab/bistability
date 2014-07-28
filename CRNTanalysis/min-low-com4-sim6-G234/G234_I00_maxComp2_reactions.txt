@@ -1,0 +1,14 @@
+AR + Op <-> AR_Op
+AR_Op -> AR + O
+AR + O <-> AR_O
+AR_O -> AR + Op
+AT + Op <-> AT_Op
+AT_Op -> AT + O
+AT + O <-> AT_O
+AT_O -> AT + Op
+AR + L <-> AR_L
+AT + L <-> AT_L
+AR <-> AT
+AR_L <-> AT_L
+AR_O <-> AT_O
+AR_Op <-> AT_Op
