@@ -6,7 +6,7 @@ I didn't analytically solve them, althought it would be interesting to do so
 
 Minimal system (minimal-system-allo)
 A <---> B*   (<---> binding, * allosteric)
-- this is not bistable
+- there is no capacity for mutlistationary.
 
 minimal-system-extend1
 A* <---> B*
@@ -24,15 +24,13 @@ A <---> B* ---> O |--- P (---| dephosphorylation)
 
 minimal-system-extend4
 A <---> K ---> O |--- P
-- this is not bistable for complexSizeThreshold of 2 and 3
-- for maxComp3: there are two steady states: one is unstable the other is
-  stable.
+- this is not bistable for complexSizeThreshold of 2
+- for maxComp3: there is capacity for multiple steady states but examples are two steady states: one is unstable the other is stable.
 
 minimal-system-extend5
 B <---> A <---> K ---> O |--- P
-- this is not bistable for complexSizeThreshold of 2 and 3
-- for maxComp3: there are two steady states: one is unstable the other is
-  stable.
+- this is not bistable for complexSizeThreshold of 2
+- for maxComp3: there is capacity for multiple steady states but examples are two steady states: one is unstable the other is stable.
 
 minimal-system-extend6 (previously analyzed network in our evolved networks)
 B <---> A <---> K* ---> O |--- P
@@ -78,7 +76,7 @@ A* ---> O; A* ---| O
 min-low-com4-sim6-G234-mutant2
 L <---> A ---> O; L <---> A ---| O
 - for maxComp3: there is capacity for multiple steady states, in the example
-  steady states one is stable and the other is unstable.
+  steady states: one is stable and the other is unstable.
 - for maxComp2: not bistable (there is only exact one steady state)
 
 
