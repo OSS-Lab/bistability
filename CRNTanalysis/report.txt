@@ -56,6 +56,11 @@ K* ---> O |--- P*
 - might have the capacity for multiple steady states. It's very strange that
   higher dificiency report doesn't tell affirmative existence of multistationary.
 
+minimal-system-extend10
+K ---> O* |--- P
+- there is capacity for multiple steady states, in the example
+  steady states one is stable and the other is unstable.
+
 
 Part 2: One minimal network in evolved networks.
 
