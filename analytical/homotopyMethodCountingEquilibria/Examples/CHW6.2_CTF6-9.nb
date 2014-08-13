@@ -1,0 +1,1312 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 4.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     41140,       1065]*)
+(*NotebookOutlinePosition[     42037,       1095]*)
+(*  CellTagsIndexPosition[     41993,       1091]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[TextData[{
+  StyleBox["CHW Example 6.2\n",
+    FontFamily->"Arial",
+    FontSize->18,
+    FontWeight->"Plain",
+    FontColor->RGBColor[1, 0, 0],
+    FontVariations->{"CompatibilityType"->0}],
+  StyleBox["(Contains examples 6-9 in Craciun-Tang-Feinberg '06, Table 1, p. \
+8699.  NOTE: In the examples with no anomalous signs, ",
+    FontFamily->"Arial",
+    FontWeight->"Plain",
+    FontColor->RGBColor[1, 0, 0],
+    FontVariations->{"CompatibilityType"->0}],
+  StyleBox["we are using a slightly different form of the Craciun-Feinberg \
+determinant with the identity matrix multiplied by an extra parameter e, \
+which accomodates the case of arbitrarily small outflows",
+    FontFamily->"Arial",
+    FontColor->RGBColor[1, 0, 0]],
+  StyleBox[")",
+    FontFamily->"Arial",
+    FontWeight->"Plain",
+    FontColor->RGBColor[1, 0, 0],
+    FontVariations->{"CompatibilityType"->0}]
+}], "Text"],
+
+Cell["\<\
+Loads the chemJac command file, which contains all commands used below\
+\>", "Text",
+  CellChangeTimes -> {{3.42842791943501*^9, 3.428427919712994*^9}},
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(\(\[IndentingNewLine]\)\( (*\ \ \ SetDirectory["\<C:\CHEMmma\>"]\ \ \ \
+*) \)\(\ \ \ \ \ \ \)\( (*\ 
+      Put\ in\ path\ to\ chemJac . 
+          m\ *) \)\(\ \ \ \
+\)\(\[IndentingNewLine]\)\(\(<<\)\("\<chemJac.m\>"\)\(\ \)\)\)\)], "Input",
+  CellChangeTimes -> {{3.428427749701336*^9, 3.4284277499513683`*^9}}],
+
+Cell[BoxData[
+    \("C:\\CHEMmma"\)], "Output"],
+
+Cell[BoxData[
+    \("chemJac is loading..."\)], "Print"],
+
+Cell[BoxData[
+    \("chemJac has loaded"\)], "Print"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["CTF Example 6",
+  FontFamily->"Arial",
+  FontSize->18,
+  FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Clear[S, vars, monomials, \ j, det, core]\)], "Input"],
+
+Cell[BoxData[
+    \(General::"spell" \(\(:\)\(\ \)\) 
+      "Possible spelling error: new symbol name \"\!\(vars\)\" is similar to \
+existing symbols \!\({svars, Vars}\)."\)], "Message"],
+
+Cell[BoxData[
+    \(General::"spell1" \(\(:\)\(\ \)\) 
+      "Possible spelling error: new symbol name \"\!\(det\)\" is similar to \
+existing symbol \"\!\(Det\)\"."\)], "Message"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Inputting the stoichiometric matrix S",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(S = {{1, \(-1\), 1, \(-1\), 0, 0, 0, 0, \(-1\)}, {1, \(-1\), 0, 0, 0, 
+          0, 1, \(-1\), 0}, {0, 0, 1, \(-1\), 1, \(-1\), 0, 0, 0}, {\(-1\), 
+          1, 0, 0, 1, \(-1\), 0, 0, 0}, {0, 0, \(-1\), 1, 0, 0, 1, \(-1\), 
+          0}, {0, 0, 0, 0, \(-1\), 1, \(-1\), 1, 1}, {0, 0, 0, 0, 0, 0, 0, 
+          0, \(-1\)}}; S // MatrixForm\)], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {"1", \(-1\), "1", \(-1\), "0", "0", "0", "0", \(-1\)},
+            {"1", \(-1\), "0", "0", "0", "0", "1", \(-1\), "0"},
+            {"0", "0", "1", \(-1\), "1", \(-1\), "0", "0", "0"},
+            {\(-1\), "1", "0", "0", "1", \(-1\), "0", "0", "0"},
+            {"0", "0", \(-1\), "1", "0", "0", "1", \(-1\), "0"},
+            {"0", "0", "0", "0", \(-1\), "1", \(-1\), "1", "1"},
+            {"0", "0", "0", "0", "0", "0", "0", "0", \(-1\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Making the mass-action flux vector 'monomials' and \
+the list of species concentrations 'vars' automatically from S",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(monomials\  = \ makeMonomial[S]\)], "Input"],
+
+Cell[BoxData[
+    \({a[4]\ k[1], a[1]\ a[2]\ k[2], a[5]\ k[3], a[1]\ a[3]\ k[4], 
+      a[6]\ k[5], a[3]\ a[4]\ k[6], a[6]\ k[7], a[2]\ a[5]\ k[8], 
+      a[1]\ a[7]\ k[9]}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(vars = svars[S]\)], "Input"],
+
+Cell[BoxData[
+    \({a[1], a[2], a[3], a[4], a[5], a[6], a[7]}\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["'S.monomials' is the right hand side of the ODE",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(S . monomials\)], "Input"],
+
+Cell[BoxData[
+    \({a[4]\ k[1] - a[1]\ a[2]\ k[2] + a[5]\ k[3] - a[1]\ a[3]\ k[4] - 
+        a[1]\ a[7]\ k[9], 
+      a[4]\ k[1] - a[1]\ a[2]\ k[2] + a[6]\ k[7] - a[2]\ a[5]\ k[8], 
+      a[5]\ k[3] - a[1]\ a[3]\ k[4] + a[6]\ k[5] - 
+        a[3]\ a[4]\ k[6], \(-a[4]\)\ k[1] + a[1]\ a[2]\ k[2] + a[6]\ k[5] - 
+        a[3]\ a[4]\ k[6], \(-a[5]\)\ k[3] + a[1]\ a[3]\ k[4] + a[6]\ k[7] - 
+        a[2]\ a[5]\ k[8], \(-a[6]\)\ k[5] + a[3]\ a[4]\ k[6] - a[6]\ k[7] + 
+        a[2]\ a[5]\ k[8] + 
+        a[1]\ a[7]\ k[9], \(-a[1]\)\ a[7]\ k[9]}\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["The Jacobian of the RHS of the ODE, and its \
+Craciun-Feinberg determinant",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(\(j = jac[S . monomials, \ vars];\)\), "\[IndentingNewLine]", 
+    \(j // MatrixForm\)}], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(\(-a[2]\)\ k[2] - a[3]\ k[4] - 
+                a[7]\ k[9]\), \(\(-a[1]\)\ k[2]\), \(\(-a[1]\)\ k[4]\), \(k[
+                1]\), \(k[3]\), "0", \(\(-a[1]\)\ k[9]\)},
+            {\(\(-a[2]\)\ k[2]\), \(\(-a[1]\)\ k[2] - a[5]\ k[8]\), 
+              "0", \(k[1]\), \(\(-a[2]\)\ k[8]\), \(k[7]\), "0"},
+            {\(\(-a[3]\)\ k[4]\), 
+              "0", \(\(-a[1]\)\ k[4] - a[4]\ k[6]\), \(\(-a[3]\)\ k[6]\), \(k[
+                3]\), \(k[5]\), "0"},
+            {\(a[2]\ k[2]\), \(a[1]\ k[2]\), \(\(-a[4]\)\ k[
+                  6]\), \(\(-k[1]\) - a[3]\ k[6]\), "0", \(k[5]\), "0"},
+            {\(a[3]\ k[4]\), \(\(-a[5]\)\ k[8]\), \(a[1]\ k[4]\), 
+              "0", \(\(-k[3]\) - a[2]\ k[8]\), \(k[7]\), "0"},
+            {\(a[7]\ k[9]\), \(a[5]\ k[8]\), \(a[4]\ k[6]\), \(a[3]\ k[
+                  6]\), \(a[2]\ k[8]\), \(\(-k[5]\) - 
+                k[7]\), \(a[1]\ k[9]\)},
+            {\(\(-a[7]\)\ k[9]\), "0", "0", "0", "0", 
+              "0", \(\(-a[1]\)\ k[9]\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(\(\(det = Det[j - IdentityMatrix[Length[j]]]; \)\(\ \)\)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(coeffs[det]\)], "Input"],
+
+Cell[BoxData[
+    InterpretationBox[\("The number of terms in the det expansion is "\
+\[InvisibleSpace]323\[InvisibleSpace]","\),
+      SequenceForm[ "The number of terms in the det expansion is ", 323, ","],
+      
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("and (a,b) says that the number of terms with coef a is b:"\)], "Print"],
+
+Cell[BoxData[
+    \({{\(-2\), 6}, {\(-1\), 315}, {1, 2}}\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Core Determinant of the Jacobian of the RHS of the \
+ODE",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(core = coreDet[j, S]\)], "Input"],
+
+Cell[BoxData[
+    \(\(-a[1]\)\ k[1]\ k[3]\ k[5]\ k[9] - a[1]\^2\ k[2]\ k[3]\ k[5]\ k[9] - 
+      a[1]\ a[2]\ k[2]\ k[3]\ k[5]\ k[9] - 
+      a[1]\ a[7]\ k[2]\ k[3]\ k[5]\ k[9] - a[1]\^2\ k[1]\ k[4]\ k[5]\ k[9] - 
+      a[1]\ a[3]\ k[1]\ k[4]\ k[5]\ k[9] - 
+      a[1]\ a[7]\ k[1]\ k[4]\ k[5]\ k[9] - a[1]\^3\ k[2]\ k[4]\ k[5]\ k[9] - 
+      a[1]\^2\ a[2]\ k[2]\ k[4]\ k[5]\ k[9] - 
+      a[1]\^2\ a[3]\ k[2]\ k[4]\ k[5]\ k[9] - 
+      2\ a[1]\^2\ a[7]\ k[2]\ k[4]\ k[5]\ k[9] - 
+      a[1]\ a[4]\ k[1]\ k[3]\ k[6]\ k[9] - 
+      a[4]\ a[7]\ k[1]\ k[3]\ k[6]\ k[9] - 
+      a[1]\^2\ a[3]\ k[2]\ k[3]\ k[6]\ k[9] - 
+      a[1]\ a[2]\ a[3]\ k[2]\ k[3]\ k[6]\ k[9] - 
+      a[1]\^2\ a[4]\ k[2]\ k[3]\ k[6]\ k[9] - 
+      a[1]\ a[2]\ a[4]\ k[2]\ k[3]\ k[6]\ k[9] - 
+      a[1]\ a[3]\ a[7]\ k[2]\ k[3]\ k[6]\ k[9] - 
+      a[1]\ a[4]\ a[7]\ k[2]\ k[3]\ k[6]\ k[9] - 
+      a[1]\^3\ a[3]\ k[2]\ k[4]\ k[6]\ k[9] - 
+      a[1]\^2\ a[3]\^2\ k[2]\ k[4]\ k[6]\ k[9] - 
+      a[1]\^2\ a[3]\ a[4]\ k[2]\ k[4]\ k[6]\ k[9] - 
+      a[1]\^2\ a[3]\ a[7]\ k[2]\ k[4]\ k[6]\ k[9] - 
+      a[1]\ k[1]\ k[3]\ k[7]\ k[9] - a[1]\^2\ k[2]\ k[3]\ k[7]\ k[9] - 
+      a[1]\ a[2]\ k[2]\ k[3]\ k[7]\ k[9] - 
+      a[1]\ a[7]\ k[2]\ k[3]\ k[7]\ k[9] - a[1]\^2\ k[1]\ k[4]\ k[7]\ k[9] - 
+      a[1]\ a[3]\ k[1]\ k[4]\ k[7]\ k[9] - 
+      a[1]\ a[7]\ k[1]\ k[4]\ k[7]\ k[9] - a[1]\^3\ k[2]\ k[4]\ k[7]\ k[9] - 
+      a[1]\^2\ a[2]\ k[2]\ k[4]\ k[7]\ k[9] - 
+      a[1]\^2\ a[3]\ k[2]\ k[4]\ k[7]\ k[9] - 
+      2\ a[1]\^2\ a[7]\ k[2]\ k[4]\ k[7]\ k[9] - 
+      a[1]\ a[4]\ k[1]\ k[6]\ k[7]\ k[9] - 
+      a[4]\ a[7]\ k[1]\ k[6]\ k[7]\ k[9] - 
+      a[1]\ a[2]\ a[3]\ k[2]\ k[6]\ k[7]\ k[9] - 
+      a[1]\^2\ a[4]\ k[2]\ k[6]\ k[7]\ k[9] - 
+      a[1]\ a[2]\ a[4]\ k[2]\ k[6]\ k[7]\ k[9] - 
+      a[1]\ a[3]\ a[7]\ k[2]\ k[6]\ k[7]\ k[9] - 
+      2\ a[1]\ a[4]\ a[7]\ k[2]\ k[6]\ k[7]\ k[9] - 
+      a[1]\ a[3]\ k[3]\ k[6]\ k[7]\ k[9] + 
+      a[4]\ a[7]\ k[3]\ k[6]\ k[7]\ k[9] - 
+      a[1]\^2\ a[3]\ k[4]\ k[6]\ k[7]\ k[9] - 
+      a[1]\ a[3]\^2\ k[4]\ k[6]\ k[7]\ k[9] - 
+      a[1]\ a[3]\ a[4]\ k[4]\ k[6]\ k[7]\ k[9] - 
+      a[1]\ a[3]\ a[7]\ k[4]\ k[6]\ k[7]\ k[9] - 
+      a[1]\ a[5]\ k[1]\ k[3]\ k[8]\ k[9] - 
+      a[5]\ a[7]\ k[1]\ k[3]\ k[8]\ k[9] - 
+      a[1]\^2\ a[2]\ k[1]\ k[4]\ k[8]\ k[9] - 
+      a[1]\ a[2]\ a[3]\ k[1]\ k[4]\ k[8]\ k[9] - 
+      a[1]\^2\ a[5]\ k[1]\ k[4]\ k[8]\ k[9] - 
+      a[1]\ a[3]\ a[5]\ k[1]\ k[4]\ k[8]\ k[9] - 
+      a[1]\ a[2]\ a[7]\ k[1]\ k[4]\ k[8]\ k[9] - 
+      a[1]\ a[5]\ a[7]\ k[1]\ k[4]\ k[8]\ k[9] - 
+      a[1]\^3\ a[2]\ k[2]\ k[4]\ k[8]\ k[9] - 
+      a[1]\^2\ a[2]\^2\ k[2]\ k[4]\ k[8]\ k[9] - 
+      a[1]\^2\ a[2]\ a[5]\ k[2]\ k[4]\ k[8]\ k[9] - 
+      a[1]\^2\ a[2]\ a[7]\ k[2]\ k[4]\ k[8]\ k[9] - 
+      a[1]\ a[2]\ k[1]\ k[5]\ k[8]\ k[9] + 
+      a[5]\ a[7]\ k[1]\ k[5]\ k[8]\ k[9] - 
+      a[1]\^2\ a[2]\ k[2]\ k[5]\ k[8]\ k[9] - 
+      a[1]\ a[2]\^2\ k[2]\ k[5]\ k[8]\ k[9] - 
+      a[1]\ a[2]\ a[5]\ k[2]\ k[5]\ k[8]\ k[9] - 
+      a[1]\ a[2]\ a[7]\ k[2]\ k[5]\ k[8]\ k[9] - 
+      a[1]\ a[5]\ k[3]\ k[5]\ k[8]\ k[9] - 
+      a[5]\ a[7]\ k[3]\ k[5]\ k[8]\ k[9] - 
+      a[1]\ a[2]\ a[3]\ k[4]\ k[5]\ k[8]\ k[9] - 
+      a[1]\^2\ a[5]\ k[4]\ k[5]\ k[8]\ k[9] - 
+      a[1]\ a[3]\ a[5]\ k[4]\ k[5]\ k[8]\ k[9] - 
+      a[1]\ a[2]\ a[7]\ k[4]\ k[5]\ k[8]\ k[9] - 
+      2\ a[1]\ a[5]\ a[7]\ k[4]\ k[5]\ k[8]\ k[9] - 
+      a[1]\ a[2]\ a[4]\ k[1]\ k[6]\ k[8]\ k[9] - 
+      a[1]\ a[4]\ a[5]\ k[1]\ k[6]\ k[8]\ k[9] - 
+      a[2]\ a[4]\ a[7]\ k[1]\ k[6]\ k[8]\ k[9] - 
+      a[4]\ a[5]\ a[7]\ k[1]\ k[6]\ k[8]\ k[9] - 
+      a[1]\^2\ a[2]\ a[3]\ k[2]\ k[6]\ k[8]\ k[9] - 
+      a[1]\ a[2]\^2\ a[3]\ k[2]\ k[6]\ k[8]\ k[9] - 
+      a[1]\^2\ a[2]\ a[4]\ k[2]\ k[6]\ k[8]\ k[9] - 
+      a[1]\ a[2]\^2\ a[4]\ k[2]\ k[6]\ k[8]\ k[9] - 
+      a[1]\ a[2]\ a[3]\ a[5]\ k[2]\ k[6]\ k[8]\ k[9] - 
+      a[1]\ a[2]\ a[4]\ a[5]\ k[2]\ k[6]\ k[8]\ k[9] - 
+      a[1]\ a[2]\ a[3]\ a[7]\ k[2]\ k[6]\ k[8]\ k[9] - 
+      a[1]\ a[2]\ a[4]\ a[7]\ k[2]\ k[6]\ k[8]\ k[9] - 
+      a[1]\ a[3]\ a[5]\ k[3]\ k[6]\ k[8]\ k[9] - 
+      a[1]\ a[4]\ a[5]\ k[3]\ k[6]\ k[8]\ k[9] - 
+      a[3]\ a[5]\ a[7]\ k[3]\ k[6]\ k[8]\ k[9] - 
+      a[4]\ a[5]\ a[7]\ k[3]\ k[6]\ k[8]\ k[9] - 
+      a[1]\^2\ a[2]\ a[3]\ k[4]\ k[6]\ k[8]\ k[9] - 
+      a[1]\ a[2]\ a[3]\^2\ k[4]\ k[6]\ k[8]\ k[9] - 
+      a[1]\ a[2]\ a[3]\ a[4]\ k[4]\ k[6]\ k[8]\ k[9] - 
+      a[1]\^2\ a[3]\ a[5]\ k[4]\ k[6]\ k[8]\ k[9] - 
+      a[1]\ a[3]\^2\ a[5]\ k[4]\ k[6]\ k[8]\ k[9] - 
+      a[1]\ a[3]\ a[4]\ a[5]\ k[4]\ k[6]\ k[8]\ k[9] - 
+      a[1]\ a[2]\ a[3]\ a[7]\ k[4]\ k[6]\ k[8]\ k[9] - 
+      a[1]\ a[3]\ a[5]\ a[7]\ k[4]\ k[6]\ k[8]\ k[9]\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(coeffs[core]\)], "Input"],
+
+Cell[BoxData[
+    InterpretationBox[\("The number of terms in the det expansion is "\
+\[InvisibleSpace]96\[InvisibleSpace]","\),
+      SequenceForm[ "The number of terms in the det expansion is ", 96, ","],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("and (a,b) says that the number of terms with coef a is b:"\)], "Print"],
+
+Cell[BoxData[
+    \({{\(-2\), 4}, {\(-1\), 90}, {1, 2}}\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["CTF Example 7",
+  FontFamily->"Arial",
+  FontSize->18,
+  FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[BoxData[
+    \(Clear[S, vars, monomials, \ j, det, core]\)], "Input"],
+
+Cell[TextData[StyleBox["Inputting the stoichiometric matrix S",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(S = {{\(-1\), 1, 0, 0, 0, 0, 1, 0}, {0, 0, 0, 0, \(-1\), 1, 0, 
+          1}, {\(-1\), 1, 0, 0, 0, 0, 0, 2}, {0, 0, \(-1\), 1, \(-1\), 1, 0, 
+          0}, {1, \(-1\), \(-1\), 1, 0, 0, 0, 0}, {0, 0, 0, 0, 1, \(-1\), 
+          0, \(-1\)}, {0, 0, 1, \(-1\), 0, 0, \(-1\), 0}, {0, 0, 0, 0, 0, 0, 
+          1, 0}}; \ S // MatrixForm\)], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(-1\), "1", "0", "0", "0", "0", "1", "0"},
+            {"0", "0", "0", "0", \(-1\), "1", "0", "1"},
+            {\(-1\), "1", "0", "0", "0", "0", "0", "2"},
+            {"0", "0", \(-1\), "1", \(-1\), "1", "0", "0"},
+            {"1", \(-1\), \(-1\), "1", "0", "0", "0", "0"},
+            {"0", "0", "0", "0", "1", \(-1\), "0", \(-1\)},
+            {"0", "0", "1", \(-1\), "0", "0", \(-1\), "0"},
+            {"0", "0", "0", "0", "0", "0", "1", "0"}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Making the mass-action flux vector 'monomials' and \
+the list of species concentrations 'vars' automatically from S",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(monomials\  = \ makeMonomial[S]\)], "Input"],
+
+Cell[BoxData[
+    \({a[1]\ a[3]\ k[1], a[5]\ k[2], a[4]\ a[5]\ k[3], a[7]\ k[4], 
+      a[2]\ a[4]\ k[5], a[6]\ k[6], a[7]\ k[7], a[6]\ k[8]}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(vars = svars[S]\)], "Input"],
+
+Cell[BoxData[
+    \({a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8]}\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["'S.monomials' is the right hand side of the ODE",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(S . monomials\)], "Input"],
+
+Cell[BoxData[
+    \({\(-a[1]\)\ a[3]\ k[1] + a[5]\ k[2] + 
+        a[7]\ k[7], \(-a[2]\)\ a[4]\ k[5] + a[6]\ k[6] + 
+        a[6]\ k[8], \(-a[1]\)\ a[3]\ k[1] + a[5]\ k[2] + 
+        2\ a[6]\ k[8], \(-a[4]\)\ a[5]\ k[3] + a[7]\ k[4] - 
+        a[2]\ a[4]\ k[5] + a[6]\ k[6], 
+      a[1]\ a[3]\ k[1] - a[5]\ k[2] - a[4]\ a[5]\ k[3] + a[7]\ k[4], 
+      a[2]\ a[4]\ k[5] - a[6]\ k[6] - a[6]\ k[8], 
+      a[4]\ a[5]\ k[3] - a[7]\ k[4] - a[7]\ k[7], a[7]\ k[7]}\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["The Jacobian of the RHS of the ODE, and its \
+Craciun-Feinberg determinant",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(\(j = jac[S . monomials, \ vars];\)\), "\[IndentingNewLine]", 
+    \(j // MatrixForm\)}], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(\(-a[3]\)\ k[1]\), "0", \(\(-a[1]\)\ k[1]\), "0", \(k[2]\), 
+              "0", \(k[7]\), "0"},
+            {"0", \(\(-a[4]\)\ k[5]\), "0", \(\(-a[2]\)\ k[5]\), 
+              "0", \(k[6] + k[8]\), "0", "0"},
+            {\(\(-a[3]\)\ k[1]\), "0", \(\(-a[1]\)\ k[1]\), 
+              "0", \(k[2]\), \(2\ k[8]\), "0", "0"},
+            {"0", \(\(-a[4]\)\ k[5]\), 
+              "0", \(\(-a[5]\)\ k[3] - a[2]\ k[5]\), \(\(-a[4]\)\ k[3]\), \(k[
+                6]\), \(k[4]\), "0"},
+            {\(a[3]\ k[1]\), 
+              "0", \(a[1]\ k[1]\), \(\(-a[5]\)\ k[3]\), \(\(-k[2]\) - 
+                a[4]\ k[3]\), "0", \(k[4]\), "0"},
+            {"0", \(a[4]\ k[5]\), "0", \(a[2]\ k[5]\), 
+              "0", \(\(-k[6]\) - k[8]\), "0", "0"},
+            {"0", "0", "0", \(a[5]\ k[3]\), \(a[4]\ k[3]\), 
+              "0", \(\(-k[4]\) - k[7]\), "0"},
+            {"0", "0", "0", "0", "0", "0", \(k[7]\), "0"}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(det = Det[j - e*IdentityMatrix[Length[j]]]; \)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(coeffs[det]\)], "Input"],
+
+Cell[BoxData[
+    InterpretationBox[\("The number of terms in the det expansion is "\
+\[InvisibleSpace]134\[InvisibleSpace]","\),
+      SequenceForm[ "The number of terms in the det expansion is ", 134, ","],
+      
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("and (a,b) says that the number of terms with coef a is b:"\)], "Print"],
+
+Cell[BoxData[
+    \({{1, 132}, {3, 2}}\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Core Determinant of the Jacobian of the RHS of the \
+ODE",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(core = coreDet[j, S]\)], "Input"],
+
+Cell[BoxData[
+    \(3\ a[1]\ a[2]\ a[4]\ k[1]\ k[3]\ k[5]\ k[7]\ k[8]\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(coeffs[core]\)], "Input"],
+
+Cell[BoxData[
+    InterpretationBox[\("The number of terms in the det expansion is "\
+\[InvisibleSpace]1\[InvisibleSpace]","\),
+      SequenceForm[ "The number of terms in the det expansion is ", 1, ","],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("and (a,b) says that the number of terms with coef a is b:"\)], "Print"],
+
+Cell[BoxData[
+    \({{3, 1}}\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["CTF Example 8",
+  FontFamily->"Arial",
+  FontSize->18,
+  FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[BoxData[
+    \(Clear[S, vars, monomials, \ j, det, core]\)], "Input"],
+
+Cell[TextData[StyleBox["Inputting the stoichiometric matrix S",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(S = {{\(-1\), 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0}, {0, 0, 0, 0, \(-1\), 
+          1, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, \(-1\), 1, 0, 0, 
+          1}, {\(-1\), 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2}, {0, 0, \(-1\), 
+          1, \(-1\), 1, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, \(-1\), 
+          1, \(-1\), 1, 0, 0, 0}, {1, \(-1\), \(-1\), 1, 0, 0, 0, 0, 0, 0, 0, 
+          0, 0}, {0, 0, 0, 0, 1, \(-1\), \(-1\), 1, 0, 0, 0, 0, 0}, {0, 0, 0, 
+          0, 0, 0, 0, 0, 1, \(-1\), 0, 0, \(-1\)}, {0, 0, 1, \(-1\), 0, 0, 0, 
+          0, 0, 0, \(-1\), 0, 0}, {0, 0, 0, 0, 0, 0, 1, \(-1\), 0, 0, 
+          0, \(-1\), 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}, {0, 0, 0, 
+          0, 0, 0, 0, 0, 0, 0, 0, 1, 0}}; \ S // MatrixForm\)], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(-1\), "1", "0", "0", "0", "0", "0", "0", "0", "0", "1", "1", 
+              "0"},
+            {"0", "0", "0", "0", \(-1\), "1", "0", "0", "0", "0", "0", "0", 
+              "0"},
+            {"0", "0", "0", "0", "0", "0", "0", "0", \(-1\), "1", "0", "0", 
+              "1"},
+            {\(-1\), "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", 
+              "2"},
+            {"0", "0", \(-1\), "1", \(-1\), "1", "0", "0", "0", "0", "0", "0",
+               "0"},
+            {"0", "0", "0", "0", "0", "0", \(-1\), "1", \(-1\), "1", "0", "0",
+               "0"},
+            {"1", \(-1\), \(-1\), "1", "0", "0", "0", "0", "0", "0", "0", "0",
+               "0"},
+            {"0", "0", "0", "0", "1", \(-1\), \(-1\), "1", "0", "0", "0", "0",
+               "0"},
+            {"0", "0", "0", "0", "0", "0", "0", "0", "1", \(-1\), "0", 
+              "0", \(-1\)},
+            {"0", "0", "1", \(-1\), "0", "0", "0", "0", "0", "0", \(-1\), "0",
+               "0"},
+            {"0", "0", "0", "0", "0", "0", "1", \(-1\), "0", "0", "0", \(-1\),
+               "0"},
+            {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "0", 
+              "0"},
+            {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", "0"}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Making the mass-action flux vector 'monomials' and \
+the list of species concentrations 'vars' automatically from S",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(monomials\  = \ makeMonomial[S]\)], "Input"],
+
+Cell[BoxData[
+    \({a[1]\ a[4]\ k[1], a[7]\ k[2], a[5]\ a[7]\ k[3], a[10]\ k[4], 
+      a[2]\ a[5]\ k[5], a[8]\ k[6], a[6]\ a[8]\ k[7], a[11]\ k[8], 
+      a[3]\ a[6]\ k[9], a[9]\ k[10], a[10]\ k[11], a[11]\ k[12], 
+      a[9]\ k[13]}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(vars = svars[S]\)], "Input"],
+
+Cell[BoxData[
+    \({a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9], a[10], a[11], 
+      a[12], a[13]}\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["'S.monomials' is the right hand side of the ODE",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(S . monomials\)], "Input"],
+
+Cell[BoxData[
+    \({\(-a[1]\)\ a[4]\ k[1] + a[7]\ k[2] + a[10]\ k[11] + 
+        a[11]\ k[12], \(-a[2]\)\ a[5]\ k[5] + 
+        a[8]\ k[6], \(-a[3]\)\ a[6]\ k[9] + a[9]\ k[10] + 
+        a[9]\ k[13], \(-a[1]\)\ a[4]\ k[1] + a[7]\ k[2] + 
+        2\ a[9]\ k[13], \(-a[5]\)\ a[7]\ k[3] + a[10]\ k[4] - 
+        a[2]\ a[5]\ k[5] + a[8]\ k[6], \(-a[6]\)\ a[8]\ k[7] + a[11]\ k[8] - 
+        a[3]\ a[6]\ k[9] + a[9]\ k[10], 
+      a[1]\ a[4]\ k[1] - a[7]\ k[2] - a[5]\ a[7]\ k[3] + a[10]\ k[4], 
+      a[2]\ a[5]\ k[5] - a[8]\ k[6] - a[6]\ a[8]\ k[7] + a[11]\ k[8], 
+      a[3]\ a[6]\ k[9] - a[9]\ k[10] - a[9]\ k[13], 
+      a[5]\ a[7]\ k[3] - a[10]\ k[4] - a[10]\ k[11], 
+      a[6]\ a[8]\ k[7] - a[11]\ k[8] - a[11]\ k[12], a[10]\ k[11], 
+      a[11]\ k[12]}\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["The Jacobian of the RHS of the ODE, and its \
+Craciun-Feinberg determinant",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(\(j = jac[S . monomials, \ vars];\)\), "\[IndentingNewLine]", 
+    \(j // MatrixForm\)}], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(\(-a[4]\)\ k[1]\), "0", "0", \(\(-a[1]\)\ k[1]\), "0", 
+              "0", \(k[2]\), "0", "0", \(k[11]\), \(k[12]\), "0", "0"},
+            {"0", \(\(-a[5]\)\ k[5]\), "0", "0", \(\(-a[2]\)\ k[5]\), "0", 
+              "0", \(k[6]\), "0", "0", "0", "0", "0"},
+            {"0", "0", \(\(-a[6]\)\ k[9]\), "0", "0", \(\(-a[3]\)\ k[9]\), 
+              "0", "0", \(k[10] + k[13]\), "0", "0", "0", "0"},
+            {\(\(-a[4]\)\ k[1]\), "0", "0", \(\(-a[1]\)\ k[1]\), "0", 
+              "0", \(k[2]\), "0", \(2\ k[13]\), "0", "0", "0", "0"},
+            {"0", \(\(-a[5]\)\ k[5]\), "0", 
+              "0", \(\(-a[7]\)\ k[3] - a[2]\ k[5]\), 
+              "0", \(\(-a[5]\)\ k[3]\), \(k[6]\), "0", \(k[4]\), "0", "0", 
+              "0"},
+            {"0", "0", \(\(-a[6]\)\ k[9]\), "0", 
+              "0", \(\(-a[8]\)\ k[7] - a[3]\ k[9]\), 
+              "0", \(\(-a[6]\)\ k[7]\), \(k[10]\), "0", \(k[8]\), "0", "0"},
+            {\(a[4]\ k[1]\), "0", "0", \(a[1]\ k[1]\), \(\(-a[7]\)\ k[3]\), 
+              "0", \(\(-k[2]\) - a[5]\ k[3]\), "0", "0", \(k[4]\), "0", "0", 
+              "0"},
+            {"0", \(a[5]\ k[5]\), "0", 
+              "0", \(a[2]\ k[5]\), \(\(-a[8]\)\ k[7]\), 
+              "0", \(\(-k[6]\) - a[6]\ k[7]\), "0", "0", \(k[8]\), "0", "0"},
+            {"0", "0", \(a[6]\ k[9]\), "0", "0", \(a[3]\ k[9]\), "0", 
+              "0", \(\(-k[10]\) - k[13]\), "0", "0", "0", "0"},
+            {"0", "0", "0", "0", \(a[7]\ k[3]\), "0", \(a[5]\ k[3]\), "0", 
+              "0", \(\(-k[4]\) - k[11]\), "0", "0", "0"},
+            {"0", "0", "0", "0", "0", \(a[8]\ k[7]\), "0", \(a[6]\ k[7]\), 
+              "0", "0", \(\(-k[8]\) - k[12]\), "0", "0"},
+            {"0", "0", "0", "0", "0", "0", "0", "0", "0", \(k[11]\), "0", "0",
+               "0"},
+            {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", \(k[12]\), "0",
+               "0"}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(det = Det[j - IdentityMatrix[Length[j]]]; \)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(coeffs[det]\)], "Input"],
+
+Cell[BoxData[
+    InterpretationBox[\("The number of terms in the det expansion is "\
+\[InvisibleSpace]3202\[InvisibleSpace]","\),
+      SequenceForm[ 
+      "The number of terms in the det expansion is ", 3202, ","],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("and (a,b) says that the number of terms with coef a is b:"\)], "Print"],
+
+Cell[BoxData[
+    \({{\(-2\), 6}, {\(-1\), 3192}, {1, 4}}\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Core Determinant of the Jacobian of the RHS of the \
+ODE",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(core = coreDet[j, S]\)], "Input"],
+
+Cell[BoxData[
+    \(a[1]\ a[2]\ a[3]\ a[5]\ a[6]\ k[1]\ k[3]\ k[5]\ k[7]\ k[9]\ k[11]\ k[
+          12]\ k[13] - 
+      a[2]\ a[3]\ a[4]\ a[5]\ a[6]\ k[1]\ k[3]\ k[5]\ k[7]\ k[9]\ k[11]\ k[
+          12]\ k[13] - 
+      a[1]\ a[3]\ a[5]\^2\ a[6]\ k[1]\ k[3]\ k[5]\ k[7]\ k[9]\ k[11]\ k[
+          12]\ k[13] - 
+      a[1]\ a[3]\ a[5]\ a[6]\ a[7]\ k[1]\ k[3]\ k[5]\ k[7]\ k[9]\ k[11]\ k[
+          12]\ k[13] - 
+      a[3]\ a[4]\ a[5]\ a[6]\ a[7]\ k[1]\ k[3]\ k[5]\ k[7]\ k[9]\ k[11]\ k[
+          12]\ k[13] - 
+      a[3]\ a[5]\ a[6]\ a[7]\ k[2]\ k[3]\ k[5]\ k[7]\ k[9]\ k[11]\ k[12]\ k[
+          13]\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(coeffs[core]\)], "Input"],
+
+Cell[BoxData[
+    InterpretationBox[\("The number of terms in the det expansion is "\
+\[InvisibleSpace]6\[InvisibleSpace]","\),
+      SequenceForm[ "The number of terms in the det expansion is ", 6, ","],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("and (a,b) says that the number of terms with coef a is b:"\)], "Print"],
+
+Cell[BoxData[
+    \({{\(-1\), 5}, {1, 1}}\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[{
+  StyleBox["CTF Example 9 (INCOMPLETE - this matrix is big to run with a \
+plain old ",
+    FontFamily->"Arial",
+    FontSize->18,
+    FontColor->RGBColor[1, 0, 0]],
+  StyleBox["Mathematica",
+    FontFamily->"Arial",
+    FontSize->18,
+    FontSlant->"Italic",
+    FontColor->RGBColor[1, 0, 0]],
+  StyleBox[" Det command, It will run by implementing a Binet Cauchy \
+Formula.)",
+    FontFamily->"Arial",
+    FontSize->18,
+    FontColor->RGBColor[1, 0, 0]]
+}], "Text"],
+
+Cell[BoxData[
+    \(Clear[S, vars, monomials, \ j, det, core]\)], "Input"],
+
+Cell[TextData[StyleBox["Inputting the stoichiometric matrix S",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(S = \[NoBreak]{{1, \(-1\), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \(-1\), 
+          0, 0, 0}, {0, 0, 0, 0, 1, \(-1\), 0, 0, 0, 0, 0, 0, 0, 0, 
+          0, \(-1\), 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, \(-1\), 0, 0, 0, 0, 
+          0, 0, \(-1\), 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, \(-1\), 
+          0, 0, 0, \(-1\)}, {1, \(-1\), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+          0, 0, 0, \(-2\)}, {0, 0, 1, \(-1\), 1, \(-1\), 0, 0, 0, 0, 0, 0, 0, 
+          0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 1, \(-1\), 1, \(-1\), 0, 0, 0, 
+          0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, \(-1\), 
+          1, \(-1\), 0, 0, 0, 0}, {\(-1\), 1, 1, \(-1\), 0, 0, 0, 0, 0, 0, 0, 
+          0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, \(-1\), 1, 1, \(-1\), 0, 0, 0, 
+          0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, \(-1\), 1, 
+          1, \(-1\), 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+          0, \(-1\), 1, 0, 0, 0, 1}, {0, 0, \(-1\), 1, 0, 0, 0, 0, 0, 0, 0, 
+          0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 0, \(-1\), 1, 0, 0, 0, 0, 0, 
+          0, 0, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \(-1\), 1, 0, 0, 0, 
+          0, 1, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \(-1\), 0, 0, 
+          0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \(-1\), 0, 
+          0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, \(-1\), 0}}; 
+    S // MatrixForm\)], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {"1", \(-1\), "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", 
+              "0", "0", \(-1\), "0", "0", "0"},
+            {"0", "0", "0", "0", "1", \(-1\), "0", "0", "0", "0", "0", "0", 
+              "0", "0", "0", \(-1\), "0", "0"},
+            {"0", "0", "0", "0", "0", "0", "0", "0", "1", \(-1\), "0", "0", 
+              "0", "0", "0", "0", \(-1\), "0"},
+            {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", 
+              "1", \(-1\), "0", "0", "0", \(-1\)},
+            {"1", \(-1\), "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", 
+              "0", "0", "0", "0", "0", \(-2\)},
+            {"0", "0", "1", \(-1\), "1", \(-1\), "0", "0", "0", "0", "0", "0",
+               "0", "0", "0", "0", "0", "0"},
+            {"0", "0", "0", "0", "0", "0", "1", \(-1\), "1", \(-1\), "0", "0",
+               "0", "0", "0", "0", "0", "0"},
+            {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "1", \(-1\), 
+              "1", \(-1\), "0", "0", "0", "0"},
+            {\(-1\), "1", "1", \(-1\), "0", "0", "0", "0", "0", "0", "0", "0",
+               "0", "0", "0", "0", "0", "0"},
+            {"0", "0", "0", "0", \(-1\), "1", "1", \(-1\), "0", "0", "0", "0",
+               "0", "0", "0", "0", "0", "0"},
+            {"0", "0", "0", "0", "0", "0", "0", "0", \(-1\), "1", "1", \(-1\),
+               "0", "0", "0", "0", "0", "0"},
+            {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", 
+              "0", \(-1\), "1", "0", "0", "0", "1"},
+            {"0", "0", \(-1\), "1", "0", "0", "0", "0", "0", "0", "0", "0", 
+              "0", "0", "1", "0", "0", "0"},
+            {"0", "0", "0", "0", "0", "0", \(-1\), "1", "0", "0", "0", "0", 
+              "0", "0", "0", "1", "0", "0"},
+            {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", \(-1\), "1", 
+              "0", "0", "0", "0", "1", "0"},
+            {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", 
+              "0", \(-1\), "0", "0", "0"},
+            {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", 
+              "0", "0", \(-1\), "0", "0"},
+            {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", 
+              "0", "0", "0", \(-1\), "0"}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Making the mass-action flux vector 'monomials' and \
+the list of species concentrations 'vars' automatically from S",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(monomials\  = \ makeMonomial[S]\)], "Input"],
+
+Cell[BoxData[
+    \({a[9]\ k[1], a[1]\ a[5]\ k[2], a[13]\ k[3], a[6]\ a[9]\ k[4], 
+      a[10]\ k[5], a[2]\ a[6]\ k[6], a[14]\ k[7], a[7]\ a[10]\ k[8], 
+      a[11]\ k[9], a[3]\ a[7]\ k[10], a[15]\ k[11], a[8]\ a[11]\ k[12], 
+      a[12]\ k[13], a[4]\ a[8]\ k[14], a[1]\ a[16]\ k[15], 
+      a[2]\ a[17]\ k[16], a[3]\ a[18]\ k[17], 
+      a[4]\ a[5]\^2\ k[18]}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(vars = svars[S]\)], "Input"],
+
+Cell[BoxData[
+    \({a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9], a[10], a[11], 
+      a[12], a[13], a[14], a[15], a[16], a[17], a[18]}\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["'S.monomials' is the right hand side of the ODE",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(S . monomials\)], "Input"],
+
+Cell[BoxData[
+    \({a[9]\ k[1] - a[1]\ a[5]\ k[2] - a[1]\ a[16]\ k[15], 
+      a[10]\ k[5] - a[2]\ a[6]\ k[6] - a[2]\ a[17]\ k[16], 
+      a[11]\ k[9] - a[3]\ a[7]\ k[10] - a[3]\ a[18]\ k[17], 
+      a[12]\ k[13] - a[4]\ a[8]\ k[14] - a[4]\ a[5]\^2\ k[18], 
+      a[9]\ k[1] - a[1]\ a[5]\ k[2] - 2\ a[4]\ a[5]\^2\ k[18], 
+      a[13]\ k[3] - a[6]\ a[9]\ k[4] + a[10]\ k[5] - a[2]\ a[6]\ k[6], 
+      a[14]\ k[7] - a[7]\ a[10]\ k[8] + a[11]\ k[9] - a[3]\ a[7]\ k[10], 
+      a[15]\ k[11] - a[8]\ a[11]\ k[12] + a[12]\ k[13] - 
+        a[4]\ a[8]\ k[14], \(-a[9]\)\ k[1] + a[1]\ a[5]\ k[2] + a[13]\ k[3] - 
+        a[6]\ a[9]\ k[4], \(-a[10]\)\ k[5] + a[2]\ a[6]\ k[6] + a[14]\ k[7] - 
+        a[7]\ a[10]\ k[8], \(-a[11]\)\ k[9] + a[3]\ a[7]\ k[10] + 
+        a[15]\ k[11] - a[8]\ a[11]\ k[12], \(-a[12]\)\ k[13] + 
+        a[4]\ a[8]\ k[14] + a[4]\ a[5]\^2\ k[18], \(-a[13]\)\ k[3] + 
+        a[6]\ a[9]\ k[4] + a[1]\ a[16]\ k[15], \(-a[14]\)\ k[7] + 
+        a[7]\ a[10]\ k[8] + a[2]\ a[17]\ k[16], \(-a[15]\)\ k[11] + 
+        a[8]\ a[11]\ k[12] + 
+        a[3]\ a[18]\ k[17], \(-a[1]\)\ a[16]\ k[15], \(-a[2]\)\ a[17]\ k[
+          16], \(-a[3]\)\ a[18]\ k[17]}\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["The Jacobian of the RHS of the ODE, and its \
+Craciun-Feinberg determinant",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(\(j = jac[S . monomials, \ vars];\)\), "\[IndentingNewLine]", 
+    \(j // MatrixForm\)}], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(\(-a[5]\)\ k[2] - a[16]\ k[15]\), "0", "0", 
+              "0", \(\(-a[1]\)\ k[2]\), "0", "0", "0", \(k[1]\), "0", "0", 
+              "0", "0", "0", "0", \(\(-a[1]\)\ k[15]\), "0", "0"},
+            {"0", \(\(-a[6]\)\ k[6] - a[17]\ k[16]\), "0", "0", 
+              "0", \(\(-a[2]\)\ k[6]\), "0", "0", "0", \(k[5]\), "0", "0", 
+              "0", "0", "0", "0", \(\(-a[2]\)\ k[16]\), "0"},
+            {"0", "0", \(\(-a[7]\)\ k[10] - a[18]\ k[17]\), "0", "0", 
+              "0", \(\(-a[3]\)\ k[10]\), "0", "0", "0", \(k[9]\), "0", "0", 
+              "0", "0", "0", "0", \(\(-a[3]\)\ k[17]\)},
+            {"0", "0", 
+              "0", \(\(-a[8]\)\ k[14] - 
+                a[5]\^2\ k[18]\), \(\(-2\)\ a[4]\ a[5]\ k[18]\), "0", 
+              "0", \(\(-a[4]\)\ k[14]\), "0", "0", "0", \(k[13]\), "0", "0", 
+              "0", "0", "0", "0"},
+            {\(\(-a[5]\)\ k[2]\), "0", 
+              "0", \(\(-2\)\ a[5]\^2\ k[18]\), \(\(-a[1]\)\ k[2] - 
+                4\ a[4]\ a[5]\ k[18]\), "0", "0", "0", \(k[1]\), "0", "0", 
+              "0", "0", "0", "0", "0", "0", "0"},
+            {"0", \(\(-a[6]\)\ k[6]\), "0", "0", 
+              "0", \(\(-a[9]\)\ k[4] - a[2]\ k[6]\), "0", 
+              "0", \(\(-a[6]\)\ k[4]\), \(k[5]\), "0", "0", \(k[3]\), "0", 
+              "0", "0", "0", "0"},
+            {"0", "0", \(\(-a[7]\)\ k[10]\), "0", "0", 
+              "0", \(\(-a[10]\)\ k[8] - a[3]\ k[10]\), "0", 
+              "0", \(\(-a[7]\)\ k[8]\), \(k[9]\), "0", "0", \(k[7]\), "0", 
+              "0", "0", "0"},
+            {"0", "0", "0", \(\(-a[8]\)\ k[14]\), "0", "0", 
+              "0", \(\(-a[11]\)\ k[12] - a[4]\ k[14]\), "0", 
+              "0", \(\(-a[8]\)\ k[12]\), \(k[13]\), "0", "0", \(k[11]\), "0", 
+              "0", "0"},
+            {\(a[5]\ k[2]\), "0", "0", 
+              "0", \(a[1]\ k[2]\), \(\(-a[9]\)\ k[4]\), "0", 
+              "0", \(\(-k[1]\) - a[6]\ k[4]\), "0", "0", "0", \(k[3]\), "0", 
+              "0", "0", "0", "0"},
+            {"0", \(a[6]\ k[6]\), "0", "0", 
+              "0", \(a[2]\ k[6]\), \(\(-a[10]\)\ k[8]\), "0", 
+              "0", \(\(-k[5]\) - a[7]\ k[8]\), "0", "0", "0", \(k[7]\), "0", 
+              "0", "0", "0"},
+            {"0", "0", \(a[7]\ k[10]\), "0", "0", 
+              "0", \(a[3]\ k[10]\), \(\(-a[11]\)\ k[12]\), "0", 
+              "0", \(\(-k[9]\) - a[8]\ k[12]\), "0", "0", "0", \(k[11]\), "0",
+               "0", "0"},
+            {"0", "0", 
+              "0", \(a[8]\ k[14] + a[5]\^2\ k[18]\), \(2\ a[4]\ a[5]\ k[18]\),
+               "0", "0", \(a[4]\ k[14]\), "0", "0", "0", \(-k[13]\), "0", "0",
+               "0", "0", "0", "0"},
+            {\(a[16]\ k[15]\), "0", "0", "0", "0", \(a[9]\ k[4]\), "0", 
+              "0", \(a[6]\ k[4]\), "0", "0", "0", \(-k[3]\), "0", 
+              "0", \(a[1]\ k[15]\), "0", "0"},
+            {"0", \(a[17]\ k[16]\), "0", "0", "0", "0", \(a[10]\ k[8]\), "0", 
+              "0", \(a[7]\ k[8]\), "0", "0", "0", \(-k[7]\), "0", 
+              "0", \(a[2]\ k[16]\), "0"},
+            {"0", "0", \(a[18]\ k[17]\), "0", "0", "0", "0", \(a[11]\ k[12]\),
+               "0", "0", \(a[8]\ k[12]\), "0", "0", "0", \(-k[11]\), "0", 
+              "0", \(a[3]\ k[17]\)},
+            {\(\(-a[16]\)\ k[15]\), "0", "0", "0", "0", "0", "0", "0", "0", 
+              "0", "0", "0", "0", "0", "0", \(\(-a[1]\)\ k[15]\), "0", "0"},
+            {"0", \(\(-a[17]\)\ k[16]\), "0", "0", "0", "0", "0", "0", "0", 
+              "0", "0", "0", "0", "0", "0", "0", \(\(-a[2]\)\ k[16]\), "0"},
+            {"0", "0", \(\(-a[18]\)\ k[17]\), "0", "0", "0", "0", "0", "0", 
+              "0", "0", "0", "0", "0", "0", "0", "0", \(\(-a[3]\)\ k[17]\)}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(\(\( (*\ \ \(det = 
+          cfDet[j];\)\ *) \)\(\ \)\( (*THIS\ TOOK\ TOO\ LONG\ TO\ RUN*) \
+\)\)\)], "Input"],
+
+Cell[BoxData[
+    \( (*\ coeffs[det]\ *) \)], "Input"],
+
+Cell[TextData[StyleBox["Core Determinant of the Jacobian of the RHS of the \
+ODE",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[BoxData[
+    \( (*\ core = coreDet[j, S]\ *) \)], "Input"],
+
+Cell[BoxData[
+    \( (*\ coeffs[core]\ *) \)], "Input"]
+},
+FrontEndVersion->"4.2 for Microsoft Windows",
+ScreenRectangle->{{0, 1024}, {0, 685}},
+WindowToolbars->"EditBar",
+CellGrouping->Manual,
+WindowSize->{1016, 651},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+DockedCells -> FEPrivate`FrontEndResource[ "FEExpressions", \
+"CompatibilityToolbar"],
+Magnification->0.75,
+StyleDefinitions -> "Default.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 892, 23, 62, "Text"],
+Cell[2649, 76, 240, 6, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[2914, 86, 333, 6, 53, "Input"],
+Cell[3250, 94, 47, 1, 23, "Output"],
+Cell[3300, 97, 56, 1, 20, "Print"],
+Cell[3359, 100, 53, 1, 20, "Print"]
+}, Open  ]],
+Cell[3427, 104, 120, 3, 30, "Text"],
+
+Cell[CellGroupData[{
+Cell[3572, 111, 74, 1, 23, "Input"],
+Cell[3649, 114, 186, 3, 18, "Message"],
+Cell[3838, 119, 179, 3, 18, "Message"]
+}, Open  ]],
+Cell[4032, 125, 195, 4, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[4252, 133, 371, 5, 53, "Input"],
+Cell[4626, 140, 634, 12, 101, "Output"]
+}, Open  ]],
+Cell[5275, 155, 273, 5, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[5573, 164, 64, 1, 23, "Input"],
+Cell[5640, 167, 186, 3, 23, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5863, 175, 48, 1, 23, "Input"],
+Cell[5914, 178, 76, 1, 23, "Output"]
+}, Open  ]],
+Cell[6005, 182, 205, 4, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[6235, 190, 46, 1, 23, "Input"],
+Cell[6284, 193, 556, 9, 38, "Output"]
+}, Open  ]],
+Cell[6855, 205, 232, 5, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[7112, 214, 119, 2, 38, "Input"],
+Cell[7234, 218, 1177, 22, 101, "Output"]
+}, Open  ]],
+Cell[8426, 243, 89, 1, 23, "Input"],
+
+Cell[CellGroupData[{
+Cell[8540, 248, 44, 1, 23, "Input"],
+Cell[8587, 251, 249, 5, 20, "Print"],
+Cell[8839, 258, 92, 1, 20, "Print"],
+Cell[8934, 261, 70, 1, 23, "Output"]
+}, Open  ]],
+Cell[9019, 265, 214, 5, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[9258, 274, 53, 1, 23, "Input"],
+Cell[9314, 277, 4631, 90, 278, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[13982, 372, 45, 1, 23, "Input"],
+Cell[14030, 375, 240, 4, 20, "Print"],
+Cell[14273, 381, 92, 1, 20, "Print"],
+Cell[14368, 384, 69, 1, 23, "Output"]
+}, Open  ]],
+Cell[14452, 388, 120, 3, 30, "Text"],
+Cell[14575, 393, 74, 1, 23, "Input"],
+Cell[14652, 396, 195, 4, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[14872, 404, 363, 5, 53, "Input"],
+Cell[15238, 411, 644, 13, 113, "Output"]
+}, Open  ]],
+Cell[15897, 427, 273, 5, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[16195, 436, 64, 1, 23, "Input"],
+Cell[16262, 439, 155, 2, 23, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[16454, 446, 48, 1, 23, "Input"],
+Cell[16505, 449, 82, 1, 23, "Output"]
+}, Open  ]],
+Cell[16602, 453, 205, 4, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[16832, 461, 46, 1, 23, "Input"],
+Cell[16881, 464, 472, 8, 38, "Output"]
+}, Open  ]],
+Cell[17368, 475, 232, 5, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[17625, 484, 119, 2, 38, "Input"],
+Cell[17747, 488, 1101, 22, 113, "Output"]
+}, Open  ]],
+Cell[18863, 513, 77, 1, 23, "Input"],
+
+Cell[CellGroupData[{
+Cell[18965, 518, 44, 1, 23, "Input"],
+Cell[19012, 521, 249, 5, 20, "Print"],
+Cell[19264, 528, 92, 1, 20, "Print"],
+Cell[19359, 531, 52, 1, 23, "Output"]
+}, Open  ]],
+Cell[19426, 535, 214, 5, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[19665, 544, 53, 1, 23, "Input"],
+Cell[19721, 547, 83, 1, 23, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[19841, 553, 45, 1, 23, "Input"],
+Cell[19889, 556, 238, 4, 20, "Print"],
+Cell[20130, 562, 92, 1, 20, "Print"],
+Cell[20225, 565, 42, 1, 23, "Output"]
+}, Open  ]],
+Cell[20282, 569, 120, 3, 30, "Text"],
+Cell[20405, 574, 74, 1, 23, "Input"],
+Cell[20482, 577, 195, 4, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[20702, 585, 778, 10, 83, "Input"],
+Cell[21483, 597, 1440, 30, 173, "Output"]
+}, Open  ]],
+Cell[22938, 630, 273, 5, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[23236, 639, 64, 1, 23, "Input"],
+Cell[23303, 642, 249, 4, 23, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[23589, 651, 48, 1, 23, "Input"],
+Cell[23640, 654, 123, 2, 23, "Output"]
+}, Open  ]],
+Cell[23778, 659, 205, 4, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[24008, 667, 46, 1, 23, "Input"],
+Cell[24057, 670, 771, 13, 68, "Output"]
+}, Open  ]],
+Cell[24843, 686, 232, 5, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[25100, 695, 119, 2, 38, "Input"],
+Cell[25222, 699, 2062, 36, 173, "Output"]
+}, Open  ]],
+Cell[27299, 738, 75, 1, 23, "Input"],
+
+Cell[CellGroupData[{
+Cell[27399, 743, 44, 1, 23, "Input"],
+Cell[27446, 746, 251, 5, 20, "Print"],
+Cell[27700, 753, 92, 1, 20, "Print"],
+Cell[27795, 756, 71, 1, 23, "Output"]
+}, Open  ]],
+Cell[27881, 760, 214, 5, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[28120, 769, 53, 1, 23, "Input"],
+Cell[28176, 772, 615, 12, 38, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[28828, 789, 45, 1, 23, "Input"],
+Cell[28876, 792, 238, 4, 20, "Print"],
+Cell[29117, 798, 92, 1, 20, "Print"],
+Cell[29212, 801, 55, 1, 23, "Output"]
+}, Open  ]],
+Cell[29282, 805, 482, 16, 30, "Text"],
+Cell[29767, 823, 74, 1, 23, "Input"],
+Cell[29844, 826, 195, 4, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[30064, 834, 1409, 19, 113, "Input"],
+Cell[31476, 855, 2408, 41, 233, "Output"]
+}, Open  ]],
+Cell[33899, 899, 273, 5, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[34197, 908, 64, 1, 23, "Input"],
+Cell[34264, 911, 374, 6, 38, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[34675, 922, 48, 1, 23, "Input"],
+Cell[34726, 925, 158, 2, 23, "Output"]
+}, Open  ]],
+Cell[34899, 930, 205, 4, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[35129, 938, 46, 1, 23, "Input"],
+Cell[35178, 941, 1179, 18, 83, "Output"]
+}, Open  ]],
+Cell[36372, 962, 232, 5, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[36629, 971, 119, 2, 38, "Input"],
+Cell[36751, 975, 3841, 66, 239, "Output"]
+}, Open  ]],
+Cell[40607, 1044, 131, 3, 23, "Input"],
+Cell[40741, 1049, 54, 1, 23, "Input"],
+Cell[40798, 1052, 214, 5, 26, "Text"],
+Cell[41015, 1059, 63, 1, 23, "Input"],
+Cell[41081, 1062, 55, 1, 23, "Input"]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

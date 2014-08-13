@@ -1,0 +1,400 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 4.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     11621,        320]*)
+(*NotebookOutlinePosition[     12517,        350]*)
+(*  CellTagsIndexPosition[     12473,        346]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[TextData[StyleBox["CHW Example 2.3 (Example 1 of AS08)",
+  FontFamily->"Arial",
+  FontSize->18,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text",
+  CellChangeTimes -> {{3.428451399390625*^9, 3.42845141453125*^9}, \
+{3.42845147515625*^9, 3.428451502421875*^9}, 3.4284515329375*^9, \
+{3.42845292078125*^9, 3.428452941484375*^9}, {3.428454251984375*^9, \
+3.428454253359375*^9}, {3.4284542899375*^9, 3.428454294203125*^9}, \
+{3.42845788028125*^9, 3.428457893140625*^9}, {3.428458161765625*^9, \
+3.428458162578125*^9}}],
+
+Cell["\<\
+Loads the chemJac command file, which contains all commands used below\
+\>", "Text",
+  CellChangeTimes -> {{3.4284279331710243`*^9, 3.42842793367878*^9}},
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(\( (*\ \ SetDirectory["\<C:\CHEMmma\>"]\ \ *) \)\(\[IndentingNewLine]\
+\)\(<< "\<chemJac.m\>"\)\)\)], "Input",
+  CellChangeTimes -> {{3.428427982543621*^9, 3.428427983151545*^9}, \
+{3.428451699125*^9, 3.428451825765625*^9}}],
+
+Cell[BoxData[
+    \("C:\\CHEMmma"\)], "Output"],
+
+Cell[BoxData[
+    \("chemJac is loading..."\)], "Print"],
+
+Cell[BoxData[
+    \("chemJac has loaded"\)], "Print"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["The RHS of the ODE has the following form.\nHere the \
+functions k1,....,k6 are increasing in each argument when the other arguments \
+are fixed.\n",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text",
+  CellChangeTimes -> {{3.428452272109375*^9, 3.428452284203125*^9}, \
+{3.428452329890625*^9, 3.428452335375*^9}, {3.42845278753125*^9, \
+3.428452866546875*^9}, {3.428455541171875*^9, 3.42845581003125*^9}, \
+{3.428455861203125*^9, 3.42845587178125*^9}, {3.428458286109375*^9, \
+3.428458300328125*^9}, {3.428458338125*^9, 3.42845844778125*^9}, \
+{3.428458543265625*^9, 3.42845855725*^9}, 3.428458661453125*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(f = {\(-k1[x1]\) + k2[\(-x1\), \(-x3\)], \(-k3[x2]\) + 
+          k4[\(-x2\), x1], \(-k5[x3]\) + k6[\(-x3\), x2]}\)], "Input",
+  CellChangeTimes -> {{3.428452316625*^9, 3.42845234425*^9}, \
+{3.4284543726875*^9, 3.428454519984375*^9}, {3.428455086609375*^9, \
+3.428455104125*^9}, 3.42845589025*^9, {3.428458107046875*^9, \
+3.428458113484375*^9}}],
+
+Cell[BoxData[
+    \({\(-k1[x1]\) + k2[\(-x1\), \(-x3\)], \(-k3[x2]\) + 
+        k4[\(-x2\), x1], \(-k5[x3]\) + k6[\(-x3\), x2]}\)], "Output",
+  CellChangeTimes -> {3.428452350140625*^9, 3.428454525671875*^9, \
+3.428455115796875*^9, 3.42845592959375*^9, 3.428458678484375*^9}]
+}, Open  ]],
+
+Cell[TextData[StyleBox["The list of species concentrations is denoted by ' \
+vars'.",
+  FontFamily->"Arial",
+  FontColor->RGBColor[1, 0, 0]]], "Text",
+  CellChangeTimes -> {{3.428458454984375*^9, 3.428458472203125*^9}, \
+{3.428458540890625*^9, 3.42845856175*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(\(vars = {x1, x2, x3}\)\(\[IndentingNewLine]\)\)\)], "Input",
+  CellChangeTimes -> {{3.428452361875*^9, 3.4284523849375*^9}, \
+{3.42845432609375*^9, 3.428454336234375*^9}, {3.42845883553125*^9, \
+3.42845883934375*^9}}],
+
+Cell[BoxData[
+    \({x1, x2, x3}\)], "Output",
+  CellChangeTimes -> {3.4284523909375*^9, 3.428454563625*^9, \
+3.428455123578125*^9, 3.4284559585*^9, 3.42845868540625*^9, \
+3.428458849734375*^9}]
+}, Open  ]],
+
+Cell[TextData[StyleBox["The Jacobian of the RHS of the ODE, and its \
+Craciun-Feinberg determinant",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(j = jac[f, \ vars]; \), "\[IndentingNewLine]", 
+    \(j // MatrixForm\)}], "Input",
+  CellChangeTimes -> {{3.428452448671875*^9, 3.4284524745*^9}, \
+{3.428454697015625*^9, 3.4284547105*^9}, {3.4284553768125*^9, \
+3.4284553830625*^9}, 3.428455907109375*^9, 3.428458701453125*^9}],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {
+              RowBox[{
+                RowBox[{"-", 
+                  RowBox[{
+                    SuperscriptBox["k1", "\[Prime]",
+                      MultilineFunction->None], "[", "x1", "]"}]}], "-", 
+                RowBox[{
+                  SuperscriptBox["k2", 
+                    TagBox[\((1, 0)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(\(-x1\), \(-x3\)\), 
+                  "]"}]}], "0", 
+              RowBox[{"-", 
+                RowBox[{
+                  SuperscriptBox["k2", 
+                    TagBox[\((0, 1)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(\(-x1\), \(-x3\)\), 
+                  "]"}]}]},
+            {
+              RowBox[{
+                SuperscriptBox["k4", 
+                  TagBox[\((0, 1)\),
+                    Derivative],
+                  MultilineFunction->None], "[", \(\(-x2\), x1\), "]"}], 
+              RowBox[{
+                RowBox[{"-", 
+                  RowBox[{
+                    SuperscriptBox["k3", "\[Prime]",
+                      MultilineFunction->None], "[", "x2", "]"}]}], "-", 
+                RowBox[{
+                  SuperscriptBox["k4", 
+                    TagBox[\((1, 0)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(\(-x2\), x1\), "]"}]}], 
+              "0"},
+            {"0", 
+              RowBox[{
+                SuperscriptBox["k6", 
+                  TagBox[\((0, 1)\),
+                    Derivative],
+                  MultilineFunction->None], "[", \(\(-x3\), x2\), "]"}], 
+              RowBox[{
+                RowBox[{"-", 
+                  RowBox[{
+                    SuperscriptBox["k5", "\[Prime]",
+                      MultilineFunction->None], "[", "x3", "]"}]}], "-", 
+                RowBox[{
+                  SuperscriptBox["k6", 
+                    TagBox[\((1, 0)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(\(-x3\), x2\), "]"}]}]}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output",
+  CellChangeTimes -> {3.428451942609375*^9, 3.428452478796875*^9, \
+3.428454570140625*^9, 3.42845471575*^9, 3.428455132328125*^9, \
+3.42845538490625*^9, 3.428455967578125*^9, {3.428458695421875*^9, \
+3.42845870778125*^9}, 3.42845877628125*^9, 3.4284588578125*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(det = Det[j]\)], "Input",
+  CellChangeTimes -> {{3.428452582640625*^9, 3.42845259975*^9}, \
+{3.428452705546875*^9, 3.42845270596875*^9}}],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+        RowBox[{"-", 
+          RowBox[{
+            SuperscriptBox["k2", 
+              TagBox[\((0, 1)\),
+                Derivative],
+              MultilineFunction->None], "[", \(\(-x1\), \(-x3\)\), "]"}]}], 
+        " ", 
+        RowBox[{
+          SuperscriptBox["k4", 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(\(-x2\), x1\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox["k6", 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(\(-x3\), x2\), "]"}]}], "+", 
+      RowBox[{
+        RowBox[{"(", 
+          RowBox[{
+            RowBox[{"-", 
+              RowBox[{
+                SuperscriptBox["k1", "\[Prime]",
+                  MultilineFunction->None], "[", "x1", "]"}]}], "-", 
+            RowBox[{
+              SuperscriptBox["k2", 
+                TagBox[\((1, 0)\),
+                  Derivative],
+                MultilineFunction->None], "[", \(\(-x1\), \(-x3\)\), "]"}]}], 
+          ")"}], " ", 
+        RowBox[{"(", 
+          RowBox[{
+            RowBox[{"-", 
+              RowBox[{
+                SuperscriptBox["k3", "\[Prime]",
+                  MultilineFunction->None], "[", "x2", "]"}]}], "-", 
+            RowBox[{
+              SuperscriptBox["k4", 
+                TagBox[\((1, 0)\),
+                  Derivative],
+                MultilineFunction->None], "[", \(\(-x2\), x1\), "]"}]}], 
+          ")"}], " ", 
+        RowBox[{"(", 
+          RowBox[{
+            RowBox[{"-", 
+              RowBox[{
+                SuperscriptBox["k5", "\[Prime]",
+                  MultilineFunction->None], "[", "x3", "]"}]}], "-", 
+            RowBox[{
+              SuperscriptBox["k6", 
+                TagBox[\((1, 0)\),
+                  Derivative],
+                MultilineFunction->None], "[", \(\(-x3\), x2\), "]"}]}], 
+          ")"}]}]}]], "Output",
+  CellChangeTimes -> {3.42845258959375*^9, 3.42845271146875*^9, \
+3.428454575375*^9, 3.428455144421875*^9, 3.428455974984375*^9, \
+3.4284587139375*^9, 3.428458782859375*^9, 3.42845886534375*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(coeffs[det]\)], "Input"],
+
+Cell[BoxData[
+    InterpretationBox[\("The number of terms in the det expansion is "\
+\[InvisibleSpace]9\[InvisibleSpace]","\),
+      SequenceForm[ "The number of terms in the det expansion is ", 9, ","],
+      Editable->False]], "Print",
+  CellChangeTimes -> {3.42845196440625*^9, 3.428452534390625*^9, \
+3.4284526094375*^9, 3.42845271665625*^9, 3.428454582625*^9, \
+3.4284551489375*^9, 3.428455986578125*^9, 3.428458870140625*^9}],
+
+Cell[BoxData[
+    \("and (a,b) says that the number of terms with coef a is b:"\)], "Print",\
+
+  CellChangeTimes -> {3.42845196440625*^9, 3.428452534390625*^9, \
+3.4284526094375*^9, 3.42845271665625*^9, 3.428454582625*^9, \
+3.4284551489375*^9, 3.428455986578125*^9, 3.42845887015625*^9}],
+
+Cell[BoxData[
+    \({{\(-1\), 9}}\)], "Output",
+  CellChangeTimes -> {3.42845196446875*^9, 3.428452534421875*^9, \
+3.4284526095*^9, 3.428452716703125*^9, 3.428454582640625*^9, \
+3.42845514896875*^9, 3.428455986609375*^9, 3.428458870171875*^9}]
+}, Open  ]]
+},
+FrontEndVersion->"4.2 for Microsoft Windows",
+ScreenRectangle->{{0, 1024}, {0, 685}},
+WindowToolbars->"EditBar",
+CellGrouping->Manual,
+WindowSize->{1016, 651},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+DockedCells -> FEPrivate`FrontEndResource[ "FEExpressions", \
+"CompatibilityToolbar"],
+Magnification->1.5,
+StyleDefinitions -> "Default.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 578, 11, 59, "Text"],
+Cell[2335, 64, 242, 6, 48, "Text"],
+
+Cell[CellGroupData[{
+Cell[2602, 74, 246, 4, 68, "Input"],
+Cell[2851, 80, 47, 1, 41, "Output"],
+Cell[2901, 83, 56, 1, 35, "Print"],
+Cell[2960, 86, 53, 1, 35, "Print"]
+}, Open  ]],
+Cell[3028, 90, 714, 12, 102, "Text"],
+
+Cell[CellGroupData[{
+Cell[3767, 106, 365, 6, 42, "Input"],
+Cell[4135, 114, 275, 4, 41, "Output"]
+}, Open  ]],
+Cell[4425, 121, 263, 5, 48, "Text"],
+
+Cell[CellGroupData[{
+Cell[4713, 130, 240, 4, 68, "Input"],
+Cell[4956, 136, 194, 4, 41, "Output"]
+}, Open  ]],
+Cell[5165, 143, 232, 5, 48, "Text"],
+
+Cell[CellGroupData[{
+Cell[5422, 152, 299, 5, 68, "Input"],
+Cell[5724, 159, 2490, 61, 94, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[8251, 225, 157, 3, 42, "Input"],
+Cell[8411, 230, 2142, 59, 69, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[10590, 294, 44, 1, 42, "Input"],
+Cell[10637, 297, 432, 7, 35, "Print"],
+Cell[11072, 306, 287, 5, 35, "Print"],
+Cell[11362, 313, 243, 4, 41, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

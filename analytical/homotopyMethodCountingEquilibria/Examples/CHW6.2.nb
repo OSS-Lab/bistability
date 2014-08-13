@@ -1,0 +1,4671 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[    140079,       4661]
+NotebookOptionsPosition[    128048,       4273]
+NotebookOutlinePosition[    128603,       4295]
+CellTagsIndexPosition[    128560,       4292]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["CHW Example 6.2\n",
+  FontFamily->"Arial",
+  FontSize->18,
+  FontWeight->"Plain",
+  FontVariations->{"CompatibilityType"->0},
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["(Contains all examples in Table 1)",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontVariations->{"CompatibilityType"->0},
+  FontColor->RGBColor[1, 0, 0]]
+}], "Text",
+ CellChangeTimes->{{3.428715753234375*^9, 3.428715754984375*^9}}],
+
+Cell["\<\
+Loads the chemJac command file, which contains all commands used below\
+\>", "Text",
+ CellChangeTimes->{{3.428427927331072*^9, 3.428427927654727*^9}},
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontColor->RGBColor[1, 0, 0]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"SetDirectory", "[", "\"\<C:\\CHEMmma\>\"", "]"}], "*)"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Put", " ", "in", " ", "path", " ", "to", " ", 
+    RowBox[{"chemJac", ".", "m"}]}], " ", "*)"}], "  ", "\[IndentingNewLine]",
+   
+  RowBox[{
+   RowBox[{"<<", "\"\<chemJac.m\>\""}], " "}]}]], "Input",
+ CellChangeTimes->{{3.428427755890864*^9, 3.4284277564715014`*^9}}],
+
+Cell[BoxData["\<\"C:\\\\CHEMmma\"\>"], "Output"],
+
+Cell[BoxData["\<\"chemJac is loading...\"\>"], "Print"],
+
+Cell[BoxData["\<\"chemJac has loaded\"\>"], "Print"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Table 1, (i)",
+ FontFamily->"Arial",
+ FontSize->18,
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"Clear", "[", 
+   RowBox[{
+   "S", ",", "vars", ",", "monomials", ",", " ", "j", ",", "det", ",", 
+    "core"}], "]"}]}]], "Input"],
+
+Cell[TextData[StyleBox["Inputting the stoichiometric matrix S",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"S", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "1", ",", " ", "0", ",", " ", "0", ",", " ", 
+       "2", ",", 
+       RowBox[{"-", "2"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "1", ",", " ", "0", ",", " ", "0"}], 
+      "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "0", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", 
+       "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "0", ",", " ", "1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "0", ",", " ", "0"}], "}"}]}], "}"}]}], 
+  " ", 
+  RowBox[{"(*", 
+   RowBox[{"stoichiometric", " ", "matrix"}], "*)"}], ";", " ", 
+  RowBox[{"S", "//", "MatrixForm"}]}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"-", "1"}], "1", "0", "0", "2", 
+      RowBox[{"-", "2"}]},
+     {
+      RowBox[{"-", "1"}], "1", 
+      RowBox[{"-", "1"}], "1", "0", "0"},
+     {"0", "0", 
+      RowBox[{"-", "1"}], "1", 
+      RowBox[{"-", "1"}], "1"},
+     {"1", 
+      RowBox[{"-", "1"}], "0", "0", "0", "0"},
+     {"0", "0", "1", 
+      RowBox[{"-", "1"}], "0", "0"}
+    }], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Making the mass-action flux vector 'monomials' and \
+the list of species concentrations 'vars' automatically from S",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"monomials", " ", "=", " ", 
+  RowBox[{"makeMonomial", "[", "S", "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "[", "1", "]"}], " ", 
+    RowBox[{"a", "[", "2", "]"}], " ", 
+    RowBox[{"k", "[", "1", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "4", "]"}], " ", 
+    RowBox[{"k", "[", "2", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "2", "]"}], " ", 
+    RowBox[{"a", "[", "3", "]"}], " ", 
+    RowBox[{"k", "[", "3", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "5", "]"}], " ", 
+    RowBox[{"k", "[", "4", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "3", "]"}], " ", 
+    RowBox[{"k", "[", "5", "]"}]}], ",", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+    RowBox[{"k", "[", "6", "]"}]}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"vars", "=", 
+  RowBox[{"svars", "[", "S", "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], ",", 
+   RowBox[{"a", "[", "2", "]"}], ",", 
+   RowBox[{"a", "[", "3", "]"}], ",", 
+   RowBox[{"a", "[", "4", "]"}], ",", 
+   RowBox[{"a", "[", "5", "]"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["'S.monomials' is the right hand side of the ODE",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"S", ".", "monomials"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "1", "]"}]}], " ", 
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "1", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "2", "]"}]}], "+", 
+    RowBox[{"2", " ", 
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "5", "]"}]}], "-", 
+    RowBox[{"2", " ", 
+     SuperscriptBox[
+      RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+     RowBox[{"k", "[", "6", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "1", "]"}]}], " ", 
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "1", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "2", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "3", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "5", "]"}], " ", 
+     RowBox[{"k", "[", "4", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "2", "]"}]}], " ", 
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "3", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "5", "]"}], " ", 
+     RowBox[{"k", "[", "4", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "5", "]"}]}], "+", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+     RowBox[{"k", "[", "6", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", "[", "1", "]"}], " ", 
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "1", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "2", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "3", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "5", "]"}], " ", 
+     RowBox[{"k", "[", "4", "]"}]}]}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["The Jacobian of the RHS of the ODE, and its \
+Craciun-Feinberg determinant",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"j", "=", 
+   RowBox[{"jac", "[", 
+    RowBox[{
+     RowBox[{"S", ".", "monomials"}], ",", " ", "vars"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"j", "//", "MatrixForm"}]}], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "2", "]"}]}], " ", 
+        RowBox[{"k", "[", "1", "]"}]}], "-", 
+       RowBox[{"4", " ", 
+        RowBox[{"a", "[", "1", "]"}], " ", 
+        RowBox[{"k", "[", "6", "]"}]}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "1", "]"}]}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], 
+      RowBox[{"2", " ", 
+       RowBox[{"k", "[", "5", "]"}]}], 
+      RowBox[{"k", "[", "2", "]"}], "0"},
+     {
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "2", "]"}]}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "1", "]"}]}], " ", 
+        RowBox[{"k", "[", "1", "]"}]}], "-", 
+       RowBox[{
+        RowBox[{"a", "[", "3", "]"}], " ", 
+        RowBox[{"k", "[", "3", "]"}]}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "2", "]"}]}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], 
+      RowBox[{"k", "[", "2", "]"}], 
+      RowBox[{"k", "[", "4", "]"}]},
+     {
+      RowBox[{"2", " ", 
+       RowBox[{"a", "[", "1", "]"}], " ", 
+       RowBox[{"k", "[", "6", "]"}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "3", "]"}]}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "2", "]"}]}], " ", 
+        RowBox[{"k", "[", "3", "]"}]}], "-", 
+       RowBox[{"k", "[", "5", "]"}]}], "0", 
+      RowBox[{"k", "[", "4", "]"}]},
+     {
+      RowBox[{
+       RowBox[{"a", "[", "2", "]"}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], 
+      RowBox[{
+       RowBox[{"a", "[", "1", "]"}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], "0", 
+      RowBox[{"-", 
+       RowBox[{"k", "[", "2", "]"}]}], "0"},
+     {"0", 
+      RowBox[{
+       RowBox[{"a", "[", "3", "]"}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], 
+      RowBox[{
+       RowBox[{"a", "[", "2", "]"}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], "0", 
+      RowBox[{"-", 
+       RowBox[{"k", "[", "4", "]"}]}]}
+    }], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"det", "=", 
+  RowBox[{"cfDet", "[", "j", "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "1"}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}]}], "-", 
+  RowBox[{"k", "[", "2", "]"}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"a", "[", "2", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{"k", "[", "4", "]"}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}]}], "-", 
+  RowBox[{"k", "[", "5", "]"}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "+", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{"2", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coeffs", "[", "det", "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The number of terms in the det expansion is \"\>", 
+   "\[InvisibleSpace]", "37", "\[InvisibleSpace]", "\<\",\"\>"}],
+  SequenceForm["The number of terms in the det expansion is ", 37, ","],
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"and (a,b) says that the number of terms with coef a is b:\"\
+\>"], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "4"}], ",", "10"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "1"}], ",", "25"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Core Determinant of the Jacobian of the RHS of the \
+ODE",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"core", "=", 
+  RowBox[{"coreDet", "[", 
+   RowBox[{"j", ",", "S"}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{"2", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coeffs", "[", "core", "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The number of terms in the det expansion is \"\>", 
+   "\[InvisibleSpace]", "10", "\[InvisibleSpace]", "\<\",\"\>"}],
+  SequenceForm["The number of terms in the det expansion is ", 10, ","],
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"and (a,b) says that the number of terms with coef a is b:\"\
+\>"], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "4"}], ",", "4"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "1"}], ",", "4"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Table 1, (ii)",
+ FontFamily->"Arial",
+ FontSize->18,
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", 
+  RowBox[{
+  "S", ",", "vars", ",", "monomials", ",", " ", "j", ",", "det", ",", 
+   "core"}], "]"}]], "Input"],
+
+Cell[TextData[StyleBox["Inputting the stoichiometric matrix S",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"S", "=", 
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", 
+        RowBox[{"-", "1"}], ",", "0", ",", "0", ",", "1", ",", "0", ",", 
+        "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", 
+        RowBox[{"-", "1"}], ",", 
+        RowBox[{"-", "1"}], ",", "0", ",", "0", ",", "1", ",", "0"}], "}"}], 
+      " ", ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", 
+        RowBox[{"-", "1"}], ",", 
+        RowBox[{"-", "1"}], ",", "0", ",", "0", ",", "1"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", "0", ",", "0", ",", 
+        RowBox[{"-", "1"}], ",", "0", ",", "0", ",", "0"}], "}"}]}], "}"}], 
+    "]"}]}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"stoichiometric", " ", "matrix"}], "*)"}], ";", " ", 
+  RowBox[{"S", "=", 
+   RowBox[{"makeReversible", "[", "S", "]"}]}], ";", 
+  RowBox[{"S", "//", "MatrixForm"}]}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"-", "1"}], "1", "0", "0", "0", "0", "2", 
+      RowBox[{"-", "2"}]},
+     {
+      RowBox[{"-", "1"}], "1", 
+      RowBox[{"-", "1"}], "1", "0", "0", "0", "0"},
+     {"0", "0", 
+      RowBox[{"-", "1"}], "1", 
+      RowBox[{"-", "1"}], "1", "0", "0"},
+     {"0", "0", "0", "0", 
+      RowBox[{"-", "1"}], "1", 
+      RowBox[{"-", "1"}], "1"},
+     {"1", 
+      RowBox[{"-", "1"}], "0", "0", "0", "0", "0", "0"},
+     {"0", "0", "1", 
+      RowBox[{"-", "1"}], "0", "0", "0", "0"},
+     {"0", "0", "0", "0", "1", 
+      RowBox[{"-", "1"}], "0", "0"}
+    }], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Making the mass-action flux vector 'monomials' and \
+the list of species concentrations 'vars' automatically from S",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"monomials", " ", "=", " ", 
+  RowBox[{"makeMonomial", "[", "S", "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "[", "1", "]"}], " ", 
+    RowBox[{"a", "[", "2", "]"}], " ", 
+    RowBox[{"k", "[", "1", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "5", "]"}], " ", 
+    RowBox[{"k", "[", "2", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "2", "]"}], " ", 
+    RowBox[{"a", "[", "3", "]"}], " ", 
+    RowBox[{"k", "[", "3", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "6", "]"}], " ", 
+    RowBox[{"k", "[", "4", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "3", "]"}], " ", 
+    RowBox[{"a", "[", "4", "]"}], " ", 
+    RowBox[{"k", "[", "5", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "7", "]"}], " ", 
+    RowBox[{"k", "[", "6", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "4", "]"}], " ", 
+    RowBox[{"k", "[", "7", "]"}]}], ",", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+    RowBox[{"k", "[", "8", "]"}]}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"vars", "=", 
+  RowBox[{"svars", "[", "S", "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], ",", 
+   RowBox[{"a", "[", "2", "]"}], ",", 
+   RowBox[{"a", "[", "3", "]"}], ",", 
+   RowBox[{"a", "[", "4", "]"}], ",", 
+   RowBox[{"a", "[", "5", "]"}], ",", 
+   RowBox[{"a", "[", "6", "]"}], ",", 
+   RowBox[{"a", "[", "7", "]"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["'S.monomials' is the right hand side of the ODE",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"S", ".", "monomials"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "1", "]"}]}], " ", 
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "1", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "5", "]"}], " ", 
+     RowBox[{"k", "[", "2", "]"}]}], "+", 
+    RowBox[{"2", " ", 
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "7", "]"}]}], "-", 
+    RowBox[{"2", " ", 
+     SuperscriptBox[
+      RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+     RowBox[{"k", "[", "8", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "1", "]"}]}], " ", 
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "1", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "5", "]"}], " ", 
+     RowBox[{"k", "[", "2", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "3", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "6", "]"}], " ", 
+     RowBox[{"k", "[", "4", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "2", "]"}]}], " ", 
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "3", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "6", "]"}], " ", 
+     RowBox[{"k", "[", "4", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "5", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "7", "]"}], " ", 
+     RowBox[{"k", "[", "6", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "3", "]"}]}], " ", 
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "5", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "7", "]"}], " ", 
+     RowBox[{"k", "[", "6", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "7", "]"}]}], "+", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+     RowBox[{"k", "[", "8", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", "[", "1", "]"}], " ", 
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "1", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "5", "]"}], " ", 
+     RowBox[{"k", "[", "2", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "3", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "6", "]"}], " ", 
+     RowBox[{"k", "[", "4", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "5", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "7", "]"}], " ", 
+     RowBox[{"k", "[", "6", "]"}]}]}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["The Jacobian of the RHS of the ODE, and its \
+Craciun-Feinberg determinant",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"j", "=", 
+   RowBox[{"jac", "[", 
+    RowBox[{
+     RowBox[{"S", ".", "monomials"}], ",", " ", "vars"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"j", "//", "MatrixForm"}]}], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "2", "]"}]}], " ", 
+        RowBox[{"k", "[", "1", "]"}]}], "-", 
+       RowBox[{"4", " ", 
+        RowBox[{"a", "[", "1", "]"}], " ", 
+        RowBox[{"k", "[", "8", "]"}]}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "1", "]"}]}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], "0", 
+      RowBox[{"2", " ", 
+       RowBox[{"k", "[", "7", "]"}]}], 
+      RowBox[{"k", "[", "2", "]"}], "0", "0"},
+     {
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "2", "]"}]}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "1", "]"}]}], " ", 
+        RowBox[{"k", "[", "1", "]"}]}], "-", 
+       RowBox[{
+        RowBox[{"a", "[", "3", "]"}], " ", 
+        RowBox[{"k", "[", "3", "]"}]}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "2", "]"}]}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], "0", 
+      RowBox[{"k", "[", "2", "]"}], 
+      RowBox[{"k", "[", "4", "]"}], "0"},
+     {"0", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "3", "]"}]}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "2", "]"}]}], " ", 
+        RowBox[{"k", "[", "3", "]"}]}], "-", 
+       RowBox[{
+        RowBox[{"a", "[", "4", "]"}], " ", 
+        RowBox[{"k", "[", "5", "]"}]}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "3", "]"}]}], " ", 
+       RowBox[{"k", "[", "5", "]"}]}], "0", 
+      RowBox[{"k", "[", "4", "]"}], 
+      RowBox[{"k", "[", "6", "]"}]},
+     {
+      RowBox[{"2", " ", 
+       RowBox[{"a", "[", "1", "]"}], " ", 
+       RowBox[{"k", "[", "8", "]"}]}], "0", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "4", "]"}]}], " ", 
+       RowBox[{"k", "[", "5", "]"}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "3", "]"}]}], " ", 
+        RowBox[{"k", "[", "5", "]"}]}], "-", 
+       RowBox[{"k", "[", "7", "]"}]}], "0", "0", 
+      RowBox[{"k", "[", "6", "]"}]},
+     {
+      RowBox[{
+       RowBox[{"a", "[", "2", "]"}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], 
+      RowBox[{
+       RowBox[{"a", "[", "1", "]"}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], "0", "0", 
+      RowBox[{"-", 
+       RowBox[{"k", "[", "2", "]"}]}], "0", "0"},
+     {"0", 
+      RowBox[{
+       RowBox[{"a", "[", "3", "]"}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], 
+      RowBox[{
+       RowBox[{"a", "[", "2", "]"}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], "0", "0", 
+      RowBox[{"-", 
+       RowBox[{"k", "[", "4", "]"}]}], "0"},
+     {"0", "0", 
+      RowBox[{
+       RowBox[{"a", "[", "4", "]"}], " ", 
+       RowBox[{"k", "[", "5", "]"}]}], 
+      RowBox[{
+       RowBox[{"a", "[", "3", "]"}], " ", 
+       RowBox[{"k", "[", "5", "]"}]}], "0", "0", 
+      RowBox[{"-", 
+       RowBox[{"k", "[", "6", "]"}]}]}
+    }], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"det", "=", 
+  RowBox[{"cfDet", "[", "j", "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "1"}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}]}], "-", 
+  RowBox[{"k", "[", "2", "]"}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"a", "[", "2", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{"k", "[", "4", "]"}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"a", "[", "3", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"a", "[", "2", "]"}], "2"], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "3", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"a", "[", "3", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{"k", "[", "6", "]"}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"a", "[", "2", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{"k", "[", "7", "]"}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"a", "[", "2", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{"3", " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"a", "[", "2", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "3", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"6", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "3", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coeffs", "[", "det", "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The number of terms in the det expansion is \"\>", 
+   "\[InvisibleSpace]", "138", "\[InvisibleSpace]", "\<\",\"\>"}],
+  SequenceForm["The number of terms in the det expansion is ", 138, ","],
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"and (a,b) says that the number of terms with coef a is b:\"\
+\>"], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "6"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "4"}], ",", "40"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "3"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "1"}], ",", "96"}], "}"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Core Determinant of the Jacobian of the RHS of the \
+ODE",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"core", "=", 
+  RowBox[{"coreDet", "[", 
+   RowBox[{"j", ",", "S"}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"-", "3"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"a", "[", "2", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "7", "]"}]}], "-", 
+  RowBox[{"6", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "3", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   SuperscriptBox[
+    RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}], "-", 
+  RowBox[{"4", " ", 
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}], " ", 
+   RowBox[{"k", "[", "8", "]"}]}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coeffs", "[", "core", "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The number of terms in the det expansion is \"\>", 
+   "\[InvisibleSpace]", "26", "\[InvisibleSpace]", "\<\",\"\>"}],
+  SequenceForm["The number of terms in the det expansion is ", 26, ","],
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"and (a,b) says that the number of terms with coef a is b:\"\
+\>"], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "6"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "4"}], ",", "12"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "3"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "1"}], ",", "12"}], "}"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Table 1, (iii)",
+ FontFamily->"Arial",
+ FontSize->18,
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", 
+  RowBox[{
+  "S", ",", "vars", ",", "monomials", ",", " ", "j", ",", "det", ",", 
+   "core"}], "]"}]], "Input"],
+
+Cell[TextData[StyleBox["Inputting the stoichiometric matrix S",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"S", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "1", ",", " ", "0", ",", " ", "0", ",", " ", 
+       "0", ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", " ", "2", ",", 
+       " ", 
+       RowBox[{"-", "2"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "1", ",", " ", "0", ",", " ", "0", ",", 
+       " ", "0", ",", " ", "0", ",", " ", "0", ",", " ", "0"}], "}"}], ",", 
+     " ", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "0", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "1", ",", " ", "0", ",", " ", "0", ",", 
+       " ", "0", ",", " ", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "1", ",", " ", "0", ",", " ", "0"}], 
+      "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "0", ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", 
+       " ", "0", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", 
+       " ", "0", ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", " ", "0"}],
+       "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "0", ",", " ", "1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", 
+       " ", "0", ",", " ", "0", ",", " ", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "0", ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", " ", "1", ",", 
+       RowBox[{"-", "1"}], ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", 
+       " ", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "0", ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", 
+       " ", "0", ",", " ", "1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "0", ",", " ", "0"}], "}"}]}], "}"}]}], 
+  " ", 
+  RowBox[{"(*", 
+   RowBox[{"stoichiometric", " ", "matrix"}], "*)"}], ";", " ", 
+  RowBox[{"S", "//", "MatrixForm"}]}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"-", "1"}], "1", "0", "0", "0", "0", "0", "0", "2", 
+      RowBox[{"-", "2"}]},
+     {
+      RowBox[{"-", "1"}], "1", 
+      RowBox[{"-", "1"}], "1", "0", "0", "0", "0", "0", "0"},
+     {"0", "0", 
+      RowBox[{"-", "1"}], "1", 
+      RowBox[{"-", "1"}], "1", "0", "0", "0", "0"},
+     {"0", "0", "0", "0", 
+      RowBox[{"-", "1"}], "1", 
+      RowBox[{"-", "1"}], "1", "0", "0"},
+     {"0", "0", "0", "0", "0", "0", 
+      RowBox[{"-", "1"}], "1", 
+      RowBox[{"-", "1"}], "1"},
+     {"1", 
+      RowBox[{"-", "1"}], "0", "0", "0", "0", "0", "0", "0", "0"},
+     {"0", "0", "1", 
+      RowBox[{"-", "1"}], "0", "0", "0", "0", "0", "0"},
+     {"0", "0", "0", "0", "1", 
+      RowBox[{"-", "1"}], "0", "0", "0", "0"},
+     {"0", "0", "0", "0", "0", "0", "1", 
+      RowBox[{"-", "1"}], "0", "0"}
+    }], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Making the mass-action flux vector 'monomials' and \
+the list of species concentrations 'vars' automatically from S",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"monomials", " ", "=", " ", 
+  RowBox[{"makeMonomial", "[", "S", "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "[", "1", "]"}], " ", 
+    RowBox[{"a", "[", "2", "]"}], " ", 
+    RowBox[{"k", "[", "1", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "6", "]"}], " ", 
+    RowBox[{"k", "[", "2", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "2", "]"}], " ", 
+    RowBox[{"a", "[", "3", "]"}], " ", 
+    RowBox[{"k", "[", "3", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "7", "]"}], " ", 
+    RowBox[{"k", "[", "4", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "3", "]"}], " ", 
+    RowBox[{"a", "[", "4", "]"}], " ", 
+    RowBox[{"k", "[", "5", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "8", "]"}], " ", 
+    RowBox[{"k", "[", "6", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "4", "]"}], " ", 
+    RowBox[{"a", "[", "5", "]"}], " ", 
+    RowBox[{"k", "[", "7", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "9", "]"}], " ", 
+    RowBox[{"k", "[", "8", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "5", "]"}], " ", 
+    RowBox[{"k", "[", "9", "]"}]}], ",", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+    RowBox[{"k", "[", "10", "]"}]}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"vars", "=", 
+  RowBox[{"svars", "[", "S", "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], ",", 
+   RowBox[{"a", "[", "2", "]"}], ",", 
+   RowBox[{"a", "[", "3", "]"}], ",", 
+   RowBox[{"a", "[", "4", "]"}], ",", 
+   RowBox[{"a", "[", "5", "]"}], ",", 
+   RowBox[{"a", "[", "6", "]"}], ",", 
+   RowBox[{"a", "[", "7", "]"}], ",", 
+   RowBox[{"a", "[", "8", "]"}], ",", 
+   RowBox[{"a", "[", "9", "]"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["'S.monomials' is the right hand side of the ODE",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"S", ".", "monomials"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "1", "]"}]}], " ", 
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "1", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "6", "]"}], " ", 
+     RowBox[{"k", "[", "2", "]"}]}], "+", 
+    RowBox[{"2", " ", 
+     RowBox[{"a", "[", "5", "]"}], " ", 
+     RowBox[{"k", "[", "9", "]"}]}], "-", 
+    RowBox[{"2", " ", 
+     SuperscriptBox[
+      RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+     RowBox[{"k", "[", "10", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "1", "]"}]}], " ", 
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "1", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "6", "]"}], " ", 
+     RowBox[{"k", "[", "2", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "3", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "7", "]"}], " ", 
+     RowBox[{"k", "[", "4", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "2", "]"}]}], " ", 
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "3", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "7", "]"}], " ", 
+     RowBox[{"k", "[", "4", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "5", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "8", "]"}], " ", 
+     RowBox[{"k", "[", "6", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "3", "]"}]}], " ", 
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "5", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "8", "]"}], " ", 
+     RowBox[{"k", "[", "6", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"a", "[", "5", "]"}], " ", 
+     RowBox[{"k", "[", "7", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "9", "]"}], " ", 
+     RowBox[{"k", "[", "8", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "4", "]"}]}], " ", 
+     RowBox[{"a", "[", "5", "]"}], " ", 
+     RowBox[{"k", "[", "7", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "9", "]"}], " ", 
+     RowBox[{"k", "[", "8", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "5", "]"}], " ", 
+     RowBox[{"k", "[", "9", "]"}]}], "+", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"a", "[", "1", "]"}], "2"], " ", 
+     RowBox[{"k", "[", "10", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", "[", "1", "]"}], " ", 
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "1", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "6", "]"}], " ", 
+     RowBox[{"k", "[", "2", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "3", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "7", "]"}], " ", 
+     RowBox[{"k", "[", "4", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "5", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "8", "]"}], " ", 
+     RowBox[{"k", "[", "6", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"a", "[", "5", "]"}], " ", 
+     RowBox[{"k", "[", "7", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "9", "]"}], " ", 
+     RowBox[{"k", "[", "8", "]"}]}]}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["The Jacobian of the RHS of the ODE, and its \
+Craciun-Feinberg determinant",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"j", "=", 
+   RowBox[{"jac", "[", 
+    RowBox[{
+     RowBox[{"S", ".", "monomials"}], ",", " ", "vars"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"j", "//", "MatrixForm"}]}], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "2", "]"}]}], " ", 
+        RowBox[{"k", "[", "1", "]"}]}], "-", 
+       RowBox[{"4", " ", 
+        RowBox[{"a", "[", "1", "]"}], " ", 
+        RowBox[{"k", "[", "10", "]"}]}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "1", "]"}]}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], "0", "0", 
+      RowBox[{"2", " ", 
+       RowBox[{"k", "[", "9", "]"}]}], 
+      RowBox[{"k", "[", "2", "]"}], "0", "0", "0"},
+     {
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "2", "]"}]}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "1", "]"}]}], " ", 
+        RowBox[{"k", "[", "1", "]"}]}], "-", 
+       RowBox[{
+        RowBox[{"a", "[", "3", "]"}], " ", 
+        RowBox[{"k", "[", "3", "]"}]}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "2", "]"}]}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], "0", "0", 
+      RowBox[{"k", "[", "2", "]"}], 
+      RowBox[{"k", "[", "4", "]"}], "0", "0"},
+     {"0", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "3", "]"}]}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "2", "]"}]}], " ", 
+        RowBox[{"k", "[", "3", "]"}]}], "-", 
+       RowBox[{
+        RowBox[{"a", "[", "4", "]"}], " ", 
+        RowBox[{"k", "[", "5", "]"}]}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "3", "]"}]}], " ", 
+       RowBox[{"k", "[", "5", "]"}]}], "0", "0", 
+      RowBox[{"k", "[", "4", "]"}], 
+      RowBox[{"k", "[", "6", "]"}], "0"},
+     {"0", "0", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "4", "]"}]}], " ", 
+       RowBox[{"k", "[", "5", "]"}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "3", "]"}]}], " ", 
+        RowBox[{"k", "[", "5", "]"}]}], "-", 
+       RowBox[{
+        RowBox[{"a", "[", "5", "]"}], " ", 
+        RowBox[{"k", "[", "7", "]"}]}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "4", "]"}]}], " ", 
+       RowBox[{"k", "[", "7", "]"}]}], "0", "0", 
+      RowBox[{"k", "[", "6", "]"}], 
+      RowBox[{"k", "[", "8", "]"}]},
+     {
+      RowBox[{"2", " ", 
+       RowBox[{"a", "[", "1", "]"}], " ", 
+       RowBox[{"k", "[", "10", "]"}]}], "0", "0", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "5", "]"}]}], " ", 
+       RowBox[{"k", "[", "7", "]"}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "4", "]"}]}], " ", 
+        RowBox[{"k", "[", "7", "]"}]}], "-", 
+       RowBox[{"k", "[", "9", "]"}]}], "0", "0", "0", 
+      RowBox[{"k", "[", "8", "]"}]},
+     {
+      RowBox[{
+       RowBox[{"a", "[", "2", "]"}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], 
+      RowBox[{
+       RowBox[{"a", "[", "1", "]"}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], "0", "0", "0", 
+      RowBox[{"-", 
+       RowBox[{"k", "[", "2", "]"}]}], "0", "0", "0"},
+     {"0", 
+      RowBox[{
+       RowBox[{"a", "[", "3", "]"}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], 
+      RowBox[{
+       RowBox[{"a", "[", "2", "]"}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], "0", "0", "0", 
+      RowBox[{"-", 
+       RowBox[{"k", "[", "4", "]"}]}], "0", "0"},
+     {"0", "0", 
+      RowBox[{
+       RowBox[{"a", "[", "4", "]"}], " ", 
+       RowBox[{"k", "[", "5", "]"}]}], 
+      RowBox[{
+       RowBox[{"a", "[", "3", "]"}], " ", 
+       RowBox[{"k", "[", "5", "]"}]}], "0", "0", "0", 
+      RowBox[{"-", 
+       RowBox[{"k", "[", "6", "]"}]}], "0"},
+     {"0", "0", "0", 
+      RowBox[{
+       RowBox[{"a", "[", "5", "]"}], " ", 
+       RowBox[{"k", "[", "7", "]"}]}], 
+      RowBox[{
+       RowBox[{"a", "[", "4", "]"}], " ", 
+       RowBox[{"k", "[", "7", "]"}]}], "0", "0", "0", 
+      RowBox[{"-", 
+       RowBox[{"k", "[", "8", "]"}]}]}
+    }], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"det", "=", 
+   RowBox[{"cfDet", "[", "j", "]"}]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coeffs", "[", "det", "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The number of terms in the det expansion is \"\>", 
+   "\[InvisibleSpace]", "515", "\[InvisibleSpace]", "\<\",\"\>"}],
+  SequenceForm["The number of terms in the det expansion is ", 515, ","],
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"and (a,b) says that the number of terms with coef a is b:\"\
+\>"], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "4"}], ",", "152"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "1"}], ",", "361"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Core Determinant of the Jacobian of the RHS of the \
+ODE",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"core", "=", 
+   RowBox[{"coreDet", "[", 
+    RowBox[{"j", ",", "S"}], "]"}]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coeffs", "[", "core", "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The number of terms in the det expansion is \"\>", 
+   "\[InvisibleSpace]", "68", "\[InvisibleSpace]", "\<\",\"\>"}],
+  SequenceForm["The number of terms in the det expansion is ", 68, ","],
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"and (a,b) says that the number of terms with coef a is b:\"\
+\>"], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "4"}], ",", "33"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "1"}], ",", "33"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Table 1, (iv)",
+ FontFamily->"Arial",
+ FontSize->18,
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", 
+  RowBox[{
+  "S", ",", "vars", ",", "monomials", ",", " ", "j", ",", "det", ",", 
+   "core"}], "]"}]], "Input"],
+
+Cell[TextData[StyleBox["Inputting the stoichiometric matrix S",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"S", "=", 
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", " ", 
+        RowBox[{"-", "1"}], ",", " ", "0", ",", "1", ",", "0"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", 
+        RowBox[{"-", "1"}], ",", " ", 
+        RowBox[{"-", "1"}], ",", "0", ",", "1"}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", " ", "0", ",", " ", 
+        RowBox[{"-", "1"}], ",", "0", ",", "0"}], "}"}]}], "}"}], "]"}]}], 
+  " ", 
+  RowBox[{"(*", 
+   RowBox[{"stoichiometric", " ", "matrix"}], "*)"}], ";", " ", 
+  RowBox[{"S", "=", 
+   RowBox[{"makeReversible", "[", "S", "]"}]}], ";", 
+  RowBox[{"S", "//", "MatrixForm"}]}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"-", "1"}], "1", "0", "0", "1", 
+      RowBox[{"-", "1"}]},
+     {
+      RowBox[{"-", "1"}], "1", 
+      RowBox[{"-", "1"}], "1", "0", "0"},
+     {"0", "0", 
+      RowBox[{"-", "1"}], "1", 
+      RowBox[{"-", "1"}], "1"},
+     {"1", 
+      RowBox[{"-", "1"}], "0", "0", "0", "0"},
+     {"0", "0", "1", 
+      RowBox[{"-", "1"}], "0", "0"}
+    }], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Making the mass-action flux vector 'monomials' and \
+the list of species concentrations 'vars' automatically from S",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"monomials", " ", "=", " ", 
+  RowBox[{"makeMonomial", "[", "S", "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "[", "1", "]"}], " ", 
+    RowBox[{"a", "[", "2", "]"}], " ", 
+    RowBox[{"k", "[", "1", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "4", "]"}], " ", 
+    RowBox[{"k", "[", "2", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "2", "]"}], " ", 
+    RowBox[{"a", "[", "3", "]"}], " ", 
+    RowBox[{"k", "[", "3", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "5", "]"}], " ", 
+    RowBox[{"k", "[", "4", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "3", "]"}], " ", 
+    RowBox[{"k", "[", "5", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "1", "]"}], " ", 
+    RowBox[{"k", "[", "6", "]"}]}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"vars", "=", 
+  RowBox[{"svars", "[", "S", "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], ",", 
+   RowBox[{"a", "[", "2", "]"}], ",", 
+   RowBox[{"a", "[", "3", "]"}], ",", 
+   RowBox[{"a", "[", "4", "]"}], ",", 
+   RowBox[{"a", "[", "5", "]"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["'S.monomials' is the right hand side of the ODE",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"S", ".", "monomials"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "1", "]"}]}], " ", 
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "1", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "2", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "5", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "1", "]"}], " ", 
+     RowBox[{"k", "[", "6", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "1", "]"}]}], " ", 
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "1", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "2", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "3", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "5", "]"}], " ", 
+     RowBox[{"k", "[", "4", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "2", "]"}]}], " ", 
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "3", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "5", "]"}], " ", 
+     RowBox[{"k", "[", "4", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "5", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "1", "]"}], " ", 
+     RowBox[{"k", "[", "6", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", "[", "1", "]"}], " ", 
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "1", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "2", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "3", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "5", "]"}], " ", 
+     RowBox[{"k", "[", "4", "]"}]}]}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["The Jacobian of the RHS of the ODE, and its \
+Craciun-Feinberg determinant",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"j", "=", 
+   RowBox[{"jac", "[", 
+    RowBox[{
+     RowBox[{"S", ".", "monomials"}], ",", " ", "vars"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"j", "//", "MatrixForm"}]}], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "2", "]"}]}], " ", 
+        RowBox[{"k", "[", "1", "]"}]}], "-", 
+       RowBox[{"k", "[", "6", "]"}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "1", "]"}]}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], 
+      RowBox[{"k", "[", "5", "]"}], 
+      RowBox[{"k", "[", "2", "]"}], "0"},
+     {
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "2", "]"}]}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "1", "]"}]}], " ", 
+        RowBox[{"k", "[", "1", "]"}]}], "-", 
+       RowBox[{
+        RowBox[{"a", "[", "3", "]"}], " ", 
+        RowBox[{"k", "[", "3", "]"}]}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "2", "]"}]}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], 
+      RowBox[{"k", "[", "2", "]"}], 
+      RowBox[{"k", "[", "4", "]"}]},
+     {
+      RowBox[{"k", "[", "6", "]"}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "3", "]"}]}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "2", "]"}]}], " ", 
+        RowBox[{"k", "[", "3", "]"}]}], "-", 
+       RowBox[{"k", "[", "5", "]"}]}], "0", 
+      RowBox[{"k", "[", "4", "]"}]},
+     {
+      RowBox[{
+       RowBox[{"a", "[", "2", "]"}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], 
+      RowBox[{
+       RowBox[{"a", "[", "1", "]"}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], "0", 
+      RowBox[{"-", 
+       RowBox[{"k", "[", "2", "]"}]}], "0"},
+     {"0", 
+      RowBox[{
+       RowBox[{"a", "[", "3", "]"}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], 
+      RowBox[{
+       RowBox[{"a", "[", "2", "]"}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], "0", 
+      RowBox[{"-", 
+       RowBox[{"k", "[", "4", "]"}]}]}
+    }], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"det", "=", 
+  RowBox[{"cfDet", "[", "j", "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"-", "1"}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}]}], "-", 
+  RowBox[{"k", "[", "2", "]"}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"a", "[", "2", "]"}], "2"], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}]}], "-", 
+  RowBox[{"k", "[", "4", "]"}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}]}], "-", 
+  RowBox[{"k", "[", "5", "]"}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{"k", "[", "6", "]"}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coeffs", "[", "det", "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The number of terms in the det expansion is \"\>", 
+   "\[InvisibleSpace]", "35", "\[InvisibleSpace]", "\<\",\"\>"}],
+  SequenceForm["The number of terms in the det expansion is ", 35, ","],
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"and (a,b) says that the number of terms with coef a is b:\"\
+\>"], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"-", "1"}], ",", "35"}], "}"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Core Determinant of the Jacobian of the RHS of the \
+ODE",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"core", "=", 
+  RowBox[{"coreDet", "[", 
+   RowBox[{"j", ",", "S"}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"-", 
+    RowBox[{"a", "[", "3", "]"}]}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "5", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "3", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "1", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}], "-", 
+  RowBox[{
+   RowBox[{"k", "[", "2", "]"}], " ", 
+   RowBox[{"k", "[", "4", "]"}], " ", 
+   RowBox[{"k", "[", "6", "]"}]}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coeffs", "[", "core", "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The number of terms in the det expansion is \"\>", 
+   "\[InvisibleSpace]", "8", "\[InvisibleSpace]", "\<\",\"\>"}],
+  SequenceForm["The number of terms in the det expansion is ", 8, ","],
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"and (a,b) says that the number of terms with coef a is b:\"\
+\>"], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"-", "1"}], ",", "8"}], "}"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Table 1, (v)",
+ FontFamily->"Arial",
+ FontSize->18,
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", 
+  RowBox[{
+  "S", ",", "vars", ",", "monomials", ",", " ", "j", ",", "det", ",", 
+   "core"}], "]"}]], "Input"],
+
+Cell[TextData[StyleBox["Inputting the stoichiometric matrix S",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"S", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "1", ",", " ", "0", ",", " ", "0", ",", 
+       " ", "0", ",", " ", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "1"}], ",", "1", ",", " ", "0", ",", " ", "0", ",", " ", 
+       "1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "0", ",", " ", "0"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "0", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "1", ",", " ", "1", ",", " ", 
+       RowBox[{"-", "1"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+      "0", ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", 
+       " ", "0", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", 
+       " ", "0", ",", " ", "0", ",", " ", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "0", ",", " ", "1", ",", " ", 
+       RowBox[{"-", "1"}], ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", 
+       " ", "0"}], "}"}]}], "}"}]}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"stoichiometric", " ", "matrix"}], "*)"}], ";", " ", 
+  RowBox[{"S", "//", "MatrixForm"}]}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{"-", "1"}], "1", 
+      RowBox[{"-", "1"}], "1", "0", "0", "0", "0"},
+     {
+      RowBox[{"-", "1"}], "1", "0", "0", "1", 
+      RowBox[{"-", "1"}], "0", "0"},
+     {"0", "0", 
+      RowBox[{"-", "1"}], "1", 
+      RowBox[{"-", "1"}], "1", 
+      RowBox[{"-", "1"}], "1"},
+     {"0", "0", "0", "0", 
+      RowBox[{"-", "1"}], "1", "1", 
+      RowBox[{"-", "1"}]},
+     {"0", "0", "0", "0", "0", "0", 
+      RowBox[{"-", "1"}], "1"},
+     {"1", 
+      RowBox[{"-", "1"}], "0", "0", "0", "0", "0", "0"},
+     {"0", "0", "1", 
+      RowBox[{"-", "1"}], "0", "0", "0", "0"}
+    }], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Making the mass-action flux vector 'monomials' and \
+the list of species concentrations 'vars' automatically from S",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"monomials", " ", "=", " ", 
+  RowBox[{"makeMonomial", "[", "S", "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "[", "1", "]"}], " ", 
+    RowBox[{"a", "[", "2", "]"}], " ", 
+    RowBox[{"k", "[", "1", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "6", "]"}], " ", 
+    RowBox[{"k", "[", "2", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "1", "]"}], " ", 
+    RowBox[{"a", "[", "3", "]"}], " ", 
+    RowBox[{"k", "[", "3", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "7", "]"}], " ", 
+    RowBox[{"k", "[", "4", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "3", "]"}], " ", 
+    RowBox[{"a", "[", "4", "]"}], " ", 
+    RowBox[{"k", "[", "5", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "2", "]"}], " ", 
+    RowBox[{"k", "[", "6", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "3", "]"}], " ", 
+    RowBox[{"a", "[", "5", "]"}], " ", 
+    RowBox[{"k", "[", "7", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"a", "[", "4", "]"}], " ", 
+    RowBox[{"k", "[", "8", "]"}]}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"vars", "=", 
+  RowBox[{"svars", "[", "S", "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"a", "[", "1", "]"}], ",", 
+   RowBox[{"a", "[", "2", "]"}], ",", 
+   RowBox[{"a", "[", "3", "]"}], ",", 
+   RowBox[{"a", "[", "4", "]"}], ",", 
+   RowBox[{"a", "[", "5", "]"}], ",", 
+   RowBox[{"a", "[", "6", "]"}], ",", 
+   RowBox[{"a", "[", "7", "]"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["'S.monomials' is the right hand side of the ODE",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"S", ".", "monomials"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "1", "]"}]}], " ", 
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "1", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "6", "]"}], " ", 
+     RowBox[{"k", "[", "2", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "1", "]"}], " ", 
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "3", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "7", "]"}], " ", 
+     RowBox[{"k", "[", "4", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "1", "]"}]}], " ", 
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "1", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "6", "]"}], " ", 
+     RowBox[{"k", "[", "2", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "5", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "6", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "1", "]"}]}], " ", 
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "3", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "7", "]"}], " ", 
+     RowBox[{"k", "[", "4", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "5", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "6", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"a", "[", "5", "]"}], " ", 
+     RowBox[{"k", "[", "7", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "8", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "3", "]"}]}], " ", 
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "5", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "6", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"a", "[", "5", "]"}], " ", 
+     RowBox[{"k", "[", "7", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "8", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      RowBox[{"a", "[", "3", "]"}]}], " ", 
+     RowBox[{"a", "[", "5", "]"}], " ", 
+     RowBox[{"k", "[", "7", "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"a", "[", "4", "]"}], " ", 
+     RowBox[{"k", "[", "8", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", "[", "1", "]"}], " ", 
+     RowBox[{"a", "[", "2", "]"}], " ", 
+     RowBox[{"k", "[", "1", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "6", "]"}], " ", 
+     RowBox[{"k", "[", "2", "]"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"a", "[", "1", "]"}], " ", 
+     RowBox[{"a", "[", "3", "]"}], " ", 
+     RowBox[{"k", "[", "3", "]"}]}], "-", 
+    RowBox[{
+     RowBox[{"a", "[", "7", "]"}], " ", 
+     RowBox[{"k", "[", "4", "]"}]}]}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["The Jacobian of the RHS of the ODE, and its \
+Craciun-Feinberg determinant",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"j", "=", 
+   RowBox[{"jac", "[", 
+    RowBox[{
+     RowBox[{"S", ".", "monomials"}], ",", " ", "vars"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"j", "//", "MatrixForm"}]}], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "2", "]"}]}], " ", 
+        RowBox[{"k", "[", "1", "]"}]}], "-", 
+       RowBox[{
+        RowBox[{"a", "[", "3", "]"}], " ", 
+        RowBox[{"k", "[", "3", "]"}]}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "1", "]"}]}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "1", "]"}]}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], "0", "0", 
+      RowBox[{"k", "[", "2", "]"}], 
+      RowBox[{"k", "[", "4", "]"}]},
+     {
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "2", "]"}]}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "1", "]"}]}], " ", 
+        RowBox[{"k", "[", "1", "]"}]}], "-", 
+       RowBox[{"k", "[", "6", "]"}]}], 
+      RowBox[{
+       RowBox[{"a", "[", "4", "]"}], " ", 
+       RowBox[{"k", "[", "5", "]"}]}], 
+      RowBox[{
+       RowBox[{"a", "[", "3", "]"}], " ", 
+       RowBox[{"k", "[", "5", "]"}]}], "0", 
+      RowBox[{"k", "[", "2", "]"}], "0"},
+     {
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "3", "]"}]}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], 
+      RowBox[{"k", "[", "6", "]"}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "1", "]"}]}], " ", 
+        RowBox[{"k", "[", "3", "]"}]}], "-", 
+       RowBox[{
+        RowBox[{"a", "[", "4", "]"}], " ", 
+        RowBox[{"k", "[", "5", "]"}]}], "-", 
+       RowBox[{
+        RowBox[{"a", "[", "5", "]"}], " ", 
+        RowBox[{"k", "[", "7", "]"}]}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "3", "]"}]}], " ", 
+        RowBox[{"k", "[", "5", "]"}]}], "+", 
+       RowBox[{"k", "[", "8", "]"}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "3", "]"}]}], " ", 
+       RowBox[{"k", "[", "7", "]"}]}], "0", 
+      RowBox[{"k", "[", "4", "]"}]},
+     {"0", 
+      RowBox[{"k", "[", "6", "]"}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "4", "]"}]}], " ", 
+        RowBox[{"k", "[", "5", "]"}]}], "+", 
+       RowBox[{
+        RowBox[{"a", "[", "5", "]"}], " ", 
+        RowBox[{"k", "[", "7", "]"}]}]}], 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", 
+         RowBox[{"a", "[", "3", "]"}]}], " ", 
+        RowBox[{"k", "[", "5", "]"}]}], "-", 
+       RowBox[{"k", "[", "8", "]"}]}], 
+      RowBox[{
+       RowBox[{"a", "[", "3", "]"}], " ", 
+       RowBox[{"k", "[", "7", "]"}]}], "0", "0"},
+     {"0", "0", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "5", "]"}]}], " ", 
+       RowBox[{"k", "[", "7", "]"}]}], 
+      RowBox[{"k", "[", "8", "]"}], 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"a", "[", "3", "]"}]}], " ", 
+       RowBox[{"k", "[", "7", "]"}]}], "0", "0"},
+     {
+      RowBox[{
+       RowBox[{"a", "[", "2", "]"}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], 
+      RowBox[{
+       RowBox[{"a", "[", "1", "]"}], " ", 
+       RowBox[{"k", "[", "1", "]"}]}], "0", "0", "0", 
+      RowBox[{"-", 
+       RowBox[{"k", "[", "2", "]"}]}], "0"},
+     {
+      RowBox[{
+       RowBox[{"a", "[", "3", "]"}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], "0", 
+      RowBox[{
+       RowBox[{"a", "[", "1", "]"}], " ", 
+       RowBox[{"k", "[", "3", "]"}]}], "0", "0", "0", 
+      RowBox[{"-", 
+       RowBox[{"k", "[", "4", "]"}]}]}
+    }], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"det", "=", 
+   RowBox[{"cfDet", "[", "j", "]"}]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coeffs", "[", "det", "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The number of terms in the det expansion is \"\>", 
+   "\[InvisibleSpace]", "167", "\[InvisibleSpace]", "\<\",\"\>"}],
+  SequenceForm["The number of terms in the det expansion is ", 167, ","],
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"and (a,b) says that the number of terms with coef a is b:\"\
+\>"], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2"}], ",", "20"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "1"}], ",", "146"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Core Determinant of the Jacobian of the RHS of the \
+ODE",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"core", "=", 
+   RowBox[{"coreDet", "[", 
+    RowBox[{"j", ",", "S"}], "]"}]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coeffs", "[", "core", "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The number of terms in the det expansion is \"\>", 
+   "\[InvisibleSpace]", "34", "\[InvisibleSpace]", "\<\",\"\>"}],
+  SequenceForm["The number of terms in the det expansion is ", 34, ","],
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"and (a,b) says that the number of terms with coef a is b:\"\
+\>"], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2"}], ",", "8"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "1"}], ",", "25"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[{
+ StyleBox["Table 1, (vi)\n",
+  FontFamily->"Arial",
+  FontSize->18,
+  FontColor->RGBColor[1, 0, 0]],
+ StyleBox["(In the following three examples (vi), (vii) and (viii) the flux \
+vector needs to be entered manually, because our software can't make the flux \
+vector when a species occurs on both sides of a reaction.  This is because \
+the stoichiometric matrix does not carry all the information for such \
+reactions.)",
+  FontFamily->"Arial",
+  FontColor->RGBColor[1, 0, 0]]
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", 
+  RowBox[{
+  "S", ",", "vars", ",", "monomials", ",", " ", "j", ",", "det", ",", 
+   "core"}], "]"}]], "Input"],
+
+Cell[TextData[StyleBox["Inputting the stoichiometric matrix S",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"S", "=", " ", 
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", 
+        RowBox[{"-", "1"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "}"}], "]"}]}], 
+  RowBox[{"(*", 
+   RowBox[{"stoichiometric", " ", "matrix"}], "*)"}], ";", " ", 
+  RowBox[{"S", "//", "MatrixForm"}]}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", 
+      RowBox[{"-", "1"}]},
+     {
+      RowBox[{"-", "1"}], "1"}
+    }], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"monomials", " ", "=", " ", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"k1", " ", "a", " ", "b"}], ",", " ", 
+    RowBox[{"k2", " ", 
+     RowBox[{"a", "^", "2"}]}]}], "}"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"a", " ", "b", " ", "k1"}], ",", 
+   RowBox[{
+    SuperscriptBox["a", "2"], " ", "k2"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"vars", "=", 
+  RowBox[{"{", 
+   RowBox[{"a", ",", "b"}], "}"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"a", ",", "b"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["'S.monomials' is the right hand side of the ODE",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"S", ".", "monomials"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", " ", "b", " ", "k1"}], "-", 
+    RowBox[{
+     SuperscriptBox["a", "2"], " ", "k2"}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "a"}], " ", "b", " ", "k1"}], "+", 
+    RowBox[{
+     SuperscriptBox["a", "2"], " ", "k2"}]}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["The Jacobian of the RHS of the ODE, and its \
+Craciun-Feinberg determinant",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"j", "=", 
+   RowBox[{"jac", "[", 
+    RowBox[{
+     RowBox[{"S", ".", "monomials"}], ",", " ", "vars"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"j", "//", "MatrixForm"}]}], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       RowBox[{"b", " ", "k1"}], "-", 
+       RowBox[{"2", " ", "a", " ", "k2"}]}], 
+      RowBox[{"a", " ", "k1"}]},
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "b"}], " ", "k1"}], "+", 
+       RowBox[{"2", " ", "a", " ", "k2"}]}], 
+      RowBox[{
+       RowBox[{"-", "a"}], " ", "k1"}]}
+    }], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"det", "=", 
+  RowBox[{"cfDet", "[", "j", "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"1", "+", 
+  RowBox[{"a", " ", "k1"}], "-", 
+  RowBox[{"b", " ", "k1"}], "+", 
+  RowBox[{"2", " ", "a", " ", "k2"}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coeffs", "[", "det", "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The number of terms in the det expansion is \"\>", 
+   "\[InvisibleSpace]", "4", "\[InvisibleSpace]", "\<\",\"\>"}],
+  SequenceForm["The number of terms in the det expansion is ", 4, ","],
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"and (a,b) says that the number of terms with coef a is b:\"\
+\>"], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "1"}], "}"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Core Determinant of the Jacobian of the RHS of the \
+ODE",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"core", "=", 
+  RowBox[{"coreDet", "[", 
+   RowBox[{"j", ",", "S"}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"a", " ", "k1"}], "-", 
+  RowBox[{"b", " ", "k1"}], "+", 
+  RowBox[{"2", " ", "a", " ", "k2"}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coeffs", "[", "core", "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The number of terms in the det expansion is \"\>", 
+   "\[InvisibleSpace]", "3", "\[InvisibleSpace]", "\<\",\"\>"}],
+  SequenceForm["The number of terms in the det expansion is ", 3, ","],
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"and (a,b) says that the number of terms with coef a is b:\"\
+\>"], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "1"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "1"}], "}"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Table 1, (vii)",
+ FontFamily->"Arial",
+ FontSize->18,
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", 
+  RowBox[{
+  "S", ",", "vars", ",", "monomials", ",", " ", "j", ",", "det", ",", 
+   "core"}], "]"}]], "Input"],
+
+Cell[TextData[StyleBox["Inputting the stoichiometric matrix S",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"S", "=", " ", 
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"1", ",", 
+        RowBox[{"-", "1"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "}"}], "]"}]}], 
+  RowBox[{"(*", 
+   RowBox[{"stoichiometric", " ", "matrix"}], "*)"}], ";", " ", 
+  RowBox[{"S", "//", "MatrixForm"}]}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"1", 
+      RowBox[{"-", "1"}]},
+     {
+      RowBox[{"-", "1"}], "1"}
+    }], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"monomials", " ", "=", " ", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"k1", " ", 
+     RowBox[{"a", "^", "2"}], " ", "b"}], ",", " ", 
+    RowBox[{"k2", " ", 
+     RowBox[{"a", "^", "3"}]}]}], "}"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    SuperscriptBox["a", "2"], " ", "b", " ", "k1"}], ",", 
+   RowBox[{
+    SuperscriptBox["a", "3"], " ", "k2"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"vars", "=", 
+  RowBox[{"{", 
+   RowBox[{"a", ",", "b"}], "}"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"a", ",", "b"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["'S.monomials' is the right hand side of the ODE",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"S", ".", "monomials"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["a", "2"], " ", "b", " ", "k1"}], "-", 
+    RowBox[{
+     SuperscriptBox["a", "3"], " ", "k2"}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      SuperscriptBox["a", "2"]}], " ", "b", " ", "k1"}], "+", 
+    RowBox[{
+     SuperscriptBox["a", "3"], " ", "k2"}]}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["The Jacobian of the RHS of the ODE, and its \
+Craciun-Feinberg determinant",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"j", "=", 
+   RowBox[{"jac", "[", 
+    RowBox[{
+     RowBox[{"S", ".", "monomials"}], ",", " ", "vars"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"j", "//", "MatrixForm"}]}], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       RowBox[{"2", " ", "a", " ", "b", " ", "k1"}], "-", 
+       RowBox[{"3", " ", 
+        SuperscriptBox["a", "2"], " ", "k2"}]}], 
+      RowBox[{
+       SuperscriptBox["a", "2"], " ", "k1"}]},
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "2"}], " ", "a", " ", "b", " ", "k1"}], "+", 
+       RowBox[{"3", " ", 
+        SuperscriptBox["a", "2"], " ", "k2"}]}], 
+      RowBox[{
+       RowBox[{"-", 
+        SuperscriptBox["a", "2"]}], " ", "k1"}]}
+    }], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"det", "=", 
+  RowBox[{"cfDet", "[", "j", "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"1", "+", 
+  RowBox[{
+   SuperscriptBox["a", "2"], " ", "k1"}], "-", 
+  RowBox[{"2", " ", "a", " ", "b", " ", "k1"}], "+", 
+  RowBox[{"3", " ", 
+   SuperscriptBox["a", "2"], " ", "k2"}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coeffs", "[", "det", "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The number of terms in the det expansion is \"\>", 
+   "\[InvisibleSpace]", "4", "\[InvisibleSpace]", "\<\",\"\>"}],
+  SequenceForm["The number of terms in the det expansion is ", 4, ","],
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"and (a,b) says that the number of terms with coef a is b:\"\
+\>"], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "1"}], "}"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Core Determinant of the Jacobian of the RHS of the \
+ODE",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"core", "=", 
+  RowBox[{"coreDet", "[", 
+   RowBox[{"j", ",", "S"}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SuperscriptBox["a", "2"], " ", "k1"}], "-", 
+  RowBox[{"2", " ", "a", " ", "b", " ", "k1"}], "+", 
+  RowBox[{"3", " ", 
+   SuperscriptBox["a", "2"], " ", "k2"}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coeffs", "[", "core", "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The number of terms in the det expansion is \"\>", 
+   "\[InvisibleSpace]", "3", "\[InvisibleSpace]", "\<\",\"\>"}],
+  SequenceForm["The number of terms in the det expansion is ", 3, ","],
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"and (a,b) says that the number of terms with coef a is b:\"\
+\>"], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "1"}], "}"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Table 1, (viii)",
+ FontFamily->"Arial",
+ FontSize->18,
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", 
+  RowBox[{
+  "S", ",", "vars", ",", "monomials", ",", " ", "j", ",", "det", ",", 
+   "core"}], "]"}]], "Input"],
+
+Cell[TextData[StyleBox["Inputting the stoichiometric matrix S",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"S", "=", " ", 
+   RowBox[{"Transpose", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"2", ",", 
+        RowBox[{"-", "2"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"-", "2"}], ",", "2"}], "}"}]}], "}"}], "]"}]}], 
+  RowBox[{"(*", 
+   RowBox[{"stoichiometric", " ", "matrix"}], "*)"}], ";", " ", 
+  RowBox[{"S", "//", "MatrixForm"}]}]], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"2", 
+      RowBox[{"-", "2"}]},
+     {
+      RowBox[{"-", "2"}], "2"}
+    }], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"monomials", " ", "=", " ", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"k1", " ", "a", " ", 
+     RowBox[{"b", "^", "2"}]}], ",", " ", 
+    RowBox[{"k2", " ", 
+     RowBox[{"a", "^", "3"}]}]}], "}"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"a", " ", 
+    SuperscriptBox["b", "2"], " ", "k1"}], ",", 
+   RowBox[{
+    SuperscriptBox["a", "3"], " ", "k2"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"vars", "=", 
+  RowBox[{"{", 
+   RowBox[{"a", ",", "b"}], "}"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"a", ",", "b"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["'S.monomials' is the right hand side of the ODE",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"S", ".", "monomials"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"2", " ", "a", " ", 
+     SuperscriptBox["b", "2"], " ", "k1"}], "-", 
+    RowBox[{"2", " ", 
+     SuperscriptBox["a", "3"], " ", "k2"}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "2"}], " ", "a", " ", 
+     SuperscriptBox["b", "2"], " ", "k1"}], "+", 
+    RowBox[{"2", " ", 
+     SuperscriptBox["a", "3"], " ", "k2"}]}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["The Jacobian of the RHS of the ODE, and its \
+Craciun-Feinberg determinant",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"j", "=", 
+   RowBox[{"jac", "[", 
+    RowBox[{
+     RowBox[{"S", ".", "monomials"}], ",", " ", "vars"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"j", "//", "MatrixForm"}]}], "Input"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {
+      RowBox[{
+       RowBox[{"2", " ", 
+        SuperscriptBox["b", "2"], " ", "k1"}], "-", 
+       RowBox[{"6", " ", 
+        SuperscriptBox["a", "2"], " ", "k2"}]}], 
+      RowBox[{"4", " ", "a", " ", "b", " ", "k1"}]},
+     {
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "2"}], " ", 
+        SuperscriptBox["b", "2"], " ", "k1"}], "+", 
+       RowBox[{"6", " ", 
+        SuperscriptBox["a", "2"], " ", "k2"}]}], 
+      RowBox[{
+       RowBox[{"-", "4"}], " ", "a", " ", "b", " ", "k1"}]}
+    }], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"det", "=", 
+  RowBox[{"cfDet", "[", "j", "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"1", "+", 
+  RowBox[{"4", " ", "a", " ", "b", " ", "k1"}], "-", 
+  RowBox[{"2", " ", 
+   SuperscriptBox["b", "2"], " ", "k1"}], "+", 
+  RowBox[{"6", " ", 
+   SuperscriptBox["a", "2"], " ", "k2"}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coeffs", "[", "det", "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The number of terms in the det expansion is \"\>", 
+   "\[InvisibleSpace]", "4", "\[InvisibleSpace]", "\<\",\"\>"}],
+  SequenceForm["The number of terms in the det expansion is ", 4, ","],
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"and (a,b) says that the number of terms with coef a is b:\"\
+\>"], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "1"}], "}"}]}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Core Determinant of the Jacobian of the RHS of the \
+ODE",
+ FontFamily->"Arial",
+ FontWeight->"Plain",
+ FontVariations->{"CompatibilityType"->0},
+ FontColor->RGBColor[1, 0, 0]]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"core", "=", 
+  RowBox[{"coreDet", "[", 
+   RowBox[{"j", ",", "S"}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"4", " ", "a", " ", "b", " ", "k1"}], "-", 
+  RowBox[{"2", " ", 
+   SuperscriptBox["b", "2"], " ", "k1"}], "+", 
+  RowBox[{"6", " ", 
+   SuperscriptBox["a", "2"], " ", "k2"}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"coeffs", "[", "core", "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The number of terms in the det expansion is \"\>", 
+   "\[InvisibleSpace]", "3", "\[InvisibleSpace]", "\<\",\"\>"}],
+  SequenceForm["The number of terms in the det expansion is ", 3, ","],
+  Editable->False]], "Print"],
+
+Cell[BoxData["\<\"and (a,b) says that the number of terms with coef a is b:\"\
+\>"], "Print"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2"}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "1"}], "}"}]}], "}"}]], "Output"]
+}, Open  ]]
+},
+WindowToolbars->"EditBar",
+CellGrouping->Manual,
+WindowSize->{1016, 651},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+DockedCells->FEPrivate`FrontEndResource[
+ "FEExpressions", "CompatibilityToolbar"],
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+Magnification->1.5,
+FrontEndVersion->"6.0 for Microsoft Windows (32-bit) (June 19, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 433, 13, 79, "Text"],
+Cell[1004, 36, 235, 6, 42, "Text"],
+Cell[CellGroupData[{
+Cell[1264, 46, 424, 10, 71, "Input"],
+Cell[1691, 58, 48, 0, 42, "Output"],
+Cell[1742, 60, 55, 0, 32, "Print"],
+Cell[1800, 62, 52, 0, 32, "Print"]
+}, Open  ]],
+Cell[1867, 65, 116, 3, 53, "Text"],
+Cell[1986, 70, 188, 5, 71, "Input"],
+Cell[2177, 77, 191, 4, 42, "Text"],
+Cell[CellGroupData[{
+Cell[2393, 85, 1051, 29, 98, "Input"],
+Cell[3447, 116, 514, 18, 115, "Output"]
+}, Open  ]],
+Cell[3976, 137, 269, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[4270, 146, 106, 2, 42, "Input"],
+Cell[4379, 150, 724, 23, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5140, 178, 84, 2, 42, "Input"],
+Cell[5227, 182, 248, 7, 41, "Output"]
+}, Open  ]],
+Cell[5490, 192, 201, 4, 48, "Text"],
+Cell[CellGroupData[{
+Cell[5716, 200, 57, 1, 42, "Input"],
+Cell[5776, 203, 2063, 66, 119, "Output"]
+}, Open  ]],
+Cell[7854, 272, 228, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[8107, 281, 230, 7, 68, "Input"],
+Cell[8340, 290, 2233, 73, 124, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10610, 368, 83, 2, 42, "Input"],
+Cell[10696, 372, 5027, 150, 220, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15760, 527, 61, 1, 42, "Input"],
+Cell[15824, 530, 269, 5, 35, "Print"],
+Cell[16096, 537, 93, 1, 35, "Print"],
+Cell[16192, 540, 354, 13, 41, "Output"]
+}, Open  ]],
+Cell[16561, 556, 210, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[16796, 565, 110, 3, 42, "Input"],
+Cell[16909, 570, 1939, 56, 93, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18885, 631, 62, 1, 42, "Input"],
+Cell[18950, 634, 269, 5, 35, "Print"],
+Cell[19222, 641, 93, 1, 35, "Print"],
+Cell[19318, 644, 352, 13, 41, "Output"]
+}, Open  ]],
+Cell[19685, 660, 117, 3, 59, "Text"],
+Cell[19805, 665, 149, 4, 42, "Input"],
+Cell[19957, 671, 191, 4, 48, "Text"],
+Cell[CellGroupData[{
+Cell[20173, 679, 984, 28, 120, "Input"],
+Cell[21160, 709, 724, 23, 187, "Output"]
+}, Open  ]],
+Cell[21899, 735, 269, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[22193, 744, 106, 2, 42, "Input"],
+Cell[22302, 748, 952, 30, 67, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23291, 783, 84, 2, 42, "Input"],
+Cell[23378, 787, 326, 9, 41, "Output"]
+}, Open  ]],
+Cell[23719, 799, 201, 4, 48, "Text"],
+Cell[CellGroupData[{
+Cell[23945, 807, 57, 1, 42, "Input"],
+Cell[24005, 810, 2818, 90, 144, "Output"]
+}, Open  ]],
+Cell[26838, 903, 228, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[27091, 912, 230, 7, 68, "Input"],
+Cell[27324, 921, 3150, 101, 187, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30511, 1027, 83, 2, 42, "Input"],
+Cell[30597, 1031, 24745, 720, 1060, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[55379, 1756, 61, 1, 42, "Input"],
+Cell[55443, 1759, 271, 5, 35, "Print"],
+Cell[55717, 1766, 93, 1, 35, "Print"],
+Cell[55813, 1769, 375, 14, 41, "Output"]
+}, Open  ]],
+Cell[56203, 1786, 210, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[56438, 1795, 110, 3, 42, "Input"],
+Cell[56551, 1800, 6559, 185, 297, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[63147, 1990, 62, 1, 42, "Input"],
+Cell[63212, 1993, 269, 5, 35, "Print"],
+Cell[63484, 2000, 93, 1, 35, "Print"],
+Cell[63580, 2003, 375, 14, 41, "Output"]
+}, Open  ]],
+Cell[63970, 2020, 118, 3, 59, "Text"],
+Cell[64091, 2025, 149, 4, 42, "Input"],
+Cell[64243, 2031, 191, 4, 48, "Text"],
+Cell[CellGroupData[{
+Cell[64459, 2039, 2336, 55, 172, "Input"],
+Cell[66798, 2096, 974, 28, 231, "Output"]
+}, Open  ]],
+Cell[67787, 2127, 269, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[68081, 2136, 106, 2, 42, "Input"],
+Cell[68190, 2140, 1181, 37, 67, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[69408, 2182, 84, 2, 42, "Input"],
+Cell[69495, 2186, 404, 11, 41, "Output"]
+}, Open  ]],
+Cell[69914, 2200, 201, 4, 48, "Text"],
+Cell[CellGroupData[{
+Cell[70140, 2208, 57, 1, 42, "Input"],
+Cell[70200, 2211, 3575, 114, 169, "Output"]
+}, Open  ]],
+Cell[73790, 2328, 228, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[74043, 2337, 230, 7, 68, "Input"],
+Cell[74276, 2346, 4109, 129, 231, "Output"]
+}, Open  ]],
+Cell[78400, 2478, 102, 3, 42, "Input"],
+Cell[CellGroupData[{
+Cell[78527, 2485, 61, 1, 42, "Input"],
+Cell[78591, 2488, 271, 5, 35, "Print"],
+Cell[78865, 2495, 93, 1, 35, "Print"],
+Cell[78961, 2498, 356, 13, 41, "Output"]
+}, Open  ]],
+Cell[79332, 2514, 210, 5, 48, "Text"],
+Cell[79545, 2521, 130, 4, 42, "Input"],
+Cell[CellGroupData[{
+Cell[79700, 2529, 62, 1, 42, "Input"],
+Cell[79765, 2532, 269, 5, 35, "Print"],
+Cell[80037, 2539, 93, 1, 35, "Print"],
+Cell[80133, 2542, 354, 13, 41, "Output"]
+}, Open  ]],
+Cell[80502, 2558, 117, 3, 59, "Text"],
+Cell[80622, 2563, 149, 4, 42, "Input"],
+Cell[80774, 2569, 191, 4, 48, "Text"],
+Cell[CellGroupData[{
+Cell[80990, 2577, 768, 22, 94, "Input"],
+Cell[81761, 2601, 514, 18, 143, "Output"]
+}, Open  ]],
+Cell[82290, 2622, 269, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[82584, 2631, 106, 2, 42, "Input"],
+Cell[82693, 2635, 697, 22, 41, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[83427, 2662, 84, 2, 42, "Input"],
+Cell[83514, 2666, 248, 7, 41, "Output"]
+}, Open  ]],
+Cell[83777, 2676, 201, 4, 48, "Text"],
+Cell[CellGroupData[{
+Cell[84003, 2684, 57, 1, 42, "Input"],
+Cell[84063, 2687, 1987, 64, 116, "Output"]
+}, Open  ]],
+Cell[86065, 2754, 228, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[86318, 2763, 230, 7, 68, "Input"],
+Cell[86551, 2772, 2061, 68, 143, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[88649, 2845, 83, 2, 42, "Input"],
+Cell[88735, 2849, 4097, 126, 192, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[92869, 2980, 61, 1, 42, "Input"],
+Cell[92933, 2983, 269, 5, 35, "Print"],
+Cell[93205, 2990, 93, 1, 35, "Print"],
+Cell[93301, 2993, 118, 4, 41, "Output"]
+}, Open  ]],
+Cell[93434, 3000, 210, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[93669, 3009, 110, 3, 42, "Input"],
+Cell[93782, 3014, 1324, 40, 66, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[95143, 3059, 62, 1, 42, "Input"],
+Cell[95208, 3062, 267, 5, 35, "Print"],
+Cell[95478, 3069, 93, 1, 35, "Print"],
+Cell[95574, 3072, 117, 4, 41, "Output"]
+}, Open  ]],
+Cell[95706, 3079, 116, 3, 59, "Text"],
+Cell[95825, 3084, 149, 4, 42, "Input"],
+Cell[95977, 3090, 191, 4, 48, "Text"],
+Cell[CellGroupData[{
+Cell[96193, 3098, 1640, 39, 146, "Input"],
+Cell[97836, 3139, 746, 24, 187, "Output"]
+}, Open  ]],
+Cell[98597, 3166, 269, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[98891, 3175, 106, 2, 42, "Input"],
+Cell[99000, 3179, 965, 30, 66, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[100002, 3214, 84, 2, 42, "Input"],
+Cell[100089, 3218, 326, 9, 41, "Output"]
+}, Open  ]],
+Cell[100430, 3230, 201, 4, 48, "Text"],
+Cell[CellGroupData[{
+Cell[100656, 3238, 57, 1, 42, "Input"],
+Cell[100716, 3241, 3081, 98, 141, "Output"]
+}, Open  ]],
+Cell[103812, 3342, 228, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[104065, 3351, 230, 7, 68, "Input"],
+Cell[104298, 3360, 3632, 117, 187, "Output"]
+}, Open  ]],
+Cell[107945, 3480, 102, 3, 42, "Input"],
+Cell[CellGroupData[{
+Cell[108072, 3487, 61, 1, 42, "Input"],
+Cell[108136, 3490, 271, 5, 35, "Print"],
+Cell[108410, 3497, 93, 1, 35, "Print"],
+Cell[108506, 3500, 275, 10, 41, "Output"]
+}, Open  ]],
+Cell[108796, 3513, 210, 5, 48, "Text"],
+Cell[109009, 3520, 130, 4, 42, "Input"],
+Cell[CellGroupData[{
+Cell[109164, 3528, 62, 1, 42, "Input"],
+Cell[109229, 3531, 269, 5, 35, "Print"],
+Cell[109501, 3538, 93, 1, 35, "Print"],
+Cell[109597, 3541, 273, 10, 41, "Output"]
+}, Open  ]],
+Cell[109885, 3554, 504, 12, 140, "Text"],
+Cell[110392, 3568, 149, 4, 42, "Input"],
+Cell[110544, 3574, 191, 4, 48, "Text"],
+Cell[CellGroupData[{
+Cell[110760, 3582, 433, 14, 68, "Input"],
+Cell[111196, 3598, 231, 9, 77, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[111464, 3612, 207, 6, 42, "Input"],
+Cell[111674, 3620, 159, 5, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[111870, 3630, 99, 3, 42, "Input"],
+Cell[111972, 3635, 73, 2, 41, "Output"]
+}, Open  ]],
+Cell[112060, 3640, 201, 4, 48, "Text"],
+Cell[CellGroupData[{
+Cell[112286, 3648, 57, 1, 42, "Input"],
+Cell[112346, 3651, 320, 11, 43, "Output"]
+}, Open  ]],
+Cell[112681, 3665, 228, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[112934, 3674, 230, 7, 68, "Input"],
+Cell[113167, 3683, 480, 17, 77, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[113684, 3705, 83, 2, 42, "Input"],
+Cell[113770, 3709, 152, 4, 41, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[113959, 3718, 61, 1, 42, "Input"],
+Cell[114023, 3721, 267, 5, 35, "Print"],
+Cell[114293, 3728, 93, 1, 35, "Print"],
+Cell[114389, 3731, 251, 9, 41, "Output"]
+}, Open  ]],
+Cell[114655, 3743, 210, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[114890, 3752, 110, 3, 42, "Input"],
+Cell[115003, 3757, 142, 4, 41, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[115182, 3766, 62, 1, 42, "Input"],
+Cell[115247, 3769, 267, 5, 35, "Print"],
+Cell[115517, 3776, 93, 1, 35, "Print"],
+Cell[115613, 3779, 251, 9, 41, "Output"]
+}, Open  ]],
+Cell[115879, 3791, 118, 3, 59, "Text"],
+Cell[116000, 3796, 149, 4, 42, "Input"],
+Cell[116152, 3802, 191, 4, 48, "Text"],
+Cell[CellGroupData[{
+Cell[116368, 3810, 433, 14, 68, "Input"],
+Cell[116804, 3826, 231, 9, 77, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[117072, 3840, 233, 7, 42, "Input"],
+Cell[117308, 3849, 185, 6, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[117530, 3860, 99, 3, 42, "Input"],
+Cell[117632, 3865, 73, 2, 41, "Output"]
+}, Open  ]],
+Cell[117720, 3870, 201, 4, 48, "Text"],
+Cell[CellGroupData[{
+Cell[117946, 3878, 57, 1, 42, "Input"],
+Cell[118006, 3881, 375, 13, 43, "Output"]
+}, Open  ]],
+Cell[118396, 3897, 228, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[118649, 3906, 230, 7, 68, "Input"],
+Cell[118882, 3915, 639, 21, 87, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[119558, 3941, 83, 2, 42, "Input"],
+Cell[119644, 3945, 222, 6, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[119903, 3956, 61, 1, 42, "Input"],
+Cell[119967, 3959, 267, 5, 35, "Print"],
+Cell[120237, 3966, 93, 1, 35, "Print"],
+Cell[120333, 3969, 251, 9, 41, "Output"]
+}, Open  ]],
+Cell[120599, 3981, 210, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[120834, 3990, 110, 3, 42, "Input"],
+Cell[120947, 3995, 212, 6, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[121196, 4006, 62, 1, 42, "Input"],
+Cell[121261, 4009, 267, 5, 35, "Print"],
+Cell[121531, 4016, 93, 1, 35, "Print"],
+Cell[121627, 4019, 251, 9, 41, "Output"]
+}, Open  ]],
+Cell[121893, 4031, 119, 3, 59, "Text"],
+Cell[122015, 4036, 149, 4, 42, "Input"],
+Cell[122167, 4042, 191, 4, 48, "Text"],
+Cell[CellGroupData[{
+Cell[122383, 4050, 433, 14, 68, "Input"],
+Cell[122819, 4066, 231, 9, 77, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[123087, 4080, 233, 7, 42, "Input"],
+Cell[123323, 4089, 185, 6, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[123545, 4100, 99, 3, 42, "Input"],
+Cell[123647, 4105, 73, 2, 41, "Output"]
+}, Open  ]],
+Cell[123735, 4110, 201, 4, 48, "Text"],
+Cell[CellGroupData[{
+Cell[123961, 4118, 57, 1, 42, "Input"],
+Cell[124021, 4121, 414, 13, 43, "Output"]
+}, Open  ]],
+Cell[124450, 4137, 228, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[124703, 4146, 230, 7, 68, "Input"],
+Cell[124936, 4155, 660, 21, 87, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[125633, 4181, 83, 2, 42, "Input"],
+Cell[125719, 4185, 232, 6, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[125988, 4196, 61, 1, 42, "Input"],
+Cell[126052, 4199, 267, 5, 35, "Print"],
+Cell[126322, 4206, 93, 1, 35, "Print"],
+Cell[126418, 4209, 310, 11, 41, "Output"]
+}, Open  ]],
+Cell[126743, 4223, 210, 5, 48, "Text"],
+Cell[CellGroupData[{
+Cell[126978, 4232, 110, 3, 42, "Input"],
+Cell[127091, 4237, 222, 6, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[127350, 4248, 62, 1, 42, "Input"],
+Cell[127415, 4251, 267, 5, 35, "Print"],
+Cell[127685, 4258, 93, 1, 35, "Print"],
+Cell[127781, 4261, 251, 9, 41, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

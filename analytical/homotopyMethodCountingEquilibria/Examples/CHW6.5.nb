@@ -1,0 +1,928 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 4.2'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     30526,        828]*)
+(*NotebookOutlinePosition[     31422,        858]*)
+(*  CellTagsIndexPosition[     31378,        854]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[TextData[StyleBox["CHW Example 6.5",
+  FontFamily->"Arial",
+  FontSize->18,
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell["\<\
+Loads the chemJac command file, which contains all commands used below\
+\>", "Text",
+  CellChangeTimes -> {{3.4284279331710243`*^9, 3.42842793367878*^9}},
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(\(\ \)\( (*\ \ SetDirectory["\<C:\CHEMmma\>"]\ *) \)\(\ \)\( (*\ 
+      Put\ in\ path\ to\ chemJac . 
+          m\ *) \)\(\[IndentingNewLine]\)\(<< "\<chemJac.m\>"\)\)\)], "Input",\
+
+  CellChangeTimes -> {{3.428427982543621*^9, 3.428427983151545*^9}}],
+
+Cell[BoxData[
+    \("C:\\CHEMmma"\)], "Output"],
+
+Cell[BoxData[
+    \("chemJac is loading..."\)], "Print"],
+
+Cell[BoxData[
+    \("chemJac has loaded"\)], "Print"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Inputting the stoichiometric matrix S (we input half \
+the matrix and then use the \"makeReversible\" command)",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(S = 
+      Transpose[{{\(-1\), \ \(-1\), 0, 0, \ 1, 0, 0}, {0, \(-1\), \ \(-1\), 
+            0, 0, 1, 0}, \ {0, 0, \ \(-1\), \ \(-1\), 0, 0, 1}, {2, \ 0, \ 
+            0, \(-1\), 0, 0, 0}}]; \ \), "\[IndentingNewLine]", 
+    \(S = makeReversible[S]; \), "\[IndentingNewLine]", 
+    \(S // MatrixForm\)}], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {\(-1\), "1", "0", "0", "0", "0", "2", \(-2\)},
+            {\(-1\), "1", \(-1\), "1", "0", "0", "0", "0"},
+            {"0", "0", \(-1\), "1", \(-1\), "1", "0", "0"},
+            {"0", "0", "0", "0", \(-1\), "1", \(-1\), "1"},
+            {"1", \(-1\), "0", "0", "0", "0", "0", "0"},
+            {"0", "0", "1", \(-1\), "0", "0", "0", "0"},
+            {"0", "0", "0", "0", "1", \(-1\), "0", "0"}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Making the non-mass-action flux vector 'monomials' \
+and the list of species concentrations 'vars' automatically from S",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(monomials = makeMonomialNMA[S]\)], "Input"],
+
+Cell[BoxData[
+    \({\(k[1]\)[a[1], a[2]], \(k[2]\)[a[5]], \(k[3]\)[a[2], a[3]], \(k[4]\)[
+        a[6]], \(k[5]\)[a[3], a[4]], \(k[6]\)[a[7]], \(k[7]\)[a[4]], \(k[8]\)[
+        a[1]]}\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(vars = svars[S]\)], "Input"],
+
+Cell[BoxData[
+    \({a[1], a[2], a[3], a[4], a[5], a[6], a[7]}\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["'S.monomials' is the right hand side of the ODE",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(S . monomials\)], "Input"],
+
+Cell[BoxData[
+    \({\(-\(k[1]\)[a[1], a[2]]\) + \(k[2]\)[a[5]] + 2\ \(k[7]\)[a[4]] - 
+        2\ \(k[8]\)[a[1]], \(-\(k[1]\)[a[1], a[2]]\) + \(k[2]\)[
+          a[5]] - \(k[3]\)[a[2], a[3]] + \(k[4]\)[
+          a[6]], \(-\(k[3]\)[a[2], a[3]]\) + \(k[4]\)[a[6]] - \(k[5]\)[a[3], 
+          a[4]] + \(k[6]\)[a[7]], \(-\(k[5]\)[a[3], a[4]]\) + \(k[6]\)[
+          a[7]] - \(k[7]\)[a[4]] + \(k[8]\)[a[1]], \(k[1]\)[a[1], 
+          a[2]] - \(k[2]\)[a[5]], \(k[3]\)[a[2], a[3]] - \(k[4]\)[
+          a[6]], \(k[5]\)[a[3], a[4]] - \(k[6]\)[a[7]]}\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["The Jacobian of the RHS of the ODE, and its \
+Craciun-Feinberg determinant",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(\(j = jac[S . monomials, \ vars];\)\), "\[IndentingNewLine]", 
+    \(j // MatrixForm\)}], "Input"],
+
+Cell[BoxData[
+    TagBox[
+      RowBox[{"(", "\[NoBreak]", GridBox[{
+            {
+              RowBox[{
+                RowBox[{\(-2\), " ", 
+                  RowBox[{
+                    SuperscriptBox[\(k[8]\), "\[Prime]",
+                      MultilineFunction->None], "[", \(a[1]\), "]"}]}], "-", 
+                RowBox[{
+                  SuperscriptBox[\(k[1]\), 
+                    TagBox[\((1, 0)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(a[1], a[2]\), "]"}]}], 
+              RowBox[{"-", 
+                RowBox[{
+                  SuperscriptBox[\(k[1]\), 
+                    TagBox[\((0, 1)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(a[1], a[2]\), "]"}]}], 
+              "0", 
+              RowBox[{"2", " ", 
+                RowBox[{
+                  SuperscriptBox[\(k[7]\), "\[Prime]",
+                    MultilineFunction->None], "[", \(a[4]\), "]"}]}], 
+              RowBox[{
+                SuperscriptBox[\(k[2]\), "\[Prime]",
+                  MultilineFunction->None], "[", \(a[5]\), "]"}], "0", "0"},
+            {
+              RowBox[{"-", 
+                RowBox[{
+                  SuperscriptBox[\(k[1]\), 
+                    TagBox[\((1, 0)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(a[1], a[2]\), "]"}]}], 
+              RowBox[{
+                RowBox[{"-", 
+                  RowBox[{
+                    SuperscriptBox[\(k[1]\), 
+                      TagBox[\((0, 1)\),
+                        Derivative],
+                      MultilineFunction->None], "[", \(a[1], a[2]\), "]"}]}], 
+                "-", 
+                RowBox[{
+                  SuperscriptBox[\(k[3]\), 
+                    TagBox[\((1, 0)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(a[2], a[3]\), "]"}]}], 
+              RowBox[{"-", 
+                RowBox[{
+                  SuperscriptBox[\(k[3]\), 
+                    TagBox[\((0, 1)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(a[2], a[3]\), "]"}]}], 
+              "0", 
+              RowBox[{
+                SuperscriptBox[\(k[2]\), "\[Prime]",
+                  MultilineFunction->None], "[", \(a[5]\), "]"}], 
+              RowBox[{
+                SuperscriptBox[\(k[4]\), "\[Prime]",
+                  MultilineFunction->None], "[", \(a[6]\), "]"}], "0"},
+            {"0", 
+              RowBox[{"-", 
+                RowBox[{
+                  SuperscriptBox[\(k[3]\), 
+                    TagBox[\((1, 0)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(a[2], a[3]\), "]"}]}], 
+              RowBox[{
+                RowBox[{"-", 
+                  RowBox[{
+                    SuperscriptBox[\(k[3]\), 
+                      TagBox[\((0, 1)\),
+                        Derivative],
+                      MultilineFunction->None], "[", \(a[2], a[3]\), "]"}]}], 
+                "-", 
+                RowBox[{
+                  SuperscriptBox[\(k[5]\), 
+                    TagBox[\((1, 0)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(a[3], a[4]\), "]"}]}], 
+              RowBox[{"-", 
+                RowBox[{
+                  SuperscriptBox[\(k[5]\), 
+                    TagBox[\((0, 1)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(a[3], a[4]\), "]"}]}], 
+              "0", 
+              RowBox[{
+                SuperscriptBox[\(k[4]\), "\[Prime]",
+                  MultilineFunction->None], "[", \(a[6]\), "]"}], 
+              RowBox[{
+                SuperscriptBox[\(k[6]\), "\[Prime]",
+                  MultilineFunction->None], "[", \(a[7]\), "]"}]},
+            {
+              RowBox[{
+                SuperscriptBox[\(k[8]\), "\[Prime]",
+                  MultilineFunction->None], "[", \(a[1]\), "]"}], "0", 
+              RowBox[{"-", 
+                RowBox[{
+                  SuperscriptBox[\(k[5]\), 
+                    TagBox[\((1, 0)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(a[3], a[4]\), "]"}]}], 
+              RowBox[{
+                RowBox[{"-", 
+                  RowBox[{
+                    SuperscriptBox[\(k[7]\), "\[Prime]",
+                      MultilineFunction->None], "[", \(a[4]\), "]"}]}], "-", 
+                RowBox[{
+                  SuperscriptBox[\(k[5]\), 
+                    TagBox[\((0, 1)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(a[3], a[4]\), "]"}]}], 
+              "0", "0", 
+              RowBox[{
+                SuperscriptBox[\(k[6]\), "\[Prime]",
+                  MultilineFunction->None], "[", \(a[7]\), "]"}]},
+            {
+              RowBox[{
+                SuperscriptBox[\(k[1]\), 
+                  TagBox[\((1, 0)\),
+                    Derivative],
+                  MultilineFunction->None], "[", \(a[1], a[2]\), "]"}], 
+              RowBox[{
+                SuperscriptBox[\(k[1]\), 
+                  TagBox[\((0, 1)\),
+                    Derivative],
+                  MultilineFunction->None], "[", \(a[1], a[2]\), "]"}], "0", 
+              "0", 
+              RowBox[{"-", 
+                RowBox[{
+                  SuperscriptBox[\(k[2]\), "\[Prime]",
+                    MultilineFunction->None], "[", \(a[5]\), "]"}]}], "0", 
+              "0"},
+            {"0", 
+              RowBox[{
+                SuperscriptBox[\(k[3]\), 
+                  TagBox[\((1, 0)\),
+                    Derivative],
+                  MultilineFunction->None], "[", \(a[2], a[3]\), "]"}], 
+              RowBox[{
+                SuperscriptBox[\(k[3]\), 
+                  TagBox[\((0, 1)\),
+                    Derivative],
+                  MultilineFunction->None], "[", \(a[2], a[3]\), "]"}], "0", 
+              "0", 
+              RowBox[{"-", 
+                RowBox[{
+                  SuperscriptBox[\(k[4]\), "\[Prime]",
+                    MultilineFunction->None], "[", \(a[6]\), "]"}]}], "0"},
+            {"0", "0", 
+              RowBox[{
+                SuperscriptBox[\(k[5]\), 
+                  TagBox[\((1, 0)\),
+                    Derivative],
+                  MultilineFunction->None], "[", \(a[3], a[4]\), "]"}], 
+              RowBox[{
+                SuperscriptBox[\(k[5]\), 
+                  TagBox[\((0, 1)\),
+                    Derivative],
+                  MultilineFunction->None], "[", \(a[3], a[4]\), "]"}], "0", 
+              "0", 
+              RowBox[{"-", 
+                RowBox[{
+                  SuperscriptBox[\(k[6]\), "\[Prime]",
+                    MultilineFunction->None], "[", \(a[7]\), "]"}]}]}
+            }], "\[NoBreak]", ")"}],
+      Function[ BoxForm`e$, 
+        MatrixForm[ BoxForm`e$]]]], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(\(\(det = cfDet[j]\)\(;\)\(\ \)\( (*\ 
+      output\ not\ shown\ due\ to\ \(length!\)\ *) \)\)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(coeffs[det]\)], "Input"],
+
+Cell[BoxData[
+    InterpretationBox[\("The number of terms in the det expansion is "\
+\[InvisibleSpace]138\[InvisibleSpace]","\),
+      SequenceForm[ "The number of terms in the det expansion is ", 138, ","],
+      
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("and (a,b) says that the number of terms with coef a is b:"\)], "Print"],
+
+Cell[BoxData[
+    \({{\(-3\), 2}, {\(-2\), 40}, {\(-1\), 96}}\)], "Output"]
+}, Open  ]],
+
+Cell[TextData[StyleBox["Core Determinant of the Jacobian of the RHS of the \
+ODE",
+  FontFamily->"Arial",
+  FontWeight->"Plain",
+  FontColor->RGBColor[1, 0, 0],
+  FontVariations->{"CompatibilityType"->0}]], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(core = coreDet[j, S]\)], "Input"],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+        RowBox[{"-", 
+          RowBox[{
+            SuperscriptBox[\(k[2]\), "\[Prime]",
+              MultilineFunction->None], "[", \(a[5]\), "]"}]}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[4]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[6]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[6]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[7]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[7]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[4]\), "]"}]}], "-", 
+      RowBox[{"2", " ", 
+        RowBox[{
+          SuperscriptBox[\(k[2]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[5]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[4]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[6]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[6]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[7]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[8]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[1]\), "]"}]}], "-", 
+      RowBox[{
+        RowBox[{
+          SuperscriptBox[\(k[4]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[6]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[6]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[7]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[7]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[4]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[1]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[1], a[2]\), "]"}]}], "-", 
+      RowBox[{"2", " ", 
+        RowBox[{
+          SuperscriptBox[\(k[4]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[6]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[6]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[7]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[8]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[1]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[1]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[1], a[2]\), "]"}]}], "-", 
+      RowBox[{
+        RowBox[{
+          SuperscriptBox[\(k[2]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[5]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[6]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[7]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[7]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[4]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[3]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[2], a[3]\), "]"}]}], "-", 
+      RowBox[{"2", " ", 
+        RowBox[{
+          SuperscriptBox[\(k[2]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[5]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[6]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[7]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[8]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[1]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[3]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[2], a[3]\), "]"}]}], "-", 
+      RowBox[{
+        RowBox[{
+          SuperscriptBox[\(k[6]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[7]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[7]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[4]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[1]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[1], a[2]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[3]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[2], a[3]\), "]"}]}], "-", 
+      RowBox[{"2", " ", 
+        RowBox[{
+          SuperscriptBox[\(k[6]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[7]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[8]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[1]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[1]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[1], a[2]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[3]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[2], a[3]\), "]"}]}], "-", 
+      RowBox[{"2", " ", 
+        RowBox[{
+          SuperscriptBox[\(k[2]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[5]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[4]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[6]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[8]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[1]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[5]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[3], a[4]\), "]"}]}], "-", 
+      RowBox[{"2", " ", 
+        RowBox[{
+          SuperscriptBox[\(k[4]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[6]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[8]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[1]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[1]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[1], a[2]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[5]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[3], a[4]\), "]"}]}], "-", 
+      RowBox[{"2", " ", 
+        RowBox[{
+          SuperscriptBox[\(k[2]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[5]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[8]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[1]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[3]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[2], a[3]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[5]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[3], a[4]\), "]"}]}], "-", 
+      RowBox[{"3", " ", 
+        RowBox[{
+          SuperscriptBox[\(k[8]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[1]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[1]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[1], a[2]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[3]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[2], a[3]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[5]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[3], a[4]\), "]"}]}], "-", 
+      RowBox[{
+        RowBox[{
+          SuperscriptBox[\(k[4]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[6]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[6]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[7]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[7]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[4]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[1]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[1], a[2]\), "]"}]}], "-", 
+      RowBox[{
+        RowBox[{
+          SuperscriptBox[\(k[6]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[7]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[7]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[4]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[3]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[2], a[3]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[1]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[1], a[2]\), "]"}]}], "-", 
+      RowBox[{
+        RowBox[{
+          SuperscriptBox[\(k[2]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[5]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[6]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[7]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[7]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[4]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[3]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[2], a[3]\), "]"}]}], "-", 
+      RowBox[{"2", " ", 
+        RowBox[{
+          SuperscriptBox[\(k[2]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[5]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[6]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[7]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[8]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[1]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[3]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[2], a[3]\), "]"}]}], "-", 
+      RowBox[{"2", " ", 
+        RowBox[{
+          SuperscriptBox[\(k[2]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[5]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[8]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[1]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[5]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[3], a[4]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[3]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[2], a[3]\), "]"}]}], "-", 
+      RowBox[{
+        RowBox[{
+          SuperscriptBox[\(k[6]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[7]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[7]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[4]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[1]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[1], a[2]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[3]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[2], a[3]\), "]"}]}], "-", 
+      RowBox[{
+        RowBox[{
+          SuperscriptBox[\(k[2]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[5]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[4]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[6]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[7]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[4]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[5]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[3], a[4]\), "]"}]}], "-", 
+      RowBox[{"2", " ", 
+        RowBox[{
+          SuperscriptBox[\(k[2]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[5]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[4]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[6]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[8]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[1]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[5]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[3], a[4]\), "]"}]}], "-", 
+      RowBox[{
+        RowBox[{
+          SuperscriptBox[\(k[4]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[6]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[7]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[4]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[1]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[1], a[2]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[5]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[3], a[4]\), "]"}]}], "-", 
+      RowBox[{"2", " ", 
+        RowBox[{
+          SuperscriptBox[\(k[4]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[6]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[8]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[1]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[1]\), 
+            TagBox[\((0, 1)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[1], a[2]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[5]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[3], a[4]\), "]"}]}], "-", 
+      RowBox[{
+        RowBox[{
+          SuperscriptBox[\(k[4]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[6]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[7]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[4]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[1]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[1], a[2]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[5]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[3], a[4]\), "]"}]}], "-", 
+      RowBox[{
+        RowBox[{
+          SuperscriptBox[\(k[2]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[5]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[7]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[4]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[3]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[2], a[3]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[5]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[3], a[4]\), "]"}]}], "-", 
+      RowBox[{"2", " ", 
+        RowBox[{
+          SuperscriptBox[\(k[2]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[5]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[8]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[1]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[3]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[2], a[3]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[5]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[3], a[4]\), "]"}]}], "-", 
+      RowBox[{"3", " ", 
+        RowBox[{
+          SuperscriptBox[\(k[7]\), "\[Prime]",
+            MultilineFunction->None], "[", \(a[4]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[1]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[1], a[2]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[3]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[2], a[3]\), "]"}], " ", 
+        RowBox[{
+          SuperscriptBox[\(k[5]\), 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(a[3], a[4]\), 
+          "]"}]}]}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(coeffs[core]\)], "Input"],
+
+Cell[BoxData[
+    InterpretationBox[\("The number of terms in the det expansion is "\
+\[InvisibleSpace]26\[InvisibleSpace]","\),
+      SequenceForm[ "The number of terms in the det expansion is ", 26, ","],
+      Editable->False]], "Print"],
+
+Cell[BoxData[
+    \("and (a,b) says that the number of terms with coef a is b:"\)], "Print"],
+
+Cell[BoxData[
+    \({{\(-3\), 2}, {\(-2\), 12}, {\(-1\), 12}}\)], "Output"]
+}, Open  ]]
+},
+FrontEndVersion->"4.2 for Microsoft Windows",
+ScreenRectangle->{{0, 1024}, {0, 685}},
+WindowToolbars->"EditBar",
+CellGrouping->Manual,
+WindowSize->{1016, 651},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+DockedCells -> FEPrivate`FrontEndResource[ "FEExpressions", \
+"CompatibilityToolbar"],
+Magnification->1.5,
+StyleDefinitions -> "Default.nb"
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 189, 5, 59, "Text"],
+Cell[1946, 58, 242, 6, 48, "Text"],
+
+Cell[CellGroupData[{
+Cell[2213, 68, 273, 5, 68, "Input"],
+Cell[2489, 75, 47, 1, 41, "Output"],
+Cell[2539, 78, 56, 1, 35, "Print"],
+Cell[2598, 81, 53, 1, 35, "Print"]
+}, Open  ]],
+Cell[2666, 85, 268, 5, 48, "Text"],
+
+Cell[CellGroupData[{
+Cell[2959, 94, 336, 6, 120, "Input"],
+Cell[3298, 102, 590, 12, 187, "Output"]
+}, Open  ]],
+Cell[3903, 117, 277, 5, 48, "Text"],
+
+Cell[CellGroupData[{
+Cell[4205, 126, 63, 1, 42, "Input"],
+Cell[4271, 129, 198, 3, 66, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4506, 137, 48, 1, 42, "Input"],
+Cell[4557, 140, 76, 1, 41, "Output"]
+}, Open  ]],
+Cell[4648, 144, 205, 4, 48, "Text"],
+
+Cell[CellGroupData[{
+Cell[4878, 152, 46, 1, 42, "Input"],
+Cell[4927, 155, 556, 8, 166, "Output"]
+}, Open  ]],
+Cell[5498, 166, 232, 5, 48, "Text"],
+
+Cell[CellGroupData[{
+Cell[5755, 175, 119, 2, 68, "Input"],
+Cell[5877, 179, 6893, 169, 221, "Output"]
+}, Open  ]],
+Cell[12785, 351, 127, 2, 42, "Input"],
+
+Cell[CellGroupData[{
+Cell[12937, 357, 44, 1, 42, "Input"],
+Cell[12984, 360, 249, 5, 35, "Print"],
+Cell[13236, 367, 92, 1, 35, "Print"],
+Cell[13331, 370, 75, 1, 41, "Output"]
+}, Open  ]],
+Cell[13421, 374, 214, 5, 48, "Text"],
+
+Cell[CellGroupData[{
+Cell[13660, 383, 53, 1, 42, "Input"],
+Cell[13716, 386, 16296, 421, 690, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[30049, 812, 45, 1, 42, "Input"],
+Cell[30097, 815, 240, 4, 35, "Print"],
+Cell[30340, 821, 92, 1, 35, "Print"],
+Cell[30435, 824, 75, 1, 41, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+
