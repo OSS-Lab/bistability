@@ -1,0 +1,33 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2009 The MathWorks, Inc.
+                Version 7.8.0.347 (R2009a) 64-bit (glnxa64)
+                             February 12, 2009
+
+ 
+  To get started, type one of these: helpwin, helpdesk, or demo.
+  For product information, visit www.mathworks.com.
+ 
+>> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> 
+i =
+
+     1
+
+Model: Single phosphorylation
+The deficiency of the reaction network is 1.
+The reaction network deficiency is greater than the sum of the deficiencies of its linkage classes, so Deficiency-One Theorem does not apply.
+The network is regular and the Deficiency-One Algorithm determines that the reaction network with mass action kinetics does not admit multiple positive equilibria within a stoichiometric compatibility class.
+The reaction network with mass action or Michaelis-Menten kinetics is non-autocatalytic.
+The stoichiometric matrix is SSD. With said kinetics, the Jacobian matrix of the system of ODEs is a P0(-) matrix, so the reaction system is injective and does not have the capacity for multiple non-degenerate equilibria.
+
+i =
+
+     2
+
+Model: EGF pathway (RKIP network)
+The deficiency of the reaction network is 1.
+The reaction network deficiency is greater than the sum of the deficiencies of its linkage classes, so Deficiency-One Theorem does not apply.
+The network is regular and the Deficiency-One Algorithm determines that the reaction network with mass action kinetics does not admit multiple positive equilibria within a stoichiometric compatibility class.
+The reaction network with mass action or Michaelis-Menten kinetics is non-autocatalytic.
+The stoichiometric matrix is SSD. With said kinetics, the Jacobian matrix of the system of ODEs is a P0(-) matrix, so the reaction system is injective and does not have the capacity for multiple non-degenerate equilibria.
+>> 

@@ -1,0 +1,18 @@
+ERNEST installation instructions
+--------------------------------
+
+ERNEST requires Mathworks MATLAB and Mathworks Optimization Toolbox.
+
+To install ERNEST just unpack the archive, then add the ERNEST directory 
+to your MATLAB search path. One possibility is to add to your startup.m 
+file the following line:
+
+addpath('PATH/TO/ERNEST');
+
+where PATH/TO/ERNEST is the path to the ERNEST directory.
+For info about startup.m and other ways to add the directory to your 
+search path, please consult the MATLAB documentation.
+
+To use the toolbox with SBML models, you have to install the libSBML 
+library. You need to configure it with the --with-matlab option. For 
+detailed instructions, see http://sbml.org/Software/libSBML .
