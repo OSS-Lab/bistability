@@ -1,0 +1,16 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2009 The MathWorks, Inc.
+                Version 7.8.0.347 (R2009a) 64-bit (glnxa64)
+                             February 12, 2009
+
+ 
+  To get started, type one of these: helpwin, helpdesk, or demo.
+  For product information, visit www.mathworks.com.
+ 
+>> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> Model: Example 1.1 of Craciun, Feinberg (2006)
+>> The deficiency of the reaction network is 5.
+There is some linkage class with deficiency > 1, so Deficiency-One Theorem does not apply.
+The reaction network with mass action or Michaelis-Menten kinetics is non-autocatalytic.
+The stoichiometric matrix is SSD. With said kinetics, the Jacobian matrix of the system of ODEs is a P0(-) matrix, so the reaction system is injective and does not have the capacity for multiple non-degenerate equilibria.
+>> 

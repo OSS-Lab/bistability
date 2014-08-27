@@ -1,0 +1,44 @@
+ERNEST 1.4 (2009-10-27)
+ - Corrected a bug in @umultigraph/walk2graph and @umultigraph/spanning_forest
+   where the call to @umultigraph/umultigraph function was not respecting the
+   stricter type checking introduced in ERNEST 1.2 . Thanks to prof. Gregory
+   D. Smith for the bug report
+ - Corrected a bug in the creation of a directed multigraph from vertex and
+   edge sets
+ - Added a display function for directed multigraphs
+ - Added graph2matrix function for directed and undirected multigraphs
+ - Added a new script examples/example6.m with examples from Angeli,
+   De Leenheer, Sontag ()
+ - Added an output file for each example
+
+ERNEST 1.3 (2009-09-10)
+ - Completely rewritten sns function: the previous version could return 
+   1 even if the matrix was not SNS because of the use of a wrong 
+   determinant expansion. The new version instead use row signings as 
+   suggested in Klee, Ladner, Manber - Linear Algebra Appl., 1984. 
+   Thanks to Christoph Flamm and Stefan Müller for the bug report
+
+ERNEST 1.2 (2009-09-07)
+ - removed unused @multigraph/add_edge.m
+ - added a README file
+ - better help documentation for all the functions
+ - stricter type checking in @multigraph/multigraph and
+   @umultigraph/umultigraph functions
+
+ERNEST 1.1 (2009-08-10)
+ - in model_analysis function, when Deficiency One algorithm determines 
+   that the reaction network with mass action kinetics admits multiple 
+   equilibria, added as additional output an example of reaction rate 
+   constants and 2 equilibria
+ - in model_analysis function, when the stoichiometric matrix is not 
+   SSD, added as additional output a set of species and reactions 
+   causing this
+ - in model_analysis function, do not run Deficiency One algorithm if 
+   the network does not satisfy first condition of regularity (R.1)
+ - model_analysis function now returns a struct with some of the 
+   analysis results
+ - new function model_ma_supports_given_equilibria which verifies if a 
+   model with mass action kinetics supports a given set of equilibria by 
+   searching for compatible reaction rate constants
+ - added new script examples/example5.m with examples from Schlosser, 
+   Feinberg (1994)

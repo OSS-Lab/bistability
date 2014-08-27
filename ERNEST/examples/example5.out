@@ -1,0 +1,195 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2009 The MathWorks, Inc.
+                Version 7.8.0.347 (R2009a) 64-bit (glnxa64)
+                             February 12, 2009
+
+ 
+  To get started, type one of these: helpwin, helpdesk, or demo.
+  For product information, visit www.mathworks.com.
+ 
+>> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> 
+i =
+
+     1
+
+The deficiency of the reaction network is 3.
+There is some linkage class with deficiency > 1, so Deficiency-One Theorem does not apply.
+The reaction network with mass action or Michaelis-Menten kinetics is non-autocatalytic.
+The stoichiometric matrix is not SSD. The reaction network has the capacity for multiple equilibria.
+One set of species and reactions because of which the stoichiometric matrix is not SSD: 
+
+ans = 
+
+    'A'    'B'    'C'
+
+
+reaction_string =
+
+1 P -> 1 A + 1 B
+
+
+reaction_string =
+
+1 Q -> 1 B + 1 C
+
+
+reaction_string =
+
+2 A -> 1 C
+
+
+i =
+
+     2
+
+The deficiency of the reaction network is 4.
+There is some linkage class with deficiency > 1, so Deficiency-One Theorem does not apply.
+The reaction network with mass action or Michaelis-Menten kinetics is non-autocatalytic.
+The stoichiometric matrix is SSD. With said kinetics, the Jacobian matrix of the system of ODEs is a P0(-) matrix, so the reaction system is injective and does not have the capacity for multiple non-degenerate equilibria.
+
+i =
+
+     3
+
+The deficiency of the reaction network is 5.
+There is some linkage class with deficiency > 1, so Deficiency-One Theorem does not apply.
+The reaction network with mass action or Michaelis-Menten kinetics is non-autocatalytic.
+The stoichiometric matrix is not SSD. The reaction network has the capacity for multiple equilibria.
+One set of species and reactions because of which the stoichiometric matrix is not SSD: 
+
+ans = 
+
+    'A'    'B'    'C'    'D'    'E'
+
+
+reaction_string =
+
+1 P -> 1 A + 1 B
+
+
+reaction_string =
+
+1 Q -> 1 B + 1 C
+
+
+reaction_string =
+
+1 R -> 1 C + 1 D
+
+
+reaction_string =
+
+1 S -> 1 D + 1 E
+
+
+reaction_string =
+
+2 A -> 1 E
+
+
+i =
+
+     4
+
+The deficiency of the reaction network is 2.
+There is some linkage class with deficiency > 1, so Deficiency-One Theorem does not apply.
+The reaction network with mass action or Michaelis-Menten kinetics is non-autocatalytic.
+The stoichiometric matrix is SSD. With said kinetics, the Jacobian matrix of the system of ODEs is a P0(-) matrix, so the reaction system is injective and does not have the capacity for multiple non-degenerate equilibria.
+
+i =
+
+     5
+
+The deficiency of the reaction network is 4.
+There is some linkage class with deficiency > 1, so Deficiency-One Theorem does not apply.
+The reaction network with mass action or Michaelis-Menten kinetics is non-autocatalytic.
+The stoichiometric matrix is not SSD. The reaction network has the capacity for multiple equilibria.
+One set of species and reactions because of which the stoichiometric matrix is not SSD: 
+
+ans = 
+
+    'A'    'B'    'C'    'D'
+
+
+reaction_string =
+
+1 F -> 1 A + 1 B
+
+
+reaction_string =
+
+1 G -> 1 A + 1 C
+
+
+reaction_string =
+
+1 B -> 1 C + 1 D
+
+
+reaction_string =
+
+1 D -> 1 C + 1 E
+
+
+i =
+
+     6
+
+The deficiency of the reaction network is 1.
+The reaction network deficiency is greater than the sum of the deficiencies of its linkage classes, so Deficiency-One Theorem does not apply.
+The network is regular and the Deficiency-One Algorithm determines that the reaction network with mass action kinetics does not admit multiple positive equilibria within a stoichiometric compatibility class.
+The reaction network with mass action or Michaelis-Menten kinetics is autocatalytic.
+In the SR graph the following cycle is neither an o-cycle nor an s-cycle:
+A -(1 A + 1 B,1)-> A+B<->2A -(2 A,2)-> A
+The reaction network has the capacity for multiple equilibria.
+
+i =
+
+     7
+
+The deficiency of the reaction network is 1.
+The reaction network deficiency is greater than the sum of the deficiencies of its linkage classes, so Deficiency-One Theorem does not apply.
+The network is regular and the Deficiency-One Algorithm determines that the reaction network with mass action kinetics admits multiple positive equilibria within a stoichiometric compatibility class. For example for the rate constants
+
+constants =
+
+   1.0e+03 *
+
+    0.3387
+    0.1000
+    0.1000
+    0.6390
+    1.8958
+    0.6390
+
+the mass action system admits at least these 2 equilibria in the same stoichiometric compatibility class
+
+c1 =
+
+    0.5820
+    2.5415
+
+
+c2 =
+
+    1.5820
+    1.5415
+
+The reaction network with mass action or Michaelis-Menten kinetics is autocatalytic.
+In the SR graph the following cycle is neither an o-cycle nor an s-cycle:
+A -(2 A + 1 B,2)-> 2A+B<->3A -(3 A,3)-> A
+The reaction network has the capacity for multiple equilibria.
+
+i =
+
+     8
+
+The deficiency of the reaction network is 1.
+The reaction network deficiency is greater than the sum of the deficiencies of its linkage classes, so Deficiency-One Theorem does not apply.
+The network is regular and the Deficiency-One Algorithm determines that the reaction network with mass action kinetics does not admit multiple positive equilibria within a stoichiometric compatibility class.
+The reaction network with mass action or Michaelis-Menten kinetics is autocatalytic.
+In the SR graph the following cycle is neither an o-cycle nor an s-cycle:
+A -(1 A + 2 B,1)-> A+2B<->3A -(3 A,3)-> A
+The reaction network has the capacity for multiple equilibria.
+>> 

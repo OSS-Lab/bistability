@@ -1,0 +1,33 @@
+ERNEST Reaction Network Equilibria Study Toolbox
+------------------------------------------------
+
+The installation instructions are in the file INSTALL.
+
+The main ERNEST function is model_analysis. Another useful function is 
+model_ma_supports_given_equilibria. All the other functions are just
+dependencies, but they can also be applicable to quite different contexts, 
+like graph theory.
+
+Each function is documented in the relative file, and its usage 
+information is available through the usual MATLAB help system.
+
+Example
+-------
+
+To analyze a SBML file MODEL.sbml, simply execute in MATLAB:
+
+model = TranslateSBML('MODEL.sbml');
+model_analysis(model);
+
+In the examples/ subdirectory there are some examples of chemical 
+reaction networks taken from literature to test.
+
+References
+----------
+
+For information on the SBML standard, see http://sbml.org/ .
+
+If you use ERNEST for a scientific work, we ask you to cite this paper:
+
+Soranzo, N., Altafini, C. - ERNEST: a toolbox for chemical reaction 
+network theory - Bioinformatics 25(21) - pp. 2853-2854 - 2009

@@ -51,6 +51,10 @@ K* ---> O |--- P
 - there is capacity for multiple steady states, in the example
   steady states one is stable and the other is unstable.
 
+minimal-system-extend8-mutant1
+K* ---> O <-> Op
+- there is capacity for this network to be bistable.
+
 minimal-system-extend9   !!!
 K* ---> O |--- P*
 - might have the capacity for multiple steady states. It's very strange that
