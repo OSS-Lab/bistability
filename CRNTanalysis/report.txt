@@ -27,6 +27,11 @@ A <---> K ---> O |--- P
 - this is not bistable for complexSizeThreshold of 2
 - for maxComp3: there is capacity for multiple steady states but examples are two steady states: one is unstable the other is stable.
 
+minimal-system-extend4-mutant1
+A <---> K ---> O, Op ---> O
+- For complex size 2: Can not admit bistable property.
+- For complex size 3: This structure allows system reach bistable regime.
+
 minimal-system-extend5
 B <---> A <---> K ---> O |--- P
 - this is not bistable for complexSizeThreshold of 2
@@ -52,7 +57,7 @@ K* ---> O |--- P
   steady states one is stable and the other is unstable.
 
 minimal-system-extend8-mutant1
-K* ---> O <-> Op
+K* ---> O,  Op ---> O
 - there is capacity for this network to be bistable.
 
 minimal-system-extend9   !!!
@@ -64,6 +69,23 @@ minimal-system-extend10
 K ---> O* |--- P
 - there is capacity for multiple steady states, in the example
   steady states one is stable and the other is unstable.
+
+minimal-system-extend10-mutant1
+K ---> O*, Op* ---> O*
+- this structure can allow the systems reach bistable regime.
+
+minimal-system-extend11
+K ---> O <---> A, P ---| O
+- For complex size 2: can not admit multiple positive steady states
+- For complex size 3: 
+
+
+minimal-system-extend11-mutant1
+K ---> O <---> A, Op ---> O
+- For complex size 2: can not admit multiple positive steady states
+- For complex size 3: can have multiple steady states, but in examples, there
+  is one steady state is unstable.
+
 
 
 Part 2: One minimal network in evolved networks.

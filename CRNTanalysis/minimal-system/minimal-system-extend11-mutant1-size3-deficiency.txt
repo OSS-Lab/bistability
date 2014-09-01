@@ -1,0 +1,110 @@
+ 
+  
+            ========================================================
+            HIGHER DEFICIENCY REPORT: minimal-system-extend11-mutant
+            ========================================================
+ 
+                                    Analysis
+                                    ========
+ 
+      Taken with mass action kinetics, the network DOES have the capacity for
+ multiple steady states. That is, there are rate constants that give rise
+ to two or more positive (stoichiometrically compatible) steady states --
+ you'll see an example below. There MIGHT also exist rate constants for which
+ there is a steady state having an eigenvector (in the stoichiometric subspace)
+ corresponding to an eigenvalue of zero. (To try to construct rate constants
+ that give a degenerate steady state, use the Zero Eigenvalue Report.)
+ 
+ 
+ A mass action system example is also given below:
+ 
+ 
+ 
+ 
+                     Example No. 1: Multiple Steady States
+                     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+      The following mass action system gives rise to multiple steady states:
+ 
+ 
+                           K + O -------1-----> K_O
+                             K_O ---4.5824678-> K + O
+                             K_O ---34.53021--> K + Op
+                              Op ---20.944222-> O
+                           A + O ---2.6674914-> A_O
+                             A_O ---109.50192-> A + O
+                          A + Op ---625.80022-> A_Op
+                            A_Op ---4.8953657-> A_O
+                            A_Op ---4.1208532-> A + Op
+                         K_O + A ---58.191891-> K_O_A
+                           K_O_A ---28.181811-> K_O + A
+                           K_O_A ---268.35668-> A_O + K
+                           K_O_A ---28.181811-> K + A_Op
+                         A_O + K ---5.5368649-> K_O_A
+ 
+ 
+      The steady states shown below are both consistent with the mass
+ action system indicated.
+ 
+ 
+     Steady State No. 1	         Species	Steady State No. 2
+     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯	         ¯¯¯¯¯¯¯	¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+          9.5083319    	               K      	     10.508331    
+          38.033327    	               O      	     42.033327    
+          1.3273108    	               Op     	    0.32731081    
+         0.43101276    	               A      	     1.4310127    
+           3.19412     	              A_O     	     5.2662137    
+          6.0664895    	              K_O     	     4.0664895    
+          42.790911    	              A_Op    	     38.718817    
+         0.98643386    	             K_O_A    	     1.9864338    
+ 
+ 
+                       Eigenvalues for Steady State No. 1
+                       ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -53.587558
+                                   -14.894006
+                                   -0.1288234
+                                   -3.6439671
+                                   -6.9641146
+ 
+                  Steady State No. 1 is asymptotically stable.
+ 
+ 
+ 
+                       Eigenvalues for Steady State No. 2
+                       ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -43.370681
+                                   1.8479 E-2
+                          (-15.365942) - i (3.3068049)
+                          (-15.365942) + i (3.3068049)
+                                   -4.3126169
+ 
+                        Steady State No. 2 is unstable.
+ 
+ 
+ 
+ 
+ 
+                                   References
+                                   ¯¯¯¯¯¯¯¯¯¯
+ 
+ 1. Feinberg, M., Chemical reaction network structure and the stability of comp-
+ lex isothermal reactors. I. The deficiency zero and deficiency one theorems,
+ Chem. Eng. Science, 42, 2229-2268 (1987).
+ 
+ 2. Ellison, P. and Feinberg, M. How catalytic mechanisms reveal themselves
+ in multiple steady state data. I. Basic principles, The Journal of Molecular
+ Catalysis A: Chemical, 154, 155 - 167, 2000.  
+ 
+ 3. Ellison, P. PhD. Thesis. Rochester, NY: Department of Chemical Engineer-
+ ing, University of Rochester; 1998. The advanced deficiency algorithm
+ and itsapplications to mechanism discrimination.
+ 
+ 4. Ji, H. PhD. Thesis. Columbus, OH: Department of Mathematics, The Ohio 
+ State University; 2011. Uniqueness of equilibria for complex chemical reaction
+ networks.
+ 
+                                  ***********
+

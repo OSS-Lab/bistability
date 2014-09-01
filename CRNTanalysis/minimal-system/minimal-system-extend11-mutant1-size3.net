@@ -1,0 +1,1 @@
+{minimal-system-extend11-mutant}{K--->O<--->A, Op ----> O, size 3}#3{K,O,Op,A,A_O,K_O,A_Op,K_O_A}{K + O,K_O,Op,A + O,A_O,O,A + Op,A_Op,K + Op,K_O + A,K_O_A,A_O + K,K + A_Op}{1,2,R2,9,N3,6,N4,5,R7,8,R8,5,N10,11,R11,12,R11,13,N}

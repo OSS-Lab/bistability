@@ -1,0 +1,72 @@
+ 
+  
+                 ==============================================
+                 MA INJECTIVITY REPORT: minimal-system-extend10
+                 ==============================================
+ 
+     Taken with mass action kinetics, the network is not injective in the sense
+ of the references 2 and 4 below.
+  
+     To determine whether the network might admit two distinct stoichiometrically
+ compatible positive equilibria, you should also consult the Higher Deficiency
+ Report if you haven't already done so.
+ 
+ 
+ The following gives an example which supports the non-injectivity:
+ 
+ 
+                          K + OR ------10-----> K_OR
+                            K_OR -------1-----> K + OR
+                            K_OR -------5-----> K + ORp
+                            K_OR -------1-----> K_OT
+                            K_OT -------1-----> K_OR
+                            K_OT -------1-----> K + OT
+                            K_OT ---2.3333333-> K + OTp
+                          K + OT ------14-----> K_OT
+                              OR ------11-----> OT
+                              OT -------1-----> OR
+                             ORp -------1-----> OR
+                             ORp -------1-----> OTp
+                             OTp -------1-----> OT
+                             OTp -------1-----> ORp
+ 
+ 
+    Species	      Kernel Vector	Sigma		Divisor
+    ¯¯¯¯¯¯¯	      ¯¯¯¯¯¯¯¯¯¯¯¯	¯¯¯¯¯		¯¯¯¯¯¯¯
+      K    	             2       	   1   		  0.5  
+     OR    	             -1      	   -1  		   1   
+     OT    	             -3      	-0.9999999		0.33333333
+     ORp   	             1       	   4   		   4   
+     OTp   	             -3      	   -1  		0.33333333
+    K_OR   	             1       	1.8956439		1.8956439
+    K_OT   	             -3      	-2.8956439		0.96521464
+ 
+ 
+ 
+ 
+ 
+                                   References
+                                   ¯¯¯¯¯¯¯¯¯¯
+ 
+ 1. Feinberg, M., Chemical reaction network structure and the stability of comp-
+ lex isothermal reactors. I. The deficiency zero and deficiency one theorems,
+ Chem. Eng. Science, 42, 2229-2268 (1987).
+ 
+ 2. G. Craciun and M. Feinberg. Multiple equilibria in complex chemical
+ reaction networks. I. The injectivity property. SIAM Journal on Applied
+ Mathematics, 65:1526-1546, 2005.
+ 
+ 3. G. Craciun and M. Feinberg. Multiple equilibria in complex chemical
+ reaction networks. II. The species-reaction graph. SIAM Journal on
+ Applied Mathematics, 66:1321-1338, 2006.
+ 
+ 4. G. Craciun and M. Feinberg. Multiple equilibria in complex chemical
+ reaction networks: semi-open mass action systems. SIAM Journal on
+ Applied Mathematics, 70:1859-1877, 2010.
+ 
+ 5. G. Shinar, A. Mayo, H. Ji and M. Feinberg. Constraints on reciprocal flux
+ sensitivities in biochemical reaction networks. Biophysical Journal, 100(6):
+ 1383-1391, 2011.
+ 
+                                  ***********
+

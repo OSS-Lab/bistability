@@ -1,0 +1,36 @@
+ 
+  
+                 =============================================
+                 DEFICIENCY ONE REPORT: minimal-system-extend4
+                 =============================================
+ 
+ 
+                                    Analysis
+                                    ========
+ 
+     Taken with mass action kinetics, the network CANNOT admit multiple posi-
+ tive steady states or a degenerate positive steady state NO MATTER WHAT
+ (POSITIVE) VALUES THE RATE CONSTANTS MIGHT HAVE.
+ 
+ 
+                                   References
+                                   ¯¯¯¯¯¯¯¯¯¯
+ 
+ 1. Feinberg, M., Chemical reaction network structure and the stability of
+ complex isothermal reactors. I. The deficiency zero and deficiency one
+ theorems, Chem. Eng. Science, 42, 2229-2268 (1987).
+ 
+ 2. Feinberg, M., Chemical reaction network structure and the stability of
+ complex isothermal reactors. II. Multiple steady states for networks of
+ deficiency one, Chem. Eng. Science, 43, 1 - 25 (1988).
+ 
+ 3. Feinberg, M., The existence and uniqueness of steady states for a class
+ of chemical reaction networks, Archive for Rational Mechanics and Analysis,
+ 132 , 311-370, 1995.
+ 
+ 4. Feinberg, M., Multiple steady states for chemical reaction networks of
+ deficiency one, Archive for Rational Mechanics and Analysis, 132, 371-406,
+ 1995.
+ 
+                                  ***********
+
