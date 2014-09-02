@@ -77,15 +77,14 @@ K ---> O*, Op* ---> O*
 minimal-system-extend11
 K ---> O <---> A, P ---| O
 - For complex size 2: can not admit multiple positive steady states
-- For complex size 3: 
-
+- For complex size 3: can have multiple steady states, but in examples, there
+  is one steady state is unstable.
 
 minimal-system-extend11-mutant1
 K ---> O <---> A, Op ---> O
 - For complex size 2: can not admit multiple positive steady states
 - For complex size 3: can have multiple steady states, but in examples, there
   is one steady state is unstable.
-
 
 
 Part 2: One minimal network in evolved networks.
