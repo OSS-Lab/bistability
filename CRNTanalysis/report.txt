@@ -60,6 +60,14 @@ minimal-system-extend8-mutant1
 K* ---> O,  Op ---> O
 - there is capacity for this network to be bistable.
 
+minimal-system-extend8-mutant2
+K* ---> O,  Op ---> O (revisable catalytic reaction)
+- There is capacity to be bistable
+
+minimal-system-extend8-mutant3
+K* ---> O,  Op ---> O (irrevisable binding reaction)
+- might have multiple steady states
+
 minimal-system-extend9   !!!
 K* ---> O |--- P*
 - might have the capacity for multiple steady states. It's very strange that
@@ -74,6 +82,14 @@ minimal-system-extend10-mutant1
 K ---> O*, Op* ---> O*
 - this structure can allow the systems reach bistable regime.
 
+minimal-system-extend10-mutant2
+K ---> O*, Op* ---> O* (revisable catalytic reaction)
+- allow bistable
+
+minimal-system-extend10-mutant3
+K ---> O*, Op* ---> O* (irrevisable binding reaction)
+- allow bistable
+
 minimal-system-extend11
 K ---> O <---> A, P ---| O
 - For complex size 2: can not admit multiple positive steady states
@@ -86,6 +102,10 @@ K ---> O <---> A, Op ---> O
 - For complex size 3: can have multiple steady states, but in examples, there
   is one steady state is unstable.
 
+minimal-system-extend12 (this is a combination of extend8-mutant1 and
+extend10-mutant1)
+K* ---> S* Sp* ---> S*
+- 
 
 Part 2: One minimal network in evolved networks.
 
