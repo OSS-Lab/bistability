@@ -1,0 +1,127 @@
+ 
+  
+            ========================================================
+            HIGHER DEFICIENCY REPORT: three binding sites without R<
+            ========================================================
+ 
+                                    Analysis
+                                    ========
+ 
+      Taken with mass action kinetics, the network DOES have the capacity for
+ multiple steady states. That is, there are rate constants that give rise
+ to two or more positive (stoichiometrically compatible) steady states --
+ you'll see an example below. There MIGHT also exist rate constants for which
+ there is a steady state having an eigenvector (in the stoichiometric subspace)
+ corresponding to an eigenvalue of zero. (To try to construct rate constants
+ that give a degenerate steady state, use the Zero Eigenvalue Report.)
+ 
+ 
+ A mass action system example is also given below:
+ 
+ 
+ 
+ 
+                     Example No. 1: Multiple Steady States
+                     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+      The following mass action system gives rise to multiple steady states:
+ 
+ 
+                           A + S ---3239.3074-> AS
+                              AS ---1.5819767-> A + S
+                           B + S ---786.57808-> BS
+                              BS ---15.478787-> B + S
+                           C + S ---44.683076-> CS
+                              CS ---790.36258-> C + S
+                          AS + B ---112.75059-> ABS
+                             ABS ---4982.5722-> AS + B
+                             ABS ---628.2027--> BS + A
+                          AS + C -------1-----> ACS
+                             ACS ---1.0927216-> AS + C
+                             ACS ---21.877266-> CS + A
+                          BS + A ---9.7775584-> ABS
+                          BS + C ---11.278169-> BCS
+                             BCS ---45.771601-> BS + C
+                             BCS ---560.23514-> CS + B
+                          CS + A ---5783.9763-> ACS
+                          CS + B ---79.137067-> BCS
+                         ABS + C ---2325.3577-> ABCS
+                            ABCS ---50.681284-> ABS + C
+                            ABCS ---1.5819767-> ACS + B
+                            ABCS ---8.029908--> BCS + A
+                         ACS + B ---1.3391751-> ABCS
+                         BCS + A ---204.77973-> ABCS
+ 
+ 
+      The steady states shown below are both consistent with the mass
+ action system indicated.
+ 
+ 
+     Steady State No. 1	         Species	Steady State No. 2
+     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯	         ¯¯¯¯¯¯¯	¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+         0.22351626    	               A      	     1.2235162    
+         0.81596622    	               B      	     1.8159662    
+          1.5819767    	               C      	     0.5819767    
+          1.1758738    	               S      	    0.17587382    
+          52.541659    	               AS     	     47.541659    
+          38.033327    	               BS     	     42.033327    
+          1.2872169    	               CS     	    0.28721691    
+         0.81596622    	              ABS     	     1.8159662    
+          76.066655    	              ACS     	     84.066655    
+          1.8159662    	              BCS     	    0.81596622    
+          52.541659    	              ABCS    	     47.541659    
+ 
+ 
+                       Eigenvalues for Steady State No. 1
+                       ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -172.56664
+                                   -155.48623
+                                   -50.545478
+                                   0.19860574
+                           (-10.40309) - i (3.079215)
+                           (-10.40309) + i (3.079215)
+                                   -24.553247
+ 
+                        Steady State No. 1 is unstable.
+ 
+ 
+ 
+                       Eigenvalues for Steady State No. 2
+                       ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -146.67243
+                                   -116.1566
+                                   -14.316617
+                                   -72.201791
+                                   -8.7553075
+                                   -0.4823247
+                                   -59.741035
+ 
+                  Steady State No. 2 is asymptotically stable.
+ 
+ 
+ 
+ 
+ 
+                                   References
+                                   ¯¯¯¯¯¯¯¯¯¯
+ 
+ 1. Feinberg, M., Chemical reaction network structure and the stability of comp-
+ lex isothermal reactors. I. The deficiency zero and deficiency one theorems,
+ Chem. Eng. Science, 42, 2229-2268 (1987).
+ 
+ 2. Ellison, P. and Feinberg, M. How catalytic mechanisms reveal themselves
+ in multiple steady state data. I. Basic principles, The Journal of Molecular
+ Catalysis A: Chemical, 154, 155 - 167, 2000.  
+ 
+ 3. Ellison, P. PhD. Thesis. Rochester, NY: Department of Chemical Engineer-
+ ing, University of Rochester; 1998. The advanced deficiency algorithm
+ and itsapplications to mechanism discrimination.
+ 
+ 4. Ji, H. PhD. Thesis. Columbus, OH: Department of Mathematics, The Ohio 
+ State University; 2011. Uniqueness of equilibria for complex chemical reaction
+ networks.
+ 
+                                  ***********
+
