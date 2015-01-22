@@ -385,7 +385,7 @@ The total number of reaction vectors for <Equation executable="false" style="2D 
 <Text-field style="Text" layout="Normal"></Text-field>
 </Input>
 </Group></Presentation-Block>
-<Section collapsed="false" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title>
+<Section collapsed="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title>
 <Text-field style="Heading 2" layout="Heading 2">Step 1. Procedures to create the DSR-graph from the stoichiometric matrix</Text-field></Title><Presentation-Block>
 <Group view="presentation" hide-input="false" hide-output="true" inline-output="false" labelreference="L18712" drawlabel="true">
 <Input>
@@ -510,7 +510,7 @@ The total number of reaction vectors for <Equation executable="false" style="2D 
 <Text-field style="Text" layout="Normal"></Text-field>
 </Input>
 </Group></Presentation-Block>
-<Section collapsed="false" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title>
+<Section collapsed="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title>
 <Text-field style="Heading 3" layout="Heading 3">Procedures </Text-field></Title><Presentation-Block>
 <Group view="presentation" hide-input="false" hide-output="true" inline-output="false" labelreference="L18551" drawlabel="true">
 <Input>
@@ -1551,6 +1551,9 @@ loop no switching (back), if 3 then with competition loop and switching (back).<
 <Input>
 <Text-field prompt="&gt; " style="Maple Input" layout="Normal"><Equation executable="true" style="2D Input" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYrLUkjbWlHRiQ2JVEiVkYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKiZjb2xvbmVxO0YnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSwwLjI3Nzc3NzhlbUYnLyUncnNwYWNlR0ZMLUYsNiVRKGNvbnN0ck1GJ0YvRjItSShtZmVuY2VkR0YkNiQtRiM2Jy1JI21uR0YkNiRRIjZGJ0Y5LUY2Ni1RIixGJ0Y5RjsvRj9GMUZARkJGREZGRkgvRktRJjAuMGVtRicvRk5RLDAuMzMzMzMzM2VtRidGVy8lK2V4ZWN1dGFibGVHRj1GOUY5LUY2Ni1RIn5GJ0Y5RjtGPkZARkJGREZGRkhGaW4vRk5Gam4tRjY2LVEiI0YnRjlGO0Y+RkBGQkZERkZGSEZpbkZiby1GLDYlUVZ+anVzdH5jb3VudH5yaWdodH5tYXRyaWNlc358aXJ+c34ofm1pbnMpfigwc350b34yNzg3MXMpRidGL0YyRl1vRjk=">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYrLUkjbWlHRiQ2JVEiVkYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKiZjb2xvbmVxO0YnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSwwLjI3Nzc3NzhlbUYnLyUncnNwYWNlR0ZMLUYsNiVRKGNvbnN0ck1GJ0YvRjItSShtZmVuY2VkR0YkNiQtRiM2Jy1JI21uR0YkNiRRIjZGJ0Y5LUY2Ni1RIixGJ0Y5RjsvRj9GMUZARkJGREZGRkgvRktRJjAuMGVtRicvRk5RLDAuMzMzMzMzM2VtRidGVy8lK2V4ZWN1dGFibGVHRj1GOUY5LUY2Ni1RIn5GJ0Y5RjtGPkZARkJGREZGRkhGaW4vRk5Gam4tRjY2LVEiI0YnRjlGO0Y+RkBGQkZERkZGSEZpbkZiby1GLDYlUVZ+anVzdH5jb3VudH5yaWdodH5tYXRyaWNlc358aXJ+c34ofm1pbnMpfigwc350b34yNzg3MXMpRidGL0YyRl1vRjk=</Equation></Text-field>
 </Input>
+<Output>
+<Text-field style="HyperlinkError" layout="HyperlinkError"><Hyperlink linktarget="http://www.maplesoft.com/support/help/errors/view.aspx?path=Error,%20(in%20constrM)%20Matrix%20index%20out%20of%20range" hyperlink="true"><Font style="HyperlinkError">Error, (in constrM) Matrix index out of range</Font></Hyperlink></Text-field>
+</Output>
 </Group>
 <Group view="code" hide-input="true" hide-output="false" labelreference="L19460" drawlabel="true">
 <Input>
