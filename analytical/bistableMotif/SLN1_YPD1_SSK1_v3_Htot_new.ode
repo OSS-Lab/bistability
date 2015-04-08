@@ -1,0 +1,99 @@
+# 4layer relay model along with reverse phosphorylation on REC and T
+# In this relay, the H and Rec are found in the same protein (hybrid H)
+#
+# O O - H1
+# X O - H2
+# O X - H3
+# X X - H4
+#
+####### REACTIONS ########
+#
+# H1-ks1-> H2  # autophosphorylation
+# H3-ks2-> H4  # autophosphorylation
+#
+# H2-k2->H3   # phosphotransfer
+# H3-k2r->H2  # reverse phosphotransfer
+#
+# H3+T<k3ra-k3a>Tp+H1     
+# H4+T<k3rb-k3b>Tp+H2
+#
+# R1+Tp<k4r-k4>R1p+T
+# R2+Tp<k5r-k5>R2p+T
+#
+# H3 -kh1a->H1
+# H4 -kh1b->H2
+# R1p -kh2-> R1+p
+# R2p -kh3-> R2+p
+#
+# Janiak-Spens, Fabiola, Paul F Cook, and Ann H West. ?Kinetic Analysis
+# of YPD1-Dependent Phosphotransfer Reactions in the Yeast Osmoregulatory
+# Phosphorelay System.? Biochemistry 44, no. 1 (January 11, 2005): 377?86.
+# doi:10.1021/bi048433s.
+
+# ##########################
+# Parameters from the Paper
+# ##########################
+# k3  = 29 +/- 3
+# k3r = 230 +/- 130
+# k4 = 1.4 +/- 0.2
+# k5  = 160+/- 70 
+# k4r = 0.4 +/- 0.1
+# k5r = 0
+
+###### PARAMETER VALUES ######
+
+#input parameter
+#note that m control ratio between autophosphorylation at H1 vs. H3 state
+#I tried with m=0.01, 0.1, 1, 10, and 100. All seem to work fine. I go with 1, as this is 
+#the simplest assumption
+p ks1=0.0001,m=1
+!ks2=m*ks1
+
+# forward and reverse phosphorylation rates in the HK
+# note that k2,k2r,k3a and k3ra are unknown, while k3b and k3rb are as given above
+# note that it seems k3a >> k3ra (e.g. k3a=100, k3ra=10) is a requisite for bistability
+# however, I then realized that this holds only when m is large (i.e. 10 or 100).
+# when m is smaller, I could set k3a=k3ra, or even k3a=k3b and k3ra=k3rb and it still works!
+# I implement this version here, as this is the simplest assumption.
+# for k2r and k2, it seems that k2 needs to be large and k2r really small. Setting k2r nonzero,
+# I could not maintain bistability, although I did not do a full exploration of this. As long as
+# k2r is zero, k2 can be varied but cannot be too small
+p k2=160,k2r=0,k3a=30,k3ra=230
+p k3b=30,k3rb=230
+
+# forward and reverse phosphorylation rates downstream of the HK
+# note that all of these are as given above
+p k4=1.4,k4r=0.4,k5=160,k5r=0
+
+# hydrolysis rate/autodephosphorylation rate
+# note that these hydrolysis rates seem quite important and 
+# setting them too low abolishes bistability. 
+# The below values work, but I haven’t explored extensively 
+p kh1a=0.1,kh1b=1,kh2=0.1,kh3=0.1
+
+#total protein concentrations in all layers
+#note that when the system is bistable, R2tot, controls 
+#threshold signal level when coming from below, i.e. signal going from low to high.
+#I also played with the other parameters a bit. It seems that Htot cannot be too high. 
+#It also seems that reducing Ttot, reduces the hysteresis level. I suggest a plot with Ttot=1 and Tot=2
+p Htot=0.25,Ttot=2,R1tot=1.5,R2tot=1.5
+
+#### INITIAL CONDITIONS ####
+
+init H1=0
+init H3=0,H4=0.1
+init Tp=0.5,R1p=0.01,R2p=0.01
+
+
+###### SYSTEM OF EQUATIONS ######
+
+dH1/dt=k3a*H3*(Ttot-Tp)+kh1a*H3-(ks1+k3ra*Tp)*H1
+dH3/dt=k2*(Htot-H1-H3-H4)+k3ra*Tp*H1-(ks2+k2r+k3a*(Ttot-Tp)+kh1a)*H3
+dH4/dt=ks2*H3+k3rb*Tp*(Htot-H1-H3-H4)-(k3b*H4*(Ttot-Tp)+kh1b)*H4
+dTp/dt=(k3a*H3+k3b*H4+k4r*R1p+k5r*R2p)*(Ttot-Tp)-(k3ra*H1+k3rb*(Htot-H1-H3-H4)+k4*(R1tot-R1p)+k5*(R2tot-R2p))*Tp
+dR1p/dt=k4*Tp*(R1tot-R1p)-(k4r*(Ttot-Tp)+kh2)*R1p
+dR2p/dt=k5*Tp*(R2tot-R2p)-(k5r*(Ttot-Tp)+kh3)*R2p
+
+@ dt=0.001,maxstor=100000,math=stiff,total=100,bound=1000
+
+done
