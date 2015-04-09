@@ -1,0 +1,30 @@
+# This is a xppaut file to generate bifurcation plots for this bistable motif.
+
+# The reactions in the bitable motif are
+# E1 + S <-> E1S -> E1 + P
+# E2 + S <-> E2S -> E2 + P
+# P -> S
+# E1 <-> E2
+# E1S <-> E2S
+
+# Parameters for the bistable region
+# k1 = 0.001, k2 = 10, k3 = 100, k4 = 10, k5 = 0.01, k6 = 100, k7 = 0.1, k8 = 0.01, k9 = 100, k10 = 1, k11 = 0.01, T1 = 84614.84435, T2 = 3504.020816
+
+p k1 = 0.001, k2 = 10, k3 = 100, k4 = 10, k5 = 0.01, k6 = 100, k7 = 0.1, k8 = 0.01, k9 = 100, k10 = 1, k11 = 0.01
+
+
+init S=84614.84435
+init E1=3504.020816
+init P=0,E2=0,E1S=0,E2S=0
+
+# SYSTEM OF EQUATIONS
+dS/dt=k1*S*E1-k4*S*E2+k2*E1S+k5*E2S+k7*P
+dP/dt=k3*E1S+k6*E2S-k7*P
+dE1/dt=-k1*S*E1+k2*E1S+k3*E1S-k8*E1+k9*E2
+dE2/dt=-k4*S*E2+k5*E2S+k6*E2S+k8*E1-k9*E2
+dE1S/dt=k1*S*E1-k2*E1S-k3*E1S-k10*E1S+k11*E2S
+dE2S/dt=k4*S*E2-k5*E2S-k6*E2S+k10*E1S-k11*E2S
+
+@ dt=0.001,maxstor=100000,math=stiff,total=100,bound=1000
+
+done
