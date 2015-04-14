@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    332480,       5978]
-NotebookOptionsPosition[    331649,       5946]
-NotebookOutlinePosition[    332004,       5962]
-CellTagsIndexPosition[    331961,       5959]
+NotebookDataLength[    332558,       5978]
+NotebookOptionsPosition[    331727,       5946]
+NotebookOutlinePosition[    332082,       5962]
+CellTagsIndexPosition[    332039,       5959]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -265,14 +265,14 @@ Cell[BoxData[{
     RowBox[{"{", 
      RowBox[{
       RowBox[{
-       RowBox[{"x1", "[", "0", "]"}], "==", 
+       RowBox[{"x1", "[", "0", "]"}], "\[Equal]", 
        RowBox[{
         RowBox[{"Evaluate", "[", 
          RowBox[{
           RowBox[{"x1", "[", "tf", "]"}], "/.", "sol"}], "]"}], "[", 
         RowBox[{"[", "1", "]"}], "]"}]}], ",", 
       RowBox[{
-       RowBox[{"x2", "[", "0", "]"}], "==", 
+       RowBox[{"x2", "[", "0", "]"}], "\[Equal]", 
        RowBox[{
         RowBox[{"Evaluate", "[", 
          RowBox[{
@@ -286,21 +286,21 @@ Cell[BoxData[{
           RowBox[{"x3", "[", "tf", "]"}], "/.", "sol"}], "]"}], "[", 
         RowBox[{"[", "1", "]"}], "]"}]}], ",", 
       RowBox[{
-       RowBox[{"x4", "[", "0", "]"}], "==", 
+       RowBox[{"x4", "[", "0", "]"}], "\[Equal]", 
        RowBox[{
         RowBox[{"Evaluate", "[", 
          RowBox[{
           RowBox[{"x4", "[", "tf", "]"}], "/.", "sol"}], "]"}], "[", 
         RowBox[{"[", "1", "]"}], "]"}]}], ",", 
       RowBox[{
-       RowBox[{"x5", "[", "0", "]"}], "==", 
+       RowBox[{"x5", "[", "0", "]"}], "\[Equal]", 
        RowBox[{
         RowBox[{"Evaluate", "[", 
          RowBox[{
           RowBox[{"x5", "[", "tf", "]"}], "/.", "sol"}], "]"}], "[", 
         RowBox[{"[", "1", "]"}], "]"}]}], ",", 
       RowBox[{
-       RowBox[{"x6", "[", "0", "]"}], "==", 
+       RowBox[{"x6", "[", "0", "]"}], "\[Equal]", 
        RowBox[{
         RowBox[{"Evaluate", "[", 
          RowBox[{
@@ -875,7 +875,7 @@ Cell[BoxData[{
    3.638010327393242*^9}, {3.638010883028248*^9, 3.638010997959284*^9}, {
    3.638011029511211*^9, 3.638011034495397*^9}, 3.638011124119041*^9, {
    3.638011338440967*^9, 3.638011412267633*^9}, {3.638011939482107*^9, 
-   3.638011957501288*^9}}],
+   3.638011957501288*^9}, {3.638016097604369*^9, 3.6380161091240873`*^9}}],
 
 Cell[CellGroupData[{
 
@@ -5961,23 +5961,23 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 32387, 857, 1576, "Input"],
+Cell[558, 20, 32465, 857, 1576, "Input"],
 Cell[CellGroupData[{
-Cell[32970, 881, 1523, 39, 63, "Input"],
-Cell[34496, 922, 52236, 873, 385, "Output"]
+Cell[33048, 881, 1523, 39, 63, "Input"],
+Cell[34574, 922, 52236, 873, 385, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[86769, 1800, 1307, 37, 63, "Input"],
-Cell[88079, 1839, 68711, 1152, 385, 52693, 888, "CachedBoxData", "BoxData", \
+Cell[86847, 1800, 1307, 37, 63, "Input"],
+Cell[88157, 1839, 68711, 1152, 385, 52693, 888, "CachedBoxData", "BoxData", \
 "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[156827, 2996, 1423, 37, 80, "Input"],
-Cell[158253, 3035, 52143, 871, 385, "Output"]
+Cell[156905, 2996, 1423, 37, 80, "Input"],
+Cell[158331, 3035, 52143, 871, 385, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[210433, 3911, 1311, 37, 80, "Input"],
-Cell[211747, 3950, 119886, 1993, 419, 103756, 1727, "CachedBoxData", \
+Cell[210511, 3911, 1311, 37, 80, "Input"],
+Cell[211825, 3950, 119886, 1993, 419, 103756, 1727, "CachedBoxData", \
 "BoxData", "Output"]
 }, Open  ]]
 }
