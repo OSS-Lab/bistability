@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    443805,       7724]
-NotebookOptionsPosition[    442758,       7686]
-NotebookOutlinePosition[    443114,       7702]
-CellTagsIndexPosition[    443071,       7699]
+NotebookDataLength[    439620,       7600]
+NotebookOptionsPosition[    438573,       7562]
+NotebookOutlinePosition[    438929,       7578]
+CellTagsIndexPosition[    438886,       7575]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -383,130 +383,6 @@ Cell[BoxData[{
         RowBox[{"{", 
          RowBox[{"t", ",", "0", ",", "tf"}], "}"}]}], "]"}]}], ";", 
      "\[IndentingNewLine]", "\[IndentingNewLine]", 
-     RowBox[{"(*", 
-      RowBox[{"If", "[", 
-       RowBox[{
-        RowBox[{
-         RowBox[{
-          RowBox[{"Abs", "[", 
-           RowBox[{
-            RowBox[{"Evaluate", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"x1", "'"}], "[", "tf", "]"}], "/.", "sol"}], "]"}], 
-            "[", 
-            RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[LessEqual]", "0.001"}], 
-         "&&", 
-         RowBox[{
-          RowBox[{"Abs", "[", 
-           RowBox[{
-            RowBox[{"Evaluate", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"x1", "''"}], "[", "tf", "]"}], "/.", "sol"}], "]"}], 
-            "[", 
-            RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[LessEqual]", "0.001"}], 
-         "&&", 
-         RowBox[{
-          RowBox[{"Abs", "[", 
-           RowBox[{
-            RowBox[{"Evaluate", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"x2", "'"}], "[", "tf", "]"}], "/.", "sol"}], "]"}], 
-            "[", 
-            RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[LessEqual]", "0.001"}], 
-         "&&", 
-         RowBox[{
-          RowBox[{"Abs", "[", 
-           RowBox[{
-            RowBox[{"Evaluate", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"x2", "''"}], "[", "tf", "]"}], "/.", "sol"}], "]"}], 
-            "[", 
-            RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[LessEqual]", "0.001"}], 
-         "&&", 
-         RowBox[{
-          RowBox[{"Abs", "[", 
-           RowBox[{
-            RowBox[{"Evaluate", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"x3", "'"}], "[", "tf", "]"}], "/.", "sol"}], "]"}], 
-            "[", 
-            RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[LessEqual]", "0.001"}], 
-         "&&", 
-         RowBox[{
-          RowBox[{"Abs", "[", 
-           RowBox[{
-            RowBox[{"Evaluate", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"x3", "''"}], "[", "tf", "]"}], "/.", "sol"}], "]"}], 
-            "[", 
-            RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[LessEqual]", "0.001"}], 
-         "&&", 
-         RowBox[{
-          RowBox[{"Abs", "[", 
-           RowBox[{
-            RowBox[{"Evaluate", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"x4", "'"}], "[", "tf", "]"}], "/.", "sol"}], "]"}], 
-            "[", 
-            RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[LessEqual]", "0.001"}], 
-         "&&", 
-         RowBox[{
-          RowBox[{"Abs", "[", 
-           RowBox[{
-            RowBox[{"Evaluate", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"x4", "''"}], "[", "tf", "]"}], "/.", "sol"}], "]"}], 
-            "[", 
-            RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[LessEqual]", "0.001"}], 
-         "&&", 
-         RowBox[{
-          RowBox[{"Abs", "[", 
-           RowBox[{
-            RowBox[{"Evaluate", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"x5", "'"}], "[", "tf", "]"}], "/.", "sol"}], "]"}], 
-            "[", 
-            RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[LessEqual]", "0.001"}], 
-         "&&", 
-         RowBox[{
-          RowBox[{"Abs", "[", 
-           RowBox[{
-            RowBox[{"Evaluate", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"x5", "''"}], "[", "tf", "]"}], "/.", "sol"}], "]"}], 
-            "[", 
-            RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[LessEqual]", "0.001"}], 
-         "&&", 
-         RowBox[{
-          RowBox[{"Abs", "[", 
-           RowBox[{
-            RowBox[{"Evaluate", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"x6", "'"}], "[", "tf", "]"}], "/.", "sol"}], "]"}], 
-            "[", 
-            RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[LessEqual]", "0.001"}], 
-         "&&", 
-         RowBox[{
-          RowBox[{"Abs", "[", 
-           RowBox[{
-            RowBox[{"Evaluate", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{"x6", "''"}], "[", "tf", "]"}], "/.", "sol"}], "]"}], 
-            "[", 
-            RowBox[{"[", "1", "]"}], "]"}], "]"}], "\[LessEqual]", 
-          "0.001"}]}], ","}]}], "*)"}], " ", "\[IndentingNewLine]", 
      RowBox[{"ssx1d", "=", 
       RowBox[{"Append", "[", 
        RowBox[{"ssx1d", ",", 
@@ -624,7 +500,7 @@ Cell[BoxData[{
    3.6387027902267847`*^9}, {3.6387031538852243`*^9, 
    3.6387031594019737`*^9}, {3.638703191903612*^9, 3.638703218380978*^9}, {
    3.638703699874065*^9, 3.638703768273378*^9}, {3.638703928869379*^9, 
-   3.6387039672670383`*^9}}],
+   3.6387039672670383`*^9}, {3.638704537193347*^9, 3.638704537733942*^9}}],
 
 Cell[CellGroupData[{
 
@@ -7701,29 +7577,29 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 23898, 606, 1168, "Input"],
+Cell[558, 20, 19713, 482, 1066, "Input"],
 Cell[CellGroupData[{
-Cell[24481, 630, 2355, 59, 97, "Input"],
-Cell[26839, 691, 123918, 2055, 375, 113537, 1883, "CachedBoxData", "BoxData", \
+Cell[20296, 506, 2355, 59, 97, "Input"],
+Cell[22654, 567, 123918, 2055, 375, 113537, 1883, "CachedBoxData", "BoxData", \
 "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[150794, 2751, 1977, 52, 97, "Input"],
-Cell[152774, 2805, 28995, 499, 375, 13664, 246, "CachedBoxData", "BoxData", \
+Cell[146609, 2627, 1977, 52, 97, "Input"],
+Cell[148589, 2681, 28995, 499, 375, 13664, 246, "CachedBoxData", "BoxData", \
 "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[181806, 3309, 644, 12, 28, "Input"],
-Cell[182453, 3323, 12178, 211, 240, "Output"]
+Cell[177621, 3185, 644, 12, 28, "Input"],
+Cell[178268, 3199, 12178, 211, 240, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[194668, 3539, 2927, 60, 80, "Input"],
-Cell[197598, 3601, 119926, 1982, 382, 112525, 1861, "CachedBoxData", \
+Cell[190483, 3415, 2927, 60, 80, "Input"],
+Cell[193413, 3477, 119926, 1982, 382, 112525, 1861, "CachedBoxData", \
 "BoxData", "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[317561, 5588, 1645, 43, 97, "Input"],
-Cell[319209, 5633, 123533, 2050, 366, 114175, 1895, "CachedBoxData", \
+Cell[313376, 5464, 1645, 43, 97, "Input"],
+Cell[315024, 5509, 123533, 2050, 366, 114175, 1895, "CachedBoxData", \
 "BoxData", "Output"]
 }, Open  ]]
 }
