@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    439622,       7600]
+NotebookDataLength[    439621,       7600]
 NotebookOptionsPosition[    438575,       7562]
-NotebookOutlinePosition[    438931,       7578]
-CellTagsIndexPosition[    438888,       7575]
+NotebookOutlinePosition[    438930,       7578]
+CellTagsIndexPosition[    438887,       7575]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -7561,9 +7561,9 @@ uP/ELggyz9aC/wO4yWMb\
 }, Open  ]]
 },
 WindowSize->{944, 674},
-WindowMargins->{{63, Automatic}, {Automatic, 0}},
-FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (December 4, \
-2014)",
+WindowMargins->{{Automatic, 11}, {Automatic, 85}},
+FrontEndVersion->"10.1 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 23, \
+2015)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -7599,7 +7599,7 @@ Cell[193415, 3477, 119926, 1982, 382, 112525, 1861, "CachedBoxData", \
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[313378, 5464, 1645, 43, 97, "Input"],
-Cell[315026, 5509, 123533, 2050, 400, 114175, 1895, "CachedBoxData", \
+Cell[315026, 5509, 123533, 2050, 366, 114175, 1895, "CachedBoxData", \
 "BoxData", "Output"]
 }, Open  ]]
 }
