@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    334511,       9086]
-NotebookOptionsPosition[    332239,       9002]
-NotebookOutlinePosition[    332622,       9019]
-CellTagsIndexPosition[    332579,       9016]
+NotebookDataLength[    335661,       9112]
+NotebookOptionsPosition[    333393,       9028]
+NotebookOutlinePosition[    333771,       9045]
+CellTagsIndexPosition[    333728,       9042]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -8209,67 +8209,93 @@ Cell[BoxData[{
        RowBox[{"(*", 
         RowBox[{
          RowBox[{"termCount", "++"}], ";"}], "*)"}], "\[IndentingNewLine]", 
-       RowBox[{"If", "[", 
+       RowBox[{"Switch", "[", 
         RowBox[{
-         RowBox[{
-          RowBox[{"Length", "[", 
-           RowBox[{"Flatten", "[", "solution", "]"}], "]"}], ">", "1"}], ",", 
-         
+         RowBox[{"Length", "[", 
+          RowBox[{"Flatten", "[", "solution", "]"}], "]"}], ",", "2", ",", 
          RowBox[{"{", "\[IndentingNewLine]", 
           RowBox[{
            RowBox[{"AppendTo", "[", 
-            RowBox[{"bistableParSets", ",", 
+            RowBox[{"ss1ParSets", ",", 
              RowBox[{"Flatten", "[", 
               RowBox[{"Join", "[", 
                RowBox[{"pars", ",", "tots"}], "]"}], "]"}]}], "]"}], ";", 
            "\[IndentingNewLine]", 
            RowBox[{"AppendTo", "[", 
-            RowBox[{"bistablePolSets", ",", 
+            RowBox[{"ss2PolSets", ",", 
              RowBox[{"pol", "/.", "subs"}]}], "]"}], ";", 
            "\[IndentingNewLine]", 
            RowBox[{"AppendTo", "[", 
             RowBox[{"bistableSolSets", ",", 
              RowBox[{"Flatten", "[", "solution", "]"}]}], "]"}], ";", 
            "\[IndentingNewLine]", 
-           RowBox[{"biCount", "++"}], ";", "\[IndentingNewLine]", 
-           RowBox[{"If", "[", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"Length", "[", 
-               RowBox[{"Flatten", "[", "solution", "]"}], "]"}], ">", "3"}], 
-             ",", 
-             RowBox[{"{", "\[IndentingNewLine]", 
-              RowBox[{
-               RowBox[{"AppendTo", "[", 
-                RowBox[{"multistableParSets", ",", 
-                 RowBox[{"Flatten", "[", 
-                  RowBox[{"Join", "[", 
-                   RowBox[{"pars", ",", "tots"}], "]"}], "]"}]}], "]"}], ";", 
-               "\[IndentingNewLine]", 
-               RowBox[{"AppendTo", "[", 
-                RowBox[{"multistablePolSets", ",", 
-                 RowBox[{"pol", "/.", "subs"}]}], "]"}], ";", 
-               "\[IndentingNewLine]", 
-               RowBox[{"AppendTo", "[", 
-                RowBox[{"multistableSolSets", ",", 
-                 RowBox[{"Flatten", "[", "solution", "]"}]}], "]"}], ";", 
-               "\[IndentingNewLine]", 
-               RowBox[{"multiCount", "++"}], ";"}], "\[IndentingNewLine]", 
-              "}"}]}], "]"}], ";"}], "\[IndentingNewLine]", "}"}]}], "]"}], 
-       ";"}], "\[IndentingNewLine]", 
+           RowBox[{"biCount", "++"}], ";"}], "}"}], ",", "3", ",", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"ss3ParSets", ",", 
+             RowBox[{"Flatten", "[", 
+              RowBox[{"Join", "[", 
+               RowBox[{"pars", ",", "tots"}], "]"}], "]"}]}], "]"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"ss3PolSets", ",", 
+             RowBox[{"pol", "/.", "subs"}]}], "]"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"ss3SolSets", ",", 
+             RowBox[{"Flatten", "[", "solution", "]"}]}], "]"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"multiCount", "++"}], ";"}], "}"}], ",", "4", ",", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"ss4ParSets", ",", 
+             RowBox[{"Flatten", "[", 
+              RowBox[{"Join", "[", 
+               RowBox[{"pars", ",", "tots"}], "]"}], "]"}]}], "]"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"ss4PolSets", ",", 
+             RowBox[{"pol", "/.", "subs"}]}], "]"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"ss4SolSets", ",", 
+             RowBox[{"Flatten", "[", "solution", "]"}]}], "]"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"multiCount", "++"}], ";"}], "}"}], ",", "5", ",", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"ss5ParSets", ",", 
+             RowBox[{"Flatten", "[", 
+              RowBox[{"Join", "[", 
+               RowBox[{"pars", ",", "tots"}], "]"}], "]"}]}], "]"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"ss5PolSets", ",", 
+             RowBox[{"pol", "/.", "subs"}]}], "]"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"AppendTo", "[", 
+            RowBox[{"ss5SolSets", ",", 
+             RowBox[{"Flatten", "[", "solution", "]"}]}], "]"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"multiCount", "++"}], ";"}], "}"}]}], 
+        "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
       RowBox[{"(*", 
        RowBox[{
         RowBox[{"}", "]"}], ";"}], "*)"}], "\[IndentingNewLine]", "}"}], ",", 
      
      RowBox[{"{", 
-      RowBox[{"i", ",", "1000000"}], "}"}]}], "]"}], ";"}], 
+      RowBox[{"i", ",", "5000000"}], "}"}]}], "]"}], ";"}], 
   "\[IndentingNewLine]", "]"}]}], "Input",
  CellChangeTimes->{{3.656340060998933*^9, 3.656340114758774*^9}, {
    3.65634027139126*^9, 3.6563403067013683`*^9}, 3.656340521210791*^9, {
    3.656619443192204*^9, 3.656619472339007*^9}, {3.656620509846608*^9, 
    3.656620541959041*^9}, {3.656620602399613*^9, 3.656620602596793*^9}, 
    3.656620644906166*^9, {3.656620733255498*^9, 3.65662074943696*^9}, {
-   3.656623119318763*^9, 3.656623119468259*^9}}],
+   3.656623119318763*^9, 3.656623119468259*^9}, {3.656628205226295*^9, 
+   3.656628225504827*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -9002,7 +9028,7 @@ Cell[BoxData[
 },
 Evaluator->"NewKernel2",
 WindowSize->{953, 677},
-WindowMargins->{{Automatic, -1164}, {Automatic, -224}},
+WindowMargins->{{Automatic, 116}, {Automatic, 0}},
 FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
 2015)",
 StyleDefinitions->"Default.nb"
@@ -9063,28 +9089,28 @@ Cell[CellGroupData[{
 Cell[244941, 6833, 99, 1, 35, "Subsubsection"],
 Cell[245043, 6836, 42591, 1185, 726, "Input"],
 Cell[CellGroupData[{
-Cell[287659, 8025, 9631, 246, 671, "Input"],
-Cell[297293, 8273, 246, 5, 39, "Output"]
+Cell[287659, 8025, 10785, 272, 762, "Input"],
+Cell[298447, 8299, 246, 5, 39, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[297576, 8283, 73, 1, 39, "Input"],
-Cell[297652, 8286, 162, 2, 39, "Output"]
+Cell[298730, 8309, 73, 1, 39, "Input"],
+Cell[298806, 8312, 162, 2, 39, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[297851, 8293, 76, 1, 39, "Input"],
-Cell[297930, 8296, 163, 2, 39, "Output"]
+Cell[299005, 8319, 76, 1, 39, "Input"],
+Cell[299084, 8322, 163, 2, 39, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[298130, 8303, 109, 1, 39, "Input"],
-Cell[298242, 8306, 1799, 52, 108, "Output"]
+Cell[299284, 8329, 109, 1, 39, "Input"],
+Cell[299396, 8332, 1799, 52, 108, "Output"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[300102, 8365, 89, 1, 64, "Section"],
+Cell[301256, 8391, 89, 1, 64, "Section"],
 Cell[CellGroupData[{
-Cell[300216, 8370, 426, 12, 28, "Input"],
-Cell[300645, 8384, 31554, 613, 371, "Output"]
+Cell[301370, 8396, 426, 12, 28, "Input"],
+Cell[301799, 8410, 31554, 613, 371, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]]
