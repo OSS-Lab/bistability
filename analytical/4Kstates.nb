@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    339175,       9197]
-NotebookOptionsPosition[    336586,       9106]
-NotebookOutlinePosition[    336963,       9123]
-CellTagsIndexPosition[    336920,       9120]
+NotebookDataLength[    342364,       9267]
+NotebookOptionsPosition[    339431,       9163]
+NotebookOutlinePosition[    339813,       9180]
+CellTagsIndexPosition[    339770,       9177]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -6827,12 +6827,16 @@ Cell[BoxData[
  CellChangeTimes->{
   3.656077160104005*^9, 3.656077192119027*^9, {3.656077602779848*^9, 
    3.656077675234014*^9}, 3.656339861732373*^9}]
-}, Open  ]],
+}, Open  ]]
+}, Closed]],
 
 Cell[CellGroupData[{
 
-Cell["Sampling", "Subsubsection",
- CellChangeTimes->{{3.656339900264113*^9, 3.656339975820348*^9}}],
+Cell[TextData[StyleBox["Sampling Parameter and Bifurcation plot", \
+"Section"]], "Section",
+ CellChangeTimes->{{3.656339900264113*^9, 3.656339975820348*^9}, {
+  3.65679552043957*^9, 3.656795526486553*^9}, {3.65679557684761*^9, 
+  3.6567955772368402`*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -8023,373 +8027,406 @@ Cell[BoxData[{
 
 Cell[CellGroupData[{
 
-Cell[BoxData[{
+Cell["Sampling", "Subsection",
+ CellChangeTimes->{{3.6567955338392477`*^9, 3.6567955351018887`*^9}}],
+
+Cell[BoxData[
  RowBox[{
-  RowBox[{"ss2ParSets", "=", 
-   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"ss2PolSets", "=", 
-   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"ss2SolSets", "=", 
-   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"ss3ParSets", "=", 
-   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"ss3PolSets", "=", 
-   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"ss3SolSets", "=", 
-   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"ss4ParSets", "=", 
-   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"ss4PolSets", "=", 
-   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"ss4SolSets", "=", 
-   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"ss5ParSets", "=", 
-   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"ss5PolSets", "=", 
-   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"ss5SolSets", "=", 
-   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"biCount", "=", "0"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"multiCount", "=", "0"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"termCount", "=", "0"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{"Timing", "[", "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"ss2ParSets", "=", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"ss2PolSets", "=", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"ss2SolSets", "=", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"ss3ParSets", "=", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"ss3PolSets", "=", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"ss3SolSets", "=", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"ss4ParSets", "=", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"ss4PolSets", "=", 
+     RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"ss4SolSets", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "*)"}], "\[IndentingNewLine]", 
   RowBox[{
-   RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"ss5ParSets", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ss5PolSets", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ss5SolSets", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"biCount", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"multiCount", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"termCount", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Timing", "[", "\[IndentingNewLine]", 
     RowBox[{
-     RowBox[{"{", "\[IndentingNewLine]", 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{"pars", "=", 
-         RowBox[{
-          RowBox[{"Exp", "[", 
-           RowBox[{"-", 
-            RowBox[{"RandomVariate", "[", 
-             RowBox[{
-              RowBox[{"ExponentialDistribution", "[", 
-               RowBox[{
-                RowBox[{"Log", "[", "2", "]"}], "/", 
-                RowBox[{"(", 
-                 RowBox[{"-", 
-                  RowBox[{"Log", "[", "0.001", "]"}]}], ")"}]}], "]"}], ",", 
-              "15"}], "]"}]}], "]"}], "*", "1000"}]}], ";", 
-        "\[IndentingNewLine]", 
-        RowBox[{"tots", "=", 
-         RowBox[{
-          RowBox[{"Exp", "[", 
-           RowBox[{"-", 
-            RowBox[{"RandomVariate", "[", 
-             RowBox[{
-              RowBox[{"ExponentialDistribution", "[", 
-               RowBox[{
-                RowBox[{"Log", "[", "2", "]"}], "/", 
-                RowBox[{"(", 
-                 RowBox[{"-", 
-                  RowBox[{"Log", "[", "0.001", "]"}]}], ")"}]}], "]"}], ",", 
-              "2"}], "]"}]}], "]"}], "*", "1000"}]}], ";"}], "*)"}], 
-      "\[IndentingNewLine]", 
+     RowBox[{"Do", "[", 
       RowBox[{
-       RowBox[{"pars", "=", 
-        RowBox[{"Exp", "[", 
-         RowBox[{"RandomReal", "[", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{"Log", "[", "0.001", "]"}], ",", 
-             RowBox[{"Log", "[", "1000.", "]"}]}], "}"}], ",", "15"}], "]"}], 
-         "]"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"tots", "=", 
-        RowBox[{"Exp", "[", 
-         RowBox[{"RandomReal", "[", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{"Log", "[", "0.001", "]"}], ",", 
-             RowBox[{"Log", "[", "1000.", "]"}]}], "}"}], ",", "2"}], "]"}], 
-         "]"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"subs", "=", 
-        RowBox[{"{", 
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{"(*", 
          RowBox[{
-          RowBox[{
-           SubscriptBox["k", "1"], "\[Rule]", 
-           RowBox[{"pars", "[", 
-            RowBox[{"[", "1", "]"}], "]"}]}], ",", 
-          RowBox[{
-           SubscriptBox["k", "2"], "\[Rule]", 
-           RowBox[{"pars", "[", 
-            RowBox[{"[", "2", "]"}], "]"}]}], ",", 
-          RowBox[{
-           SubscriptBox["k", "3"], "\[Rule]", 
-           RowBox[{"pars", "[", 
-            RowBox[{"[", "3", "]"}], "]"}]}], ",", 
-          RowBox[{
-           SubscriptBox["k", "4"], "\[Rule]", 
-           RowBox[{"pars", "[", 
-            RowBox[{"[", "4", "]"}], "]"}]}], ",", 
-          RowBox[{
-           SubscriptBox["k", "5"], "\[Rule]", 
-           RowBox[{"pars", "[", 
-            RowBox[{"[", "5", "]"}], "]"}]}], ",", 
-          RowBox[{
-           SubscriptBox["k", "6"], "\[Rule]", 
-           RowBox[{"pars", "[", 
-            RowBox[{"[", "6", "]"}], "]"}]}], ",", 
-          RowBox[{
-           SubscriptBox["k", "7"], "\[Rule]", 
-           RowBox[{"pars", "[", 
-            RowBox[{"[", "7", "]"}], "]"}]}], ",", 
-          RowBox[{
-           SubscriptBox["k", "8"], "\[Rule]", 
-           RowBox[{"pars", "[", 
-            RowBox[{"[", "8", "]"}], "]"}]}], ",", 
-          RowBox[{
-           SubscriptBox["k", "9"], "\[Rule]", 
-           RowBox[{"pars", "[", 
-            RowBox[{"[", "9", "]"}], "]"}]}], ",", 
-          RowBox[{
-           SubscriptBox["k", "10"], "\[Rule]", 
-           RowBox[{"pars", "[", 
-            RowBox[{"[", "10", "]"}], "]"}]}], ",", 
-          RowBox[{
-           SubscriptBox["k", "11"], "\[Rule]", 
-           RowBox[{"pars", "[", 
-            RowBox[{"[", "11", "]"}], "]"}]}], ",", 
-          RowBox[{
-           SubscriptBox["k", "12"], "\[Rule]", 
-           RowBox[{"pars", "[", 
-            RowBox[{"[", "12", "]"}], "]"}]}], ",", 
-          RowBox[{
-           SubscriptBox["k", "13"], "\[Rule]", 
-           RowBox[{"pars", "[", 
-            RowBox[{"[", "13", "]"}], "]"}]}], ",", 
-          RowBox[{
-           SubscriptBox["k", "14"], "\[Rule]", 
-           RowBox[{"pars", "[", 
-            RowBox[{"[", "14", "]"}], "]"}]}], ",", 
-          RowBox[{
-           SubscriptBox["k", "15"], "\[Rule]", 
-           RowBox[{"pars", "[", 
-            RowBox[{"[", "15", "]"}], "]"}]}], ",", 
-          RowBox[{
-           SubscriptBox["T", "1"], "\[Rule]", 
-           RowBox[{"tots", "[", 
-            RowBox[{"[", "1", "]"}], "]"}]}], ",", 
-          RowBox[{
-           SubscriptBox["T", "2"], "\[Rule]", 
-           RowBox[{"tots", "[", 
-            RowBox[{"[", "2", "]"}], "]"}]}]}], "}"}]}], ";", 
-       "\[IndentingNewLine]", 
-       RowBox[{"(*", 
-        RowBox[{
-         RowBox[{"term4", "=", 
-          RowBox[{"coeff4", "/.", "subs"}]}], ";", 
-         RowBox[{"term3", "=", 
-          RowBox[{"coeff3", "/.", "subs"}]}], ";", 
-         RowBox[{"term2", "=", 
-          RowBox[{"coeff2", "/.", "subs"}]}], ";", 
-         RowBox[{"term1", "=", 
-          RowBox[{"coeff1", "/.", "subs"}]}], ";", "\[IndentingNewLine]", 
-         RowBox[{"If", "[", 
-          RowBox[{
+          RowBox[{"pars", "=", 
            RowBox[{
-            RowBox[{"term4", "<", "0"}], "&&", 
-            RowBox[{"term3", ">", "0"}], "&&", 
-            RowBox[{"term2", "<", "0"}], "&&", 
-            RowBox[{"term1", ">", "0"}]}], ",", "{"}]}]}], "*)"}], 
-       "\[IndentingNewLine]", 
-       RowBox[{"solution", "=", 
-        RowBox[{"Select", "[", 
-         RowBox[{
-          RowBox[{"DeleteDuplicates", "[", 
-           RowBox[{"Re", "[", 
-            RowBox[{
-             SubscriptBox["x", "1"], "/.", 
-             RowBox[{"NSolve", "[", 
-              RowBox[{
+            RowBox[{"Exp", "[", 
+             RowBox[{"-", 
+              RowBox[{"RandomVariate", "[", 
                RowBox[{
-                RowBox[{"{", 
-                 RowBox[{"pol", "\[Equal]", "0"}], "}"}], "/.", "subs"}], ",", 
-               SubscriptBox["x", "1"]}], "]"}]}], "]"}], "]"}], ",", 
-          "Positive"}], "]"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"(*", 
+                RowBox[{"ExponentialDistribution", "[", 
+                 RowBox[{
+                  RowBox[{"Log", "[", "2", "]"}], "/", 
+                  RowBox[{"(", 
+                   RowBox[{"-", 
+                    RowBox[{"Log", "[", "0.001", "]"}]}], ")"}]}], "]"}], ",",
+                 "15"}], "]"}]}], "]"}], "*", "1000"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"tots", "=", 
+           RowBox[{
+            RowBox[{"Exp", "[", 
+             RowBox[{"-", 
+              RowBox[{"RandomVariate", "[", 
+               RowBox[{
+                RowBox[{"ExponentialDistribution", "[", 
+                 RowBox[{
+                  RowBox[{"Log", "[", "2", "]"}], "/", 
+                  RowBox[{"(", 
+                   RowBox[{"-", 
+                    RowBox[{"Log", "[", "0.001", "]"}]}], ")"}]}], "]"}], ",",
+                 "2"}], "]"}]}], "]"}], "*", "1000"}]}], ";"}], "*)"}], 
+        "\[IndentingNewLine]", 
         RowBox[{
-         RowBox[{"termCount", "++"}], ";"}], "*)"}], "\[IndentingNewLine]", 
-       RowBox[{"Switch", "[", 
-        RowBox[{
-         RowBox[{"Length", "[", 
-          RowBox[{"Flatten", "[", "solution", "]"}], "]"}], ",", "2", ",", 
-         RowBox[{"{", "\[IndentingNewLine]", 
+         RowBox[{"pars", "=", 
+          RowBox[{"Exp", "[", 
+           RowBox[{"RandomReal", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"Log", "[", "0.0001", "]"}], ",", 
+               RowBox[{"Log", "[", "10000.", "]"}]}], "}"}], ",", "15"}], 
+            "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"tots", "=", 
+          RowBox[{"Exp", "[", 
+           RowBox[{"RandomReal", "[", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"Log", "[", "0.0001", "]"}], ",", 
+               RowBox[{"Log", "[", "10000.", "]"}]}], "}"}], ",", "2"}], 
+            "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"subs", "=", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             SubscriptBox["k", "1"], "\[Rule]", 
+             RowBox[{"pars", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+            RowBox[{
+             SubscriptBox["k", "2"], "\[Rule]", 
+             RowBox[{"pars", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+            RowBox[{
+             SubscriptBox["k", "3"], "\[Rule]", 
+             RowBox[{"pars", "[", 
+              RowBox[{"[", "3", "]"}], "]"}]}], ",", 
+            RowBox[{
+             SubscriptBox["k", "4"], "\[Rule]", 
+             RowBox[{"pars", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}], ",", 
+            RowBox[{
+             SubscriptBox["k", "5"], "\[Rule]", 
+             RowBox[{"pars", "[", 
+              RowBox[{"[", "5", "]"}], "]"}]}], ",", 
+            RowBox[{
+             SubscriptBox["k", "6"], "\[Rule]", 
+             RowBox[{"pars", "[", 
+              RowBox[{"[", "6", "]"}], "]"}]}], ",", 
+            RowBox[{
+             SubscriptBox["k", "7"], "\[Rule]", 
+             RowBox[{"pars", "[", 
+              RowBox[{"[", "7", "]"}], "]"}]}], ",", 
+            RowBox[{
+             SubscriptBox["k", "8"], "\[Rule]", 
+             RowBox[{"pars", "[", 
+              RowBox[{"[", "8", "]"}], "]"}]}], ",", 
+            RowBox[{
+             SubscriptBox["k", "9"], "\[Rule]", 
+             RowBox[{"pars", "[", 
+              RowBox[{"[", "9", "]"}], "]"}]}], ",", 
+            RowBox[{
+             SubscriptBox["k", "10"], "\[Rule]", 
+             RowBox[{"pars", "[", 
+              RowBox[{"[", "10", "]"}], "]"}]}], ",", 
+            RowBox[{
+             SubscriptBox["k", "11"], "\[Rule]", 
+             RowBox[{"pars", "[", 
+              RowBox[{"[", "11", "]"}], "]"}]}], ",", 
+            RowBox[{
+             SubscriptBox["k", "12"], "\[Rule]", 
+             RowBox[{"pars", "[", 
+              RowBox[{"[", "12", "]"}], "]"}]}], ",", 
+            RowBox[{
+             SubscriptBox["k", "13"], "\[Rule]", 
+             RowBox[{"pars", "[", 
+              RowBox[{"[", "13", "]"}], "]"}]}], ",", 
+            RowBox[{
+             SubscriptBox["k", "14"], "\[Rule]", 
+             RowBox[{"pars", "[", 
+              RowBox[{"[", "14", "]"}], "]"}]}], ",", 
+            RowBox[{
+             SubscriptBox["k", "15"], "\[Rule]", 
+             RowBox[{"pars", "[", 
+              RowBox[{"[", "15", "]"}], "]"}]}], ",", 
+            RowBox[{
+             SubscriptBox["T", "1"], "\[Rule]", 
+             RowBox[{"tots", "[", 
+              RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+            RowBox[{
+             SubscriptBox["T", "2"], "\[Rule]", 
+             RowBox[{"tots", "[", 
+              RowBox[{"[", "2", "]"}], "]"}]}]}], "}"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", 
           RowBox[{
-           RowBox[{"AppendTo", "[", 
-            RowBox[{"ss2ParSets", ",", 
-             RowBox[{"Flatten", "[", 
-              RowBox[{"Join", "[", 
-               RowBox[{"pars", ",", "tots"}], "]"}], "]"}]}], "]"}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"AppendTo", "[", 
-            RowBox[{"ss2PolSets", ",", 
-             RowBox[{"pol", "/.", "subs"}]}], "]"}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"AppendTo", "[", 
-            RowBox[{"ss2SolSets", ",", 
-             RowBox[{"Flatten", "[", "solution", "]"}]}], "]"}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"biCount", "++"}], ";"}], "}"}], ",", "3", ",", 
-         RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{"term4", "=", 
+            RowBox[{"coeff4", "/.", "subs"}]}], ";", 
+           RowBox[{"term3", "=", 
+            RowBox[{"coeff3", "/.", "subs"}]}], ";", 
+           RowBox[{"term2", "=", 
+            RowBox[{"coeff2", "/.", "subs"}]}], ";", 
+           RowBox[{"term1", "=", 
+            RowBox[{"coeff1", "/.", "subs"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"term4", "<", "0"}], "&&", 
+              RowBox[{"term3", ">", "0"}], "&&", 
+              RowBox[{"term2", "<", "0"}], "&&", 
+              RowBox[{"term1", ">", "0"}]}], ",", "{"}]}]}], "*)"}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"solution", "=", 
+          RowBox[{"Select", "[", 
+           RowBox[{
+            RowBox[{"DeleteDuplicates", "[", 
+             RowBox[{"Re", "[", 
+              RowBox[{
+               SubscriptBox["x", "1"], "/.", 
+               RowBox[{"NSolve", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"{", 
+                   RowBox[{"pol", "\[Equal]", "0"}], "}"}], "/.", "subs"}], 
+                 ",", 
+                 SubscriptBox["x", "1"]}], "]"}]}], "]"}], "]"}], ",", 
+            "Positive"}], "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"(*", 
           RowBox[{
-           RowBox[{"AppendTo", "[", 
-            RowBox[{"ss3ParSets", ",", 
-             RowBox[{"Flatten", "[", 
-              RowBox[{"Join", "[", 
-               RowBox[{"pars", ",", "tots"}], "]"}], "]"}]}], "]"}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"AppendTo", "[", 
-            RowBox[{"ss3PolSets", ",", 
-             RowBox[{"pol", "/.", "subs"}]}], "]"}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"AppendTo", "[", 
-            RowBox[{"ss3SolSets", ",", 
-             RowBox[{"Flatten", "[", "solution", "]"}]}], "]"}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"multiCount", "++"}], ";"}], "}"}], ",", "4", ",", 
-         RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{"termCount", "++"}], ";"}], "*)"}], "\[IndentingNewLine]", 
+         
+         RowBox[{"Switch", "[", 
           RowBox[{
-           RowBox[{"AppendTo", "[", 
-            RowBox[{"ss4ParSets", ",", 
-             RowBox[{"Flatten", "[", 
-              RowBox[{"Join", "[", 
-               RowBox[{"pars", ",", "tots"}], "]"}], "]"}]}], "]"}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"AppendTo", "[", 
-            RowBox[{"ss4PolSets", ",", 
-             RowBox[{"pol", "/.", "subs"}]}], "]"}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"AppendTo", "[", 
-            RowBox[{"ss4SolSets", ",", 
-             RowBox[{"Flatten", "[", "solution", "]"}]}], "]"}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"multiCount", "++"}], ";"}], "}"}], ",", "5", ",", 
-         RowBox[{"{", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"AppendTo", "[", 
-            RowBox[{"ss5ParSets", ",", 
-             RowBox[{"Flatten", "[", 
-              RowBox[{"Join", "[", 
-               RowBox[{"pars", ",", "tots"}], "]"}], "]"}]}], "]"}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"AppendTo", "[", 
-            RowBox[{"ss5PolSets", ",", 
-             RowBox[{"pol", "/.", "subs"}]}], "]"}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"AppendTo", "[", 
-            RowBox[{"ss5SolSets", ",", 
-             RowBox[{"Flatten", "[", "solution", "]"}]}], "]"}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"multiCount", "++"}], ";"}], "}"}]}], 
-        "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{"}", "]"}], ";"}], "*)"}], "\[IndentingNewLine]", "}"}], ",", 
-     
-     RowBox[{"{", 
-      RowBox[{"i", ",", "5000000"}], "}"}]}], "]"}], ";"}], 
-  "\[IndentingNewLine]", "]"}]}], "Input",
+           RowBox[{"Length", "[", 
+            RowBox[{"Flatten", "[", "solution", "]"}], "]"}], ",", 
+           RowBox[{"(*", 
+            RowBox[{"2", ",", 
+             RowBox[{"{", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"AppendTo", "[", 
+                RowBox[{"ss2ParSets", ",", 
+                 RowBox[{"Flatten", "[", 
+                  RowBox[{"Join", "[", 
+                   RowBox[{"pars", ",", "tots"}], "]"}], "]"}]}], "]"}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"AppendTo", "[", 
+                RowBox[{"ss2PolSets", ",", 
+                 RowBox[{"pol", "/.", "subs"}]}], "]"}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"AppendTo", "[", 
+                RowBox[{"ss2SolSets", ",", 
+                 RowBox[{"Flatten", "[", "solution", "]"}]}], "]"}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"biCount", "++"}], ";"}], "}"}], ",", "3", ",", 
+             RowBox[{"{", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"AppendTo", "[", 
+                RowBox[{"ss3ParSets", ",", 
+                 RowBox[{"Flatten", "[", 
+                  RowBox[{"Join", "[", 
+                   RowBox[{"pars", ",", "tots"}], "]"}], "]"}]}], "]"}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"AppendTo", "[", 
+                RowBox[{"ss3PolSets", ",", 
+                 RowBox[{"pol", "/.", "subs"}]}], "]"}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"AppendTo", "[", 
+                RowBox[{"ss3SolSets", ",", 
+                 RowBox[{"Flatten", "[", "solution", "]"}]}], "]"}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"multiCount", "++"}], ";"}], "}"}], ",", "4", ",", 
+             RowBox[{"{", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"AppendTo", "[", 
+                RowBox[{"ss4ParSets", ",", 
+                 RowBox[{"Flatten", "[", 
+                  RowBox[{"Join", "[", 
+                   RowBox[{"pars", ",", "tots"}], "]"}], "]"}]}], "]"}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"AppendTo", "[", 
+                RowBox[{"ss4PolSets", ",", 
+                 RowBox[{"pol", "/.", "subs"}]}], "]"}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"AppendTo", "[", 
+                RowBox[{"ss4SolSets", ",", 
+                 RowBox[{"Flatten", "[", "solution", "]"}]}], "]"}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"multiCount", "++"}], ";"}], "}"}], ","}], "*)"}], "5",
+            ",", 
+           RowBox[{"{", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"ss5ParSets", ",", 
+               RowBox[{"Flatten", "[", 
+                RowBox[{"Join", "[", 
+                 RowBox[{"pars", ",", "tots"}], "]"}], "]"}]}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"ss5PolSets", ",", 
+               RowBox[{"pol", "/.", "subs"}]}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"ss5SolSets", ",", 
+               RowBox[{"Flatten", "[", "solution", "]"}]}], "]"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"multiCount", "++"}], ";"}], "}"}]}], 
+          "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{
+          RowBox[{"}", "]"}], ";"}], "*)"}], "\[IndentingNewLine]", "}"}], 
+       ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "5000000"}], "}"}]}], "]"}], ";"}], 
+    "\[IndentingNewLine]", "]"}]}]}]], "Input",
  CellChangeTimes->{{3.656340060998933*^9, 3.656340114758774*^9}, {
    3.65634027139126*^9, 3.6563403067013683`*^9}, 3.656340521210791*^9, {
    3.656619443192204*^9, 3.656619472339007*^9}, {3.656620509846608*^9, 
    3.656620541959041*^9}, {3.656620602399613*^9, 3.656620602596793*^9}, 
    3.656620644906166*^9, {3.656620733255498*^9, 3.65662074943696*^9}, {
    3.656623119318763*^9, 3.656623119468259*^9}, {3.656628205226295*^9, 
-   3.656628225504827*^9}, {3.6566284692986193`*^9, 3.6566284792300863`*^9}}],
+   3.656628225504827*^9}, {3.6566284692986193`*^9, 3.6566284792300863`*^9}, {
+   3.6567954161039467`*^9, 3.656795452353153*^9}, 3.656795635499772*^9}],
 
 Cell[BoxData[
  RowBox[{
-  StyleBox[
-   RowBox[{"AppendTo", "::", "rvalue"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"\[NoBreak]\\!\\(ss1ParSets\\)\[NoBreak] is not a variable \
-with a value, so its value cannot be changed. \\!\\(\\*ButtonBox[\\\"\
-\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/message/General/rvalue\\\", ButtonNote -> \
-\\\"AppendTo::rvalue\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.656628351278819*^9}],
+  RowBox[{"(*", 
+   RowBox[{
+   "Not", " ", "good", " ", "enough", " ", "to", " ", "use", " ", 
+    "FindInstance"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"FindInstance", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Length", "[", 
+      RowBox[{
+       SubscriptBox["x", "1"], "/.", 
+       RowBox[{"NSolve", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"pol", "\[Equal]", "0"}], "&&", 
+           RowBox[{
+            SubscriptBox["x", "1"], ">", "0"}]}], "}"}], ",", 
+         SubscriptBox["x", "1"]}], "]"}]}], "]"}], "\[Equal]", "5"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      SubscriptBox["k", "1"], ",", 
+      SubscriptBox["k", "2"], ",", 
+      SubscriptBox["k", "3"], ",", 
+      SubscriptBox["k", "4"], ",", 
+      SubscriptBox["k", "5"], ",", 
+      SubscriptBox["k", "6"], ",", 
+      SubscriptBox["k", "7"], ",", 
+      SubscriptBox["k", "8"], ",", 
+      SubscriptBox["k", "9"], ",", 
+      SubscriptBox["k", "10"], ",", 
+      SubscriptBox["k", "11"], ",", 
+      SubscriptBox["k", "12"], ",", 
+      SubscriptBox["k", "13"], ",", 
+      SubscriptBox["k", "14"], ",", 
+      SubscriptBox["k", "15"], ",", 
+      SubscriptBox["T", "1"], ",", 
+      SubscriptBox["T", "2"]}], "}"}], ",", "Reals"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.656741935970063*^9, 3.6567419414838953`*^9}, {
+  3.656742091520694*^9, 3.656742137785572*^9}, {3.656742169190114*^9, 
+  3.656742247784007*^9}, {3.656743225492594*^9, 3.656743266409277*^9}, {
+  3.6567953278664513`*^9, 3.656795350127205*^9}}],
 
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"AppendTo", "::", "rvalue"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"\[NoBreak]\\!\\(ss2PolSets\\)\[NoBreak] is not a variable \
-with a value, so its value cannot be changed. \\!\\(\\*ButtonBox[\\\"\
-\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/message/General/rvalue\\\", ButtonNote -> \
-\\\"AppendTo::rvalue\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.656628351332389*^9}],
+Cell[CellGroupData[{
 
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"AppendTo", "::", "rvalue"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"\[NoBreak]\\!\\(ss1ParSets\\)\[NoBreak] is not a variable \
-with a value, so its value cannot be changed. \\!\\(\\*ButtonBox[\\\"\
-\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/message/General/rvalue\\\", ButtonNote -> \
-\\\"AppendTo::rvalue\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.6566283514017572`*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"General", "::", "stop"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Further output of \[NoBreak]\\!\\(\\*StyleBox[\\(AppendTo \
-:: rvalue\\), \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during \
-this calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
-ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
-\\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.656628351471333*^9}],
-
-Cell[BoxData["$Aborted"], "Output",
- CellChangeTimes->{3.6563401392417994`*^9, 3.656340512099568*^9, 
-  3.656342491407832*^9, 3.656620504511998*^9, 3.6566205394823112`*^9, 
-  3.65662058502921*^9, 3.6566283171005507`*^9, 3.6566284641671953`*^9}]
-}, Open  ]],
+Cell["Check results", "Subsubsection",
+ CellChangeTimes->{{3.656673071383572*^9, 3.656673073238714*^9}}],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Length", "[", "bistableParSets", "]"}]], "Input"],
+ RowBox[{"Length", "[", "ss2ParSets", "]"}]], "Input",
+ CellChangeTimes->{{3.654887110761848*^9, 3.65488711185781*^9}, {
+  3.6566555726229687`*^9, 3.656655578254527*^9}}],
 
-Cell[BoxData["15"], "Output",
- CellChangeTimes->{3.656340143896633*^9, 3.656340517157311*^9, 
-  3.656344429884222*^9, 3.656620545301165*^9, 3.656620588221375*^9}]
-}, Open  ]],
+Cell[BoxData["512052"], "Output",
+ CellChangeTimes->{
+  3.654887112288855*^9, 3.6548899129542217`*^9, 3.654892518868803*^9, 
+   3.654892621871767*^9, 3.654892757310759*^9, 3.6548952642905397`*^9, 
+   3.65494957669004*^9, 3.654953893545539*^9, 3.655455843365161*^9, 
+   3.655459301095602*^9, 3.655466775191428*^9, 3.6566199081827393`*^9, 
+   3.656627261247539*^9, {3.656655568959156*^9, 3.656655578883596*^9}, 
+   3.656741423469569*^9}]
+}, Closed]],
 
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Length", "[", "multistableParSets", "]"}]], "Input"],
+ RowBox[{"Length", "[", "ss3ParSets", "]"}]], "Input",
+ CellChangeTimes->{{3.654881846977995*^9, 3.654881848098164*^9}, {
+  3.654881902719212*^9, 3.6548819048709507`*^9}, {3.654881936896899*^9, 
+  3.654881941861001*^9}, {3.656655588763912*^9, 3.656655592854335*^9}}],
+
+Cell[BoxData["8845"], "Output",
+ CellChangeTimes->{3.654882155999765*^9, 3.6548823479644737`*^9, 
+  3.654882674967066*^9, 3.654885994026411*^9, 3.654887101466288*^9, 
+  3.6548899143749866`*^9, 3.6548925202968197`*^9, 3.654892757351268*^9, 
+  3.654893018096305*^9, 3.6548952657042847`*^9, 3.654949579047806*^9, 
+  3.654953894746113*^9, 3.655455844845716*^9, 3.655459303332816*^9, 
+  3.655466777206319*^9, 3.6566199094390182`*^9, 3.656627262683126*^9, 
+  3.656655593710506*^9, 3.656741425504936*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", "ss4ParSets", "]"}]], "Input",
+ CellChangeTimes->{3.6566555984141197`*^9}],
+
+Cell[BoxData["19"], "Output",
+ CellChangeTimes->{3.656655599108082*^9, 3.6567414269610767`*^9}]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", "ss5ParSets", "]"}]], "Input",
+ CellChangeTimes->{3.65665560318994*^9}],
 
 Cell[BoxData["0"], "Output",
- CellChangeTimes->{3.656340144954042*^9, 3.6563405183643007`*^9, 
-  3.656344431914043*^9, 3.656620546661889*^9, 3.656620589488001*^9}]
+ CellChangeTimes->{3.656655604267015*^9, 3.6567414285885687`*^9}]
 }, Open  ]]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -8417,52 +8454,72 @@ Cell[BoxData[{
     RowBox[{"\"\<4Kstates_ss5PolSets.csv\>\"", ",", "ss5PolSets"}], "]"}], 
    ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"Export", "[", 
-   RowBox[{"\"\<4Kstates_ss4ParSets.csv\>\"", ",", "ss4ParSets"}], "]"}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Export", "[", 
-   RowBox[{"\"\<4Kstates_ss4SolSets.csv\>\"", ",", "ss4SolSets"}], "]"}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"Export", "[", 
-    RowBox[{"\"\<4Kstates_ss4PolSets.csv\>\"", ",", "ss4PolSets"}], "]"}], 
-   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Export", "[", 
-   RowBox[{"\"\<4Kstates_ss3ParSets.csv\>\"", ",", "ss3ParSets"}], "]"}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Export", "[", 
-   RowBox[{"\"\<4Kstates_ss3SolSets.csv\>\"", ",", "ss3SolSets"}], "]"}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{
-   RowBox[{"Export", "[", 
-    RowBox[{"\"\<4Kstates_ss3PolSets.csv\>\"", ",", "ss3PolSets"}], "]"}], 
-   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Export", "[", 
-   RowBox[{"\"\<4Kstates_ss2ParSets.csv\>\"", ",", "ss2ParSets"}], "]"}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Export", "[", 
-   RowBox[{"\"\<4Kstates_ss2SolSets.csv\>\"", ",", "ss2SolSets"}], "]"}], 
-  ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"Export", "[", 
-   RowBox[{"\"\<4Kstates_ss2PolSets.csv\>\"", ",", "ss2PolSets"}], "]"}], 
-  ";"}]}], "Input",
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<4Kstates_ss4ParSets.csv\>\"", ",", "ss4ParSets"}], "]"}], 
+    ";", "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<4Kstates_ss4SolSets.csv\>\"", ",", "ss4SolSets"}], "]"}], 
+    ";", "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<4Kstates_ss4PolSets.csv\>\"", ",", "ss4PolSets"}], "]"}], 
+    ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<4Kstates_ss3ParSets.csv\>\"", ",", "ss3ParSets"}], "]"}], 
+    ";", "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<4Kstates_ss3SolSets.csv\>\"", ",", "ss3SolSets"}], "]"}], 
+    ";", "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<4Kstates_ss3PolSets.csv\>\"", ",", "ss3PolSets"}], "]"}], 
+    ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<4Kstates_ss2ParSets.csv\>\"", ",", "ss2ParSets"}], "]"}], 
+    ";", "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<4Kstates_ss2SolSets.csv\>\"", ",", "ss2SolSets"}], "]"}], 
+    ";", "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<4Kstates_ss2PolSets.csv\>\"", ",", "ss2PolSets"}], "]"}], 
+    ";"}], "*)"}]}]}], "Input",
  CellChangeTimes->{{3.656656018051512*^9, 3.6566560829609613`*^9}, {
-  3.656656225359811*^9, 3.656656290472258*^9}}]
-}, Closed]],
+   3.656656225359811*^9, 3.656656290472258*^9}, 3.656795645145417*^9}]
+}, Closed]]
+}, Open  ]],
 
-Cell["Multistable ones", "Subsubsection",
- CellChangeTimes->{{3.656656301635668*^9, 3.6566563072521877`*^9}}],
+Cell[CellGroupData[{
 
-Cell["Bistable ones", "Subsubsection",
- CellChangeTimes->{{3.656656312765232*^9, 3.6566563145960093`*^9}}]
+Cell[TextData[StyleBox["SS5 (Tristable)", "Subsection"]], "Subsection",
+ CellChangeTimes->{{3.656656301635668*^9, 3.6566563072521877`*^9}, {
+  3.656741544747992*^9, 3.656741546320588*^9}, {3.656741587471161*^9, 
+  3.65674160708074*^9}}],
+
+Cell[TextData[{
+ "Use the parameter from Elisenda\[CloseCurlyQuote]s document: ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["k", "1"], "=", "0.0369"}], ",", " ", 
+    RowBox[{
+     SubscriptBox["k", "2"], "=", "0.0107"}], ",", " ", 
+    SubscriptBox["k", "3"]}], TraditionalForm]]]
+}], "Text",
+ CellChangeTimes->{{3.6567416131113863`*^9, 3.656741626710268*^9}, {
+  3.656741710061946*^9, 3.656741738300283*^9}, {3.6567417792782803`*^9, 
+  3.656741786972104*^9}, {3.656743305046342*^9, 3.656743305746621*^9}}]
+}, Open  ]],
+
+Cell[TextData[StyleBox["SS4", "Subsection"]], "Subsection",
+ CellChangeTimes->{{3.656656312765232*^9, 3.6566563145960093`*^9}, {
+  3.656741558024061*^9, 3.656741561544302*^9}}],
+
+Cell["SS3 (Bistable)", "Subsection",
+ CellChangeTimes->{{3.65674156540809*^9, 3.656741584287415*^9}}],
+
+Cell["SS2", "Subsection",
+ CellChangeTimes->{{3.6567415722480593`*^9, 3.6567415727280493`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -9106,7 +9163,7 @@ Cell[BoxData[
 },
 Evaluator->"NewKernel2",
 WindowSize->{953, 677},
-WindowMargins->{{Automatic, 29}, {Automatic, 0}},
+WindowMargins->{{Automatic, -1143}, {Automatic, -78}},
 FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
 2015)",
 StyleDefinitions->"Default.nb"
@@ -9162,40 +9219,53 @@ Cell[148166, 3995, 56195, 1636, 889, "Output"]
 Cell[CellGroupData[{
 Cell[204398, 5636, 340, 8, 28, "Input"],
 Cell[204741, 5646, 40163, 1182, 566, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[244941, 6833, 99, 1, 35, "Subsubsection"],
-Cell[245043, 6836, 42591, 1185, 726, "Input"],
-Cell[CellGroupData[{
-Cell[287659, 8025, 11367, 290, 875, "Input"],
-Cell[299029, 8317, 493, 10, 24, "Message"],
-Cell[299525, 8329, 493, 10, 24, "Message"],
-Cell[300021, 8341, 495, 10, 24, "Message"],
-Cell[300519, 8353, 533, 11, 24, "Message"],
-Cell[301055, 8366, 244, 3, 39, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[301336, 8374, 73, 1, 39, "Input"],
-Cell[301412, 8377, 162, 2, 39, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[301611, 8384, 76, 1, 39, "Input"],
-Cell[301690, 8387, 163, 2, 39, "Output"]
 }, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[301902, 8395, 117, 1, 35, "Subsubsection"],
-Cell[302022, 8398, 191, 4, 39, "Input"],
-Cell[302216, 8404, 1963, 53, 267, "Input"]
 }, Closed]],
-Cell[304194, 8460, 109, 1, 29, "Subsubsection"],
-Cell[304306, 8463, 106, 1, 29, "Subsubsection"]
+Cell[CellGroupData[{
+Cell[244953, 6834, 255, 4, 50, "Section"],
+Cell[245211, 6840, 42591, 1185, 715, "Input"],
+Cell[CellGroupData[{
+Cell[287827, 8029, 100, 1, 44, "Subsection"],
+Cell[287930, 8032, 12148, 291, 864, "Input"],
+Cell[300081, 8325, 1564, 42, 65, "Input"],
+Cell[CellGroupData[{
+Cell[301670, 8371, 104, 1, 35, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[301799, 8376, 184, 3, 28, "Input"],
+Cell[301986, 8381, 435, 7, 28, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[302458, 8393, 280, 4, 22, "Input"],
+Cell[302741, 8399, 497, 7, 28, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[303275, 8411, 112, 2, 22, "Input"],
+Cell[303390, 8415, 95, 1, 28, "Output"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[303522, 8421, 109, 2, 22, "Input"],
+Cell[303634, 8425, 94, 1, 28, "Output"]
+}, Open  ]]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[303777, 8432, 117, 1, 29, "Subsubsection"],
+Cell[303897, 8435, 191, 4, 28, "Input"],
+Cell[304091, 8441, 1951, 45, 267, "Input"]
+}, Closed]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[304449, 8469, 89, 1, 64, "Section"],
+Cell[306091, 8492, 236, 3, 44, "Subsection"],
+Cell[306330, 8497, 534, 13, 32, "Text"]
+}, Open  ]],
+Cell[306879, 8513, 176, 2, 44, "Subsection"],
+Cell[307058, 8517, 101, 1, 36, "Subsection"],
+Cell[307162, 8520, 95, 1, 36, "Subsection"]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[304563, 8474, 426, 12, 28, "Input"],
-Cell[304992, 8488, 31554, 613, 371, "Output"]
+Cell[307294, 8526, 89, 1, 64, "Section"],
+Cell[CellGroupData[{
+Cell[307408, 8531, 426, 12, 28, "Input"],
+Cell[307837, 8545, 31554, 613, 371, "Output"]
 }, Open  ]]
 }, Closed]]
 }, Open  ]]
