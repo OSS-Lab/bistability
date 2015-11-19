@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    107642,       3205]
-NotebookOptionsPosition[    105297,       3122]
-NotebookOutlinePosition[    105656,       3138]
-CellTagsIndexPosition[    105613,       3135]
+NotebookDataLength[    107254,       3198]
+NotebookOptionsPosition[    104800,       3111]
+NotebookOutlinePosition[    105153,       3127]
+CellTagsIndexPosition[    105110,       3124]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -2631,7 +2631,7 @@ Cell[BoxData[
   Out[78]]], "Output",
  CellChangeTimes->{3.656842051987376*^9, 3.6568421213610907`*^9}]
 }, Closed]]
-}, Open  ]],
+}, Closed]],
 
 Cell[CellGroupData[{
 
@@ -2890,15 +2890,18 @@ Cell[BoxData[{
    RowBox[{"Log", "[", "1000000.", "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"minTot", "=", 
-   RowBox[{"Log", "[", "0.001", "]"}]}], ";", 
+   RowBox[{"Log", "[", "0.0001", "]"}]}], ";", 
   RowBox[{"maxTot", "=", 
-   RowBox[{"Log", "[", "1000.", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Log", "[", "10000.", "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"biCount", "=", "0"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"multiCount", "=", "0"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"termCount", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"biCount", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"multiCount", "=", "0"}], ";"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"termCount", "=", "0"}], ";"}], "*)"}]}], "\[IndentingNewLine]", 
  RowBox[{"Timing", "[", "\[IndentingNewLine]", 
   RowBox[{
    RowBox[{"Do", "[", 
@@ -3045,24 +3048,6 @@ Cell[BoxData[{
            RowBox[{"tots", "[", 
             RowBox[{"[", "4", "]"}], "]"}]}]}], "}"}]}], ";", 
        "\[IndentingNewLine]", 
-       RowBox[{"(*", 
-        RowBox[{
-         RowBox[{"term4", "=", 
-          RowBox[{"coeff4", "/.", "subs"}]}], ";", 
-         RowBox[{"term3", "=", 
-          RowBox[{"coeff3", "/.", "subs"}]}], ";", 
-         RowBox[{"term2", "=", 
-          RowBox[{"coeff2", "/.", "subs"}]}], ";", 
-         RowBox[{"term1", "=", 
-          RowBox[{"coeff1", "/.", "subs"}]}], ";", "\[IndentingNewLine]", 
-         RowBox[{"If", "[", 
-          RowBox[{
-           RowBox[{
-            RowBox[{"term4", "<", "0"}], "&&", 
-            RowBox[{"term3", ">", "0"}], "&&", 
-            RowBox[{"term2", "<", "0"}], "&&", 
-            RowBox[{"term1", ">", "0"}]}], ",", "{"}]}]}], "*)"}], 
-       "\[IndentingNewLine]", 
        RowBox[{"solution", "=", 
         RowBox[{"Select", "[", 
          RowBox[{
@@ -3077,9 +3062,6 @@ Cell[BoxData[{
                  RowBox[{"pol", "\[Equal]", "0"}], "}"}], "/.", "subs"}], ",", 
                SubscriptBox["x", "1"]}], "]"}]}], "]"}], "]"}], ",", 
           "Positive"}], "]"}]}], ";", "\[IndentingNewLine]", 
-       RowBox[{"(*", 
-        RowBox[{
-         RowBox[{"termCount", "++"}], ";"}], "*)"}], "\[IndentingNewLine]", 
        RowBox[{"If", "[", 
         RowBox[{
          RowBox[{
@@ -3099,20 +3081,27 @@ Cell[BoxData[{
            "\[IndentingNewLine]", 
            RowBox[{"AppendTo", "[", 
             RowBox[{"ss7SolSets", ",", 
-             RowBox[{"Flatten", "[", "solution", "]"}]}], "]"}], ";", 
-           "\[IndentingNewLine]", 
-           RowBox[{"multiCount", "++"}], ";"}], "}"}]}], 
-        "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
-      RowBox[{"(*", 
-       RowBox[{
-        RowBox[{"}", "]"}], ";"}], "*)"}], "\[IndentingNewLine]", "}"}], ",", 
-     
+             RowBox[{"Flatten", "[", "solution", "]"}]}], "]"}], ";"}], 
+          "}"}]}], "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]",
+       "}"}], ",", 
      RowBox[{"{", 
       RowBox[{"i", ",", "5000000"}], "}"}]}], "]"}], ";"}], 
   "\[IndentingNewLine]", "]"}]}], "Input",
  CellChangeTimes->{{3.656842403771648*^9, 3.656842652962425*^9}, {
-  3.656842774130453*^9, 3.656842776204094*^9}, {3.656843277082809*^9, 
-  3.65684328159157*^9}}]
+   3.656842774130453*^9, 3.656842776204094*^9}, {3.656843277082809*^9, 
+   3.65684328159157*^9}, {3.656872479642994*^9, 3.656872483647019*^9}, {
+   3.656872534764414*^9, 3.656872569017919*^9}, 3.65688463666534*^9, {
+   3.656885198230933*^9, 3.656885221179921*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", "ss7ParSets", "]"}]], "Input",
+ CellChangeTimes->{{3.656872493961658*^9, 3.656872498296212*^9}}],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.6568724987667503`*^9, 3.656884400549827*^9}]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
 
@@ -3121,7 +3110,7 @@ Cell["Test", "Section",
 }, Open  ]]
 },
 WindowSize->{1068, 651},
-WindowMargins->{{Automatic, -1202}, {Automatic, -224}},
+WindowMargins->{{Automatic, 29}, {Automatic, 0}},
 FrontEndVersion->"10.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 6, \
 2015)",
 StyleDefinitions->"Default.nb"
@@ -3195,17 +3184,21 @@ Cell[CellGroupData[{
 Cell[75801, 2311, 461, 10, 28, "Input"],
 Cell[76265, 2323, 12311, 308, 177, "Output"]
 }, Closed]]
-}, Open  ]],
+}, Closed]],
 Cell[CellGroupData[{
-Cell[88625, 2637, 122, 1, 64, "Section"],
+Cell[88625, 2637, 122, 1, 50, "Section"],
 Cell[88750, 2640, 6810, 215, 139, "Input"],
 Cell[95563, 2857, 350, 9, 28, "Input"],
 Cell[CellGroupData[{
 Cell[95938, 2870, 96, 1, 44, "Subsection"],
-Cell[96037, 2873, 9128, 241, 559, "Input"]
+Cell[96037, 2873, 8363, 220, 474, "Input"],
+Cell[CellGroupData[{
+Cell[104425, 3097, 134, 2, 28, "Input"],
+Cell[104562, 3101, 94, 1, 28, "Output"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]],
-Cell[105192, 3118, 89, 1, 64, "Section"]
+Cell[104695, 3107, 89, 1, 64, "Section"]
 }, Open  ]]
 }
 ]
