@@ -1,0 +1,104 @@
+ 
+  
+                         ==============================
+                         DEFICIENCY ONE REPORT: NoName1
+                         ==============================
+ 
+ 
+                                    Analysis
+                                    ========
+ 
+      Taken with mass action kinetics, the network DOES have the capacity for
+ multiple steady states and for a degenerate steady state. That is, there are 
+ rate constants that give rise to two or more positive (stoichiometrically
+ compatible) steady states -- you'll see examples below -- and also rate con-
+ stants for which there is a steady state having an eigenvector (in the stoi-
+ chiometric subspace) corresponding to an eigenvalue of zero. (To construct
+ rate constants that give a degenerate steady state, run the Zero Eigenvalue
+ Report.)
+ 
+ 
+ 
+     Here's an example of a mass action system that gives rise to a pair of
+ positive steady states that are stoichiometrically compatible:
+ 
+ 
+ 
+                     Example No. 1: Multiple Steady States
+                     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+      The following mass action system gives rise to multiple steady states:
+ 
+ 
+                           K + S ---101.85931-> C
+                               C ---0.5727606-> K + S
+                               C ---0.5727606-> K + P
+                           F + P ---1.6154614-> D
+                               D ---1.7182818-> F + P
+                               D ---1.7182818-> F + S
+                           K + F ---6.0709637-> E
+                               E --0.31606027-> K + F
+ 
+ 
+      The steady states shown below are both consistent with the mass action
+ system indicated.
+ 
+ 
+     Steady State No. 1	         Species	Steady State No. 2
+     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯	         ¯¯¯¯¯¯¯	¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+          1.7459301    	               C      	     4.7459301    
+          0.5819767    	               D      	     1.5819767    
+          3.1639534    	               E      	     1.1639534    
+         0.15651764    	               F      	     1.1565176    
+          1.0523956    	               K      	    5.2395 E-2    
+          7.9098835    	               P      	     2.9098835    
+         1.8657 E-2    	               S      	     1.0186573    
+ 
+ 
+                       Eigenvalues for Steady State No. 1
+                       ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -109.7026
+                                   -22.034076
+                                   -2.4861042
+                                   -0.1423116
+ 
+                  Steady State No. 1 is asymptotically stable.
+ 
+ 
+ 
+                       Eigenvalues for Steady State No. 2
+                       ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+                                   -116.88667
+                                   -9.8000332
+                                   -0.9839872
+                                   -0.2325581
+ 
+                  Steady State No. 2 is asymptotically stable.
+ 
+ 
+ 
+ 
+ 
+ 
+                                   References
+                                   ¯¯¯¯¯¯¯¯¯¯
+ 
+ 1. Feinberg, M., Chemical reaction network structure and the stability of
+ complex isothermal reactors. I. The deficiency zero and deficiency one
+ theorems, Chem. Eng. Science, 42, 2229-2268 (1987).
+ 
+ 2. Feinberg, M., Chemical reaction network structure and the stability of
+ complex isothermal reactors. II. Multiple steady states for networks of
+ deficiency one, Chem. Eng. Science, 43, 1 - 25 (1988).
+ 
+ 3. Feinberg, M., The existence and uniqueness of steady states for a class
+ of chemical reaction networks, Archive for Rational Mechanics and Analysis,
+ 132 , 311-370, 1995.
+ 
+ 4. Feinberg, M., Multiple steady states for chemical reaction networks of
+ deficiency one, Archive for Rational Mechanics and Analysis, 132, 371-406,
+ 1995.
+ 
+                                  ***********
